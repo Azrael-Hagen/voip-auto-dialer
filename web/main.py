@@ -3,7 +3,7 @@ Servidor web principal para VoIP Auto Dialer - VERSIÓN LIMPIA Y FUNCIONAL
 FastAPI con endpoints completos para agentes, extensiones y campañas
 """
 import os
-import sys
+import sys, uvicorn
 from pathlib import Path
 from typing import Dict, List, Optional
 
@@ -18,7 +18,6 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from pydantic import BaseModel
 from datetime import datetime
-import uvicorn
 
 from core.logging_config import get_logger
 from core.extension_manager import extension_manager
@@ -250,6 +249,10 @@ async def create_agent(agent: AgentCreate):
     except Exception as e:
         logger.error(f"Error creando agente: {e}")
         raise HTTPException(status_code=500, detail=str(e))
+    
+@app.put("/api/providers/{provider_id}")
+
+
 
 @app.get("/api/agents/{agent_id}")
 async def get_agent(agent_id: str):
@@ -262,6 +265,7 @@ async def get_agent(agent_id: str):
     except Exception as e:
         logger.error(f"Error obteniendo agente {agent_id}: {e}")
         raise HTTPException(status_code=500, detail=str(e))
+
 
 @app.put("/api/agents/{agent_id}")
 async def update_agent(agent_id: str, agent_update: AgentUpdate):
@@ -610,16 +614,17 @@ async def create_provider(provider_data: dict):
         
         new_provider = provider_manager.create_provider(
             name=provider_data["name"],
-            type=provider_data["type"],   # corregido
+            type=provider_data["type"],   # ✅ ahora sí existe en la firma
             host=provider_data["host"],
             port=provider_data.get("port", 5060),
             username=provider_data.get("username", ""),
             password=provider_data.get("password", ""),
             transport=provider_data.get("transport", "UDP"),
-            context=provider_data.get("context", "from-trunk"),
+            context=provider_data.get("context", "from-trunk"),  # ✅ ahora sí existe en la firma
             codec=provider_data.get("codec", "ulaw,alaw,gsm"),
             description=provider_data.get("description", "")
         )
+
         
         
         logger.info(f"Proveedor creado: {new_provider['name']} ({new_provider['id']})")
@@ -1415,6 +1420,19 @@ async def get_realtime_calls():
     except Exception as e:
         logger.error(f"Error obteniendo llamadas en tiempo real: {e}")
         raise HTTPException(status_code=500, detail=str(e))
+
+
+#-----------------------------------------------------------------------------------------
+async def edit_provider(provider_id: str, provider_data: dict):
+    try:
+        updated_provider = provider_manager.update_provider(provider_id, provider_data)
+        return updated_provider
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+#-----------------------------------------------------------------------------------------
+
+
+
 
 # ============================================================================
 # SERVIDOR

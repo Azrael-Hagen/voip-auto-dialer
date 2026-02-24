@@ -1,1 +1,18 @@
-{}
+{
+  "provider_fabdd987": {
+    "id": "provider_fabdd987",
+    "name": "PBX ON THE CLOUD",
+    "host": "pbxonthecloud.com",
+    "username": "523483070291",
+    "password": "Tele$Inte%4985",
+    "port": 5081,
+    "transport": "udp",
+    "codec": "ulaw,alaw,gsm",
+    "description": "",
+    "active": true,
+    "status": "disconnected",
+    "created_at": "2026-02-24T16:00:05.987096",
+    "last_test": null,
+    "test_results": []
+  }
+}

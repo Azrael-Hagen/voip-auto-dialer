@@ -16,11 +16,9 @@ class ProviderManager:
         self.data_dir = Path(__file__).parent.parent / "data"
         self.providers_file = self.data_dir / "providers.json"
         self.asterisk_config_dir = Path(__file__).parent.parent / "asterisk_config"
-        
         # Crear directorios si no existen
         self.data_dir.mkdir(exist_ok=True)
         self.asterisk_config_dir.mkdir(exist_ok=True)
-        
         self.providers = self._load_providers()
         self.logger.info(f"Provider Manager inicializado: {len(self.providers)} proveedores")
 
@@ -46,8 +44,9 @@ class ProviderManager:
             return False
 
     def create_provider(self, name: str, host: str, username: str, password: str,
-                       port: int = 5060, transport: str = "udp", codec: str = "ulaw",
-                       description: str = "", active: bool = True) -> Dict[str, Any]:
+                        port: int = 5060, transport: str = "udp", codec: str = "ulaw",
+                        description: str = "", active: bool = True,
+                        type: str = "sip", context: str = "from-trunk") -> Dict[str, Any]:
         """Crear nuevo proveedor VoIP"""
         try:
             provider_id = f"provider_{uuid.uuid4().hex[:8]}"
@@ -63,14 +62,18 @@ class ProviderManager:
                 "codec": codec.lower(),
                 "description": description,
                 "active": active,
+                "type": type.lower(),
+                "context": context,
                 "status": "disconnected",
                 "created_at": datetime.now().isoformat(),
                 "last_test": None,
                 "test_results": []
             }
-            
+
+            # ✅ Guardar en memoria
             self.providers[provider_id] = provider
-            
+
+            # ✅ Persistir en providers.json
             if self._save_providers():
                 # Generar configuración de Asterisk si está activo
                 if active:
@@ -84,6 +87,32 @@ class ProviderManager:
         except Exception as e:
             self.logger.error(f"Error creando proveedor: {e}")
             raise
+
+    def update_provider(self, provider_id: str, updates: Dict[str, Any]) -> Dict[str, Any]:
+        """Editar un proveedor existente"""
+        try:
+            if provider_id not in self.providers:
+                raise Exception(f"Proveedor {provider_id} no encontrado")
+
+            # Actualizar campos
+            for key, value in updates.items():
+                if key in self.providers[provider_id]:
+                    self.providers[provider_id][key] = value
+
+            # Guardar cambios
+            if self._save_providers():
+                # Regenerar configuración si el proveedor está activo
+                if self.providers[provider_id].get("active", False):
+                    self._generate_asterisk_config()
+                
+                self.logger.info(f"Proveedor actualizado: {provider_id}")
+                return self.providers[provider_id]
+            else:
+                raise Exception("Error guardando proveedor actualizado")
+        except Exception as e:
+            self.logger.error(f"Error actualizando proveedor: {e}")
+            raise
+
 
     def get_all_providers(self) -> Dict[str, Any]:
         """Obtener todos los proveedores"""
@@ -278,12 +307,22 @@ class ProviderManager:
             with open(extensions_file, 'w', encoding='utf-8') as f:
                 f.write(extensions_config)
             
-            self.logger.info(f"Configuración de Asterisk generada para {len(active_providers)} proveedores")
+            # ✅ Recargar Asterisk
+            os.system("asterisk -rx 'pjsip reload'")
+            
+            # ✅ Actualizar estado de proveedores
+            for pid, provider in active_providers.items():
+                provider["status"] = "connected"
+            
+            self._save_providers()
+            
+            self.logger.info(f"Configuración de Asterisk generada y recargada para {len(active_providers)} proveedores")
             return True
             
         except Exception as e:
             self.logger.error(f"Error generando configuración de Asterisk: {e}")
             return False
+
 
     def _generate_pjsip_config(self, providers: Dict[str, Any]) -> str:
         """Generar configuración PJSIP para proveedores"""

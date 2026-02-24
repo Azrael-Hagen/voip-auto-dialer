@@ -1,0 +1,14 @@
+# Entorno virtual
+venv/
+__pycache__/
+*.pyc
+
+# Logs
+logs/
+*.log
+
+# Respaldos
+asterisk_backup_*/
+
+# Archivos temporales
+*.tmp

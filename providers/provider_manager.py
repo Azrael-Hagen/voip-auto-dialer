@@ -1,7 +1,7 @@
 """
 Provider Manager - Gestor centralizado de proveedores VoIP
 """
-import asyncio
+import asyncio, os
 import json
 from typing import Dict, List, Optional, Any
 from datetime import datetime
@@ -20,6 +20,31 @@ class LoadBalanceStrategy(Enum):
 class ProviderManager:
     """Gestor centralizado de proveedores VoIP"""
     
+    
+    
+    #class ProviderManager: aquí se define create_provider
+    def create_provider(self, name, host, port=5060, username="", password="",
+                    transport="UDP", context="from-trunk", codec="ulaw,alaw,gsm",
+                    description="", type="sip"):
+        provider = {
+            "name": name,
+            "host": host,
+            "port": port,
+            "username": username,
+            "password": password,
+            "transport": transport,
+            "context": context,
+            "codec": codec,
+            "description": description,
+            "type": type
+        }
+        # Aquí puedes invocar la lógica para registrar en Asterisk
+        self._register_in_asterisk(provider)
+        return provider
+
+
+    
+    
     def __init__(self, config_path: str = "config/providers.json"):
         self.logger = get_logger("provider_manager")
         self.config_path = Path(config_path)
@@ -34,7 +59,7 @@ class ProviderManager:
         self.total_calls_today = 0
         self.total_cost_today = 0.0
         self.total_errors_today = 0
-        
+    
     async def initialize(self) -> bool:
         """Inicializar el gestor de proveedores"""
         try:
@@ -98,6 +123,24 @@ class ProviderManager:
             self.logger.error(f"Error cargando configuración: {e}")
             return False
     
+
+    def _register_in_asterisk(self, provider):
+        # Ejemplo: generar entrada en pjsip.conf
+        config = f"""
+    [{provider['name']}]
+    type=endpoint
+    transport={provider['transport']}
+    context={provider['context']}
+    disallow=all
+    allow={provider['codec']}
+    aors={provider['name']}
+    """
+        # Guardar en archivo de configuración o usar AMI/ARI
+        # Luego recargar Asterisk:
+        os.system("asterisk -rx 'pjsip reload'")
+
+
+
     async def _initialize_provider(self, name: str, config: ProviderConfig) -> bool:
         """Inicializar un proveedor específico"""
         try:
