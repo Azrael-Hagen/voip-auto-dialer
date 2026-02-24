@@ -1,0 +1,449 @@
+{% extends "base.html" %}
+
+{% block title %}Gestión de Agentes - VoIP Auto Dialer{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <!-- Header de la página -->
+    <div class="page-header">
+        <div class="d-flex justify-content-between align-items-center">
+            <div>
+                <h2 class="mb-1">Gestión de Agentes</h2>
+                <p class="text-muted mb-0">Administración y configuración de agentes del sistema</p>
+            </div>
+            <div class="d-flex gap-2">
+                <button class="btn btn-outline-primary btn-sm" onclick="refreshAgents()">
+                    <i class="fas fa-sync-alt me-1"></i>Actualizar
+                </button>
+                <a href="/" class="btn btn-secondary btn-sm">
+                    <i class="fas fa-arrow-left me-1"></i>Volver al Dashboard
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tarjetas de estadísticas -->
+    <div class="row mb-4">
+        <div class="col-xl-2 col-md-4 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                Total Agentes
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="totalAgents">
+                                0
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-users fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-2 col-md-4 mb-4">
+            <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                Activos
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="activeAgents">
+                                0
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-user-check fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-2 col-md-4 mb-4">
+            <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                Con Extensión
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="agentsWithExtension">
+                                0
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-phone fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-2 col-md-4 mb-4">
+            <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                Con Proveedor
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="agentsWithProvider">
+                                0
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-network-wired fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-2 col-md-4 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                Auto-creados
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="autoCreatedAgents">
+                                0
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-robot fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-2 col-md-4 mb-4">
+            <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                Ext. Disponibles
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="availableExtensions">
+                                0
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-phone-plus fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Formulario para crear agente -->
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Crear Nuevo Agente</h6>
+                </div>
+                <div class="card-body">
+                    <form id="agentForm">
+                        <div class="mb-3">
+                            <label for="agentName" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="agentName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="agentEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="agentEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="agentPhone" class="form-label">Teléfono</label>
+                            <input type="tel" class="form-control" id="agentPhone" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-plus me-1"></i>Crear Agente
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Sistema de Auto-Registro -->
+            <div class="card shadow mt-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Auto-Registro de Softphones</h6>
+                </div>
+                <div class="card-body">
+                    <p class="text-muted mb-3">
+                        El sistema detecta automáticamente softphones registrados y crea agentes con extensiones asignadas.
+                    </p>
+                    <button class="btn btn-info" onclick="scanSoftphones()">
+                        <i class="fas fa-search me-1"></i>Escanear Softphones
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lista de agentes -->
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-header py-3 d-flex justify-content-between align-items-center">
+                    <h6 class="m-0 font-weight-bold text-primary">Lista de Agentes</h6>
+                    <button class="btn btn-outline-primary btn-sm" onclick="refreshAgents()">
+                        <i class="fas fa-sync-alt me-1"></i>Actualizar
+                    </button>
+                </div>
+                <div class="card-body">
+                    <div id="agentsList">
+                        <!-- Se llenará con JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('Página de agentes cargada');
+    loadAgents();
+    loadExtensionStats();
+    
+    // Configurar formulario
+    document.getElementById('agentForm').addEventListener('submit', handleAgentSubmit);
+});
+
+async function loadAgents() {
+    try {
+        const response = await fetch('/api/agents');
+        if (response.ok) {
+            const agentsData = await response.json();
+            
+            // Manejar diferentes formatos de respuesta
+            let agents = [];
+            if (Array.isArray(agentsData)) {
+                agents = agentsData;
+            } else if (agentsData.agents && Array.isArray(agentsData.agents)) {
+                agents = agentsData.agents;
+            } else if (typeof agentsData === 'object') {
+                agents = Object.values(agentsData);
+            }
+            
+            updateAgentsList(agents);
+            updateAgentStats(agents);
+        }
+    } catch (error) {
+        console.error('Error cargando agentes:', error);
+        showNotification('Error cargando agentes', 'error');
+    }
+}
+
+async function loadExtensionStats() {
+    try {
+        const response = await fetch('/api/extensions/stats');
+        if (response.ok) {
+            const stats = await response.json();
+            document.getElementById('availableExtensions').textContent = stats.available || 0;
+        }
+    } catch (error) {
+        console.error('Error cargando estadísticas de extensiones:', error);
+    }
+}
+
+function updateAgentsList(agents) {
+    const container = document.getElementById('agentsList');
+    if (!container) return;
+    
+    if (agents.length === 0) {
+        container.innerHTML = `
+            <div class="text-center text-muted py-4">
+                <i class="fas fa-users fa-3x mb-3"></i>
+                <p>No hay agentes registrados</p>
+            </div>
+        `;
+        return;
+    }
+    
+    container.innerHTML = agents.map(agent => {
+        const extension = agent.extension_info ? agent.extension_info.extension : null;
+        const status = agent.status || 'offline';
+        const statusClass = status === 'online' ? 'success' : 'secondary';
+        
+        return `
+            <div class="card mb-3">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <div>
+                            <h6 class="card-title mb-1">${agent.name}</h6>
+                            <p class="card-text text-muted mb-1">${agent.email}</p>
+                            <p class="card-text text-muted mb-2">${agent.phone}</p>
+                            ${extension ? 
+                                `<span class="badge bg-primary">Ext. ${extension}</span>` : 
+                                '<span class="badge bg-secondary">Sin extensión</span>'
+                            }
+                            <span class="badge bg-${statusClass} ms-1">${status}</span>
+                        </div>
+                        <div class="btn-group-vertical btn-group-sm">
+                            ${!extension ? 
+                                `<button class="btn btn-outline-success btn-sm mb-1" onclick="assignExtension('${agent.id}')">
+                                    <i class="fas fa-phone-plus"></i> Asignar Ext.
+                                </button>` :
+                                `<button class="btn btn-outline-warning btn-sm mb-1" onclick="releaseExtension('${agent.id}')">
+                                    <i class="fas fa-phone-slash"></i> Liberar Ext.
+                                </button>`
+                            }
+                            <button class="btn btn-outline-primary btn-sm mb-1" onclick="editAgent('${agent.id}')">
+                                <i class="fas fa-edit"></i> Editar
+                            </button>
+                            <button class="btn btn-outline-info btn-sm mb-1" onclick="getConfig('${agent.id}')">
+                                <i class="fas fa-cog"></i> Config
+                            </button>
+                            <button class="btn btn-outline-danger btn-sm" onclick="deleteAgent('${agent.id}')">
+                                <i class="fas fa-trash"></i> Eliminar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+    }).join('');
+}
+
+function updateAgentStats(agents) {
+    const total = agents.length;
+    const active = agents.filter(a => a.status === 'online').length;
+    const withExtension = agents.filter(a => a.extension_info).length;
+    const withProvider = 0; // Por implementar
+    const autoCreated = agents.filter(a => a.name.includes('Auto Agent')).length;
+    
+    document.getElementById('totalAgents').textContent = total;
+    document.getElementById('activeAgents').textContent = active;
+    document.getElementById('agentsWithExtension').textContent = withExtension;
+    document.getElementById('agentsWithProvider').textContent = withProvider;
+    document.getElementById('autoCreatedAgents').textContent = autoCreated;
+}
+
+async function handleAgentSubmit(e) {
+    e.preventDefault();
+    
+    const formData = {
+        name: document.getElementById('agentName').value,
+        email: document.getElementById('agentEmail').value,
+        phone: document.getElementById('agentPhone').value
+    };
+    
+    try {
+        const response = await fetch('/api/agents', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+        });
+        
+        if (response.ok) {
+            showNotification('Agente creado exitosamente', 'success');
+            document.getElementById('agentForm').reset();
+            loadAgents();
+        } else {
+            showNotification('Error creando agente', 'error');
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        showNotification('Error de conexión', 'error');
+    }
+}
+
+async function assignExtension(agentId) {
+    try {
+        const response = await fetch(`/api/agents/${agentId}/assign-extension`, {
+            method: 'POST'
+        });
+        
+        if (response.ok) {
+            showNotification('Extensión asignada exitosamente', 'success');
+            loadAgents();
+            loadExtensionStats();
+        } else {
+            showNotification('Error asignando extensión', 'error');
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        showNotification('Error de conexión', 'error');
+    }
+}
+
+async function releaseExtension(agentId) {
+    try {
+        const response = await fetch(`/api/agents/${agentId}/release-extension`, {
+            method: 'POST'
+        });
+        
+        if (response.ok) {
+            showNotification('Extensión liberada exitosamente', 'success');
+            loadAgents();
+            loadExtensionStats();
+        } else {
+            showNotification('Error liberando extensión', 'error');
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        showNotification('Error de conexión', 'error');
+    }
+}
+
+async function deleteAgent(agentId) {
+    if (!confirm('¿Estás seguro de que quieres eliminar este agente?')) {
+        return;
+    }
+    
+    try {
+        const response = await fetch(`/api/agents/${agentId}`, {
+            method: 'DELETE'
+        });
+        
+        if (response.ok) {
+            showNotification('Agente eliminado exitosamente', 'success');
+            loadAgents();
+            loadExtensionStats();
+        } else {
+            showNotification('Error eliminando agente', 'error');
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        showNotification('Error de conexión', 'error');
+    }
+}
+
+function editAgent(agentId) {
+    // Por implementar
+    showNotification('Función de edición en desarrollo', 'info');
+}
+
+function getConfig(agentId) {
+    // Por implementar
+    showNotification('Configuración en desarrollo', 'info');
+}
+
+function scanSoftphones() {
+    showNotification('Escaneando softphones...', 'info');
+    // Por implementar
+}
+
+function refreshAgents() {
+    loadAgents();
+    loadExtensionStats();
+    showNotification('Agentes actualizados', 'info');
+}
+
+function showNotification(message, type) {
+    // Notificación simple por ahora
+    alert(message);
+}
+</script>
+{% endblock %}

@@ -1,0 +1,20 @@
+=== CONFIGURACIÓN SIP ===
+Extensión: 1501
+Contraseña: vMXBB$*o!PzE
+Servidor SIP: localhost
+Puerto: 5060
+Transporte: UDP
+Nombre: Juan Pérez
+
+=== INSTRUCCIONES ===
+1. Instala tu aplicación SIP favorita
+2. Crea una nueva cuenta SIP
+3. Usa los datos de arriba
+4. Guarda y registra la cuenta
+5. ¡Ya puedes hacer llamadas!
+
+=== APLICACIONES RECOMENDADAS ===
+• Zoiper (Windows, Mac, Linux, Mobile)
+• PortSIP (Windows, Mac, Mobile)
+• Linphone (Multiplataforma)
+• X-Lite (Windows, Mac)

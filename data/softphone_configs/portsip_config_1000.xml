@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PortSIP>
+    <Account>
+        <DisplayName>Juan Pérez</DisplayName>
+        <UserName>1000</UserName>
+        <Password>i8RUD45QmhuN</Password>
+        <SIPServer>localhost</SIPServer>
+        <SIPServerPort>5060</SIPServerPort>
+        <Transport>UDP</Transport>
+        <Domain>localhost</Domain>
+    </Account>
+</PortSIP>

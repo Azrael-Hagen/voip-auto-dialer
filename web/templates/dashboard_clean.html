@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - VoIP Auto Dialer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .navbar {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.2s ease;
+        }
+        .card:hover {
+            transform: translateY(-2px);
+        }
+        .stats-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .stats-card.agents {
+            background: linear-gradient(135deg, #56ab2f 0%, #a8e6cf 100%);
+        }
+        .stats-card.campaigns {
+            background: linear-gradient(135deg, #ff416c 0%, #ff4b2b 100%);
+        }
+        .stats-card.extensions {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+        .stats-card.calls {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+        .stats-number {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: block;
+        }
+        .stats-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        .stats-icon {
+            font-size: 2rem;
+            opacity: 0.3;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+        .quick-actions {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        .btn-quick {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            border-radius: 25px;
+            color: white;
+            padding: 15px 25px;
+            margin: 5px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn-quick:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+            color: white;
+        }
+        .system-health {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        .health-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .health-item:last-child {
+            border-bottom: none;
+        }
+        .health-status {
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        .status-online {
+            background: #d4edda;
+            color: #155724;
+        }
+        .status-offline {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        .status-warning {
+            background: #fff3cd;
+            color: #856404;
+        }
+        .recent-activity {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        .activity-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .activity-item:last-child {
+            border-bottom: none;
+        }
+        .activity-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 1.2rem;
+        }
+        .activity-icon.success {
+            background: #d4edda;
+            color: #155724;
+        }
+        .activity-icon.info {
+            background: #d1ecf1;
+            color: #0c5460;
+        }
+        .activity-icon.warning {
+            background: #fff3cd;
+            color: #856404;
+        }
+        .loading {
+            display: none;
+        }
+        .toast-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1055;
+        }
+        .refresh-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+            transition: all 0.3s ease;
+        }
+        .refresh-btn:hover {
+            transform: scale(1.1);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <i class="fas fa-phone-alt me-2"></i>
+                VoIP Auto Dialer
+            </a>
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link" href="/"><i class="fas fa-tachometer-alt me-1"></i>Dashboard</a>
+                <a class="nav-link" href="/agents"><i class="fas fa-users me-1"></i>Agentes</a>
+                <a class="nav-link" href="/campaigns"><i class="fas fa-bullhorn me-1"></i>Campañas</a>
+                <a class="nav-link" href="/providers"><i class="fas fa-server me-1"></i>Proveedores</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Toast Container -->
+    <div class="toast-container"></div>
+
+    <div class="container mt-4">
+        <!-- Welcome Section -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <h2 class="mb-1">Bienvenido al VoIP Auto Dialer</h2>
+                <p class="text-muted">Panel de control del sistema de llamadas automatizadas</p>
+            </div>
+        </div>
+
+        <!-- Statistics Cards -->
+        <div class="row mb-4">
+            <div class="col-md-3">
+                <div class="stats-card agents position-relative">
+                    <i class="fas fa-users stats-icon"></i>
+                    <span class="stats-number" id="totalAgents">0</span>
+                    <div class="stats-label">Total Agentes</div>
+                    <small class="mt-2 d-block">
+                        <span id="activeAgents">0</span> activos
+                    </small>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="stats-card campaigns position-relative">
+                    <i class="fas fa-bullhorn stats-icon"></i>
+                    <span class="stats-number" id="totalCampaigns">0</span>
+                    <div class="stats-label">Campañas</div>
+                    <small class="mt-2 d-block">
+                        <span id="activeCampaigns">0</span> activas
+                    </small>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="stats-card extensions position-relative">
+                    <i class="fas fa-phone stats-icon"></i>
+                    <span class="stats-number" id="totalExtensions">0</span>
+                    <div class="stats-label">Extensiones</div>
+                    <small class="mt-2 d-block">
+                        <span id="availableExtensions">0</span> disponibles
+                    </small>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="stats-card calls position-relative">
+                    <i class="fas fa-phone-volume stats-icon"></i>
+                    <span class="stats-number" id="totalCalls">0</span>
+                    <div class="stats-label">Llamadas Totales</div>
+                    <small class="mt-2 d-block">
+                        Hoy: <span id="todayCalls">0</span>
+                    </small>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content Row -->
+        <div class="row">
+            <!-- Quick Actions -->
+            <div class="col-md-6 mb-4">
+                <div class="quick-actions">
+                    <h5 class="mb-4"><i class="fas fa-bolt me-2"></i>Acciones Rápidas</h5>
+                    <div class="d-grid gap-3">
+                        <a href="/agents" class="btn-quick">
+                            <i class="fas fa-user-plus me-2"></i>Crear Nuevo Agente
+                        </a>
+                        <a href="/campaigns" class="btn-quick">
+                            <i class="fas fa-plus me-2"></i>Nueva Campaña
+                        </a>
+                        <button class="btn-quick" onclick="assignAllExtensions()">
+                            <i class="fas fa-phone me-2"></i>Asignar Extensiones
+                        </button>
+                        <button class="btn-quick" onclick="systemHealthCheck()">
+                            <i class="fas fa-heartbeat me-2"></i>Verificar Sistema
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- System Health -->
+            <div class="col-md-6 mb-4">
+                <div class="system-health">
+                    <h5 class="mb-4"><i class="fas fa-heartbeat me-2"></i>Estado del Sistema</h5>
+                    <div id="systemHealthContent">
+                        <div class="health-item">
+                            <div>
+                                <i class="fas fa-server me-2"></i>
+                                <strong>Servidor Web</strong>
+                            </div>
+                            <span class="health-status status-online" id="webServerStatus">En línea</span>
+                        </div>
+                        <div class="health-item">
+                            <div>
+                                <i class="fas fa-phone-alt me-2"></i>
+                                <strong>Asterisk PBX</strong>
+                            </div>
+                            <span class="health-status" id="asteriskStatus">Verificando...</span>
+                        </div>
+                        <div class="health-item">
+                            <div>
+                                <i class="fas fa-database me-2"></i>
+                                <strong>Base de Datos</strong>
+                            </div>
+                            <span class="health-status status-online" id="databaseStatus">Operativa</span>
+                        </div>
+                        <div class="health-item">
+                            <div>
+                                <i class="fas fa-network-wired me-2"></i>
+                                <strong>Extensiones PJSIP</strong>
+                            </div>
+                            <span class="health-status" id="extensionsStatus">Verificando...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Activity -->
+        <div class="row">
+            <div class="col-12">
+                <div class="recent-activity">
+                    <h5 class="mb-4"><i class="fas fa-history me-2"></i>Actividad Reciente</h5>
+                    <div id="recentActivityContent">
+                        <div class="text-center py-4">
+                            <div class="spinner-border text-primary" role="status">
+                                <span class="visually-hidden">Cargando actividad...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Refresh Button -->
+    <button class="refresh-btn" onclick="refreshDashboard()" title="Actualizar Dashboard">
+        <i class="fas fa-sync-alt" id="refreshIcon"></i>
+    </button>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        let dashboardData = {
+            agents: {},
+            campaigns: {},
+            extensionStats: {},
+            recentActivity: []
+        };
+
+        // Initialize dashboard
+        document.addEventListener('DOMContentLoaded', function() {
+            loadDashboardData();
+            
+            // Auto-refresh every 30 seconds
+            setInterval(loadDashboardData, 30000);
+        });
+
+        // Load all dashboard data
+        async function loadDashboardData() {
+            try {
+                await Promise.all([
+                    loadAgents(),
+                    loadCampaigns(),
+                    loadExtensionStats(),
+                    checkSystemHealth()
+                ]);
+                
+                updateStatistics();
+                generateRecentActivity();
+                
+            } catch (error) {
+                console.error('Error loading dashboard data:', error);
+                showToast('Error cargando datos del dashboard', 'error');
+            }
+        }
+
+        // Load agents data
+        async function loadAgents() {
+            try {
+                const response = await fetch('/api/agents');
+                if (!response.ok) throw new Error('Error loading agents');
+                dashboardData.agents = await response.json();
+            } catch (error) {
+                console.error('Error loading agents:', error);
+                dashboardData.agents = {};
+            }
+        }
+
+        // Load campaigns data
+        async function loadCampaigns() {
+            try {
+                const response = await fetch('/api/campaigns');
+                if (!response.ok) throw new Error('Error loading campaigns');
+                dashboardData.campaigns = await response.json();
+            } catch (error) {
+                console.error('Error loading campaigns:', error);
+                dashboardData.campaigns = {};
+            }
+        }
+
+        // Load extension statistics
+        async function loadExtensionStats() {
+            try {
+                const response = await fetch('/api/extensions/stats');
+                if (!response.ok) throw new Error('Error loading extension stats');
+                dashboardData.extensionStats = await response.json();
+            } catch (error) {
+                console.error('Error loading extension stats:', error);
+                dashboardData.extensionStats = {};
+            }
+        }
+
+        // Check system health
+        async function checkSystemHealth() {
+            try {
+                // Check API health
+                const healthResponse = await fetch('/api/health');
+                const healthData = await healthResponse.json();
+                
+                // Update Asterisk status based on extensions
+                const extensionsCount = dashboardData.extensionStats.total || 0;
+                const asteriskStatus = document.getElementById('asteriskStatus');
+                const extensionsStatus = document.getElementById('extensionsStatus');
+                
+                if (extensionsCount > 0) {
+                    asteriskStatus.className = 'health-status status-online';
+                    asteriskStatus.textContent = 'En línea';
+                    extensionsStatus.className = 'health-status status-online';
+                    extensionsStatus.textContent = `${extensionsCount} activas`;
+                } else {
+                    asteriskStatus.className = 'health-status status-warning';
+                    asteriskStatus.textContent = 'Sin extensiones';
+                    extensionsStatus.className = 'health-status status-warning';
+                    extensionsStatus.textContent = 'No disponibles';
+                }
+                
+            } catch (error) {
+                console.error('Error checking system health:', error);
+                
+                const asteriskStatus = document.getElementById('asteriskStatus');
+                const extensionsStatus = document.getElementById('extensionsStatus');
+                
+                asteriskStatus.className = 'health-status status-offline';
+                asteriskStatus.textContent = 'Error';
+                extensionsStatus.className = 'health-status status-offline';
+                extensionsStatus.textContent = 'Error';
+            }
+        }
+
+        // Update statistics display
+        function updateStatistics() {
+            const agents = Object.values(dashboardData.agents);
+            const campaigns = Object.values(dashboardData.campaigns);
+            const extensionStats = dashboardData.extensionStats;
+
+            // Agent statistics
+            document.getElementById('totalAgents').textContent = agents.length;
+            document.getElementById('activeAgents').textContent = 
+                agents.filter(a => a.status === 'active').length;
+
+            // Campaign statistics
+            document.getElementById('totalCampaigns').textContent = campaigns.length;
+            document.getElementById('activeCampaigns').textContent = 
+                campaigns.filter(c => c.status === 'active').length;
+
+            // Extension statistics
+            document.getElementById('totalExtensions').textContent = extensionStats.total || 0;
+            document.getElementById('availableExtensions').textContent = extensionStats.available || 0;
+
+            // Call statistics
+            const totalCalls = campaigns.reduce((sum, c) => sum + (c.calls_made || 0), 0);
+            document.getElementById('totalCalls').textContent = totalCalls;
+            document.getElementById('todayCalls').textContent = Math.floor(totalCalls * 0.3); // Simulated today's calls
+        }
+
+        // Generate recent activity
+        function generateRecentActivity() {
+            const activities = [];
+            const agents = Object.values(dashboardData.agents);
+            const campaigns = Object.values(dashboardData.campaigns);
+
+            // Add agent activities
+            agents.slice(-5).forEach(agent => {
+                if (agent.extension_info) {
+                    activities.push({
+                        icon: 'fas fa-user-check',
+                        type: 'success',
+                        message: `Agente ${agent.name} asignado a extensión ${agent.extension_info.extension}`,
+                        time: agent.extension_info.assigned_at || agent.created_at
+                    });
+                } else {
+                    activities.push({
+                        icon: 'fas fa-user-plus',
+                        type: 'info',
+                        message: `Nuevo agente registrado: ${agent.name}`,
+                        time: agent.created_at
+                    });
+                }
+            });
+
+            // Add campaign activities
+            campaigns.slice(-3).forEach(campaign => {
+                activities.push({
+                    icon: 'fas fa-bullhorn',
+                    type: campaign.status === 'active' ? 'success' : 'info',
+                    message: `Campaña "${campaign.name}" ${campaign.status === 'active' ? 'activada' : 'creada'}`,
+                    time: campaign.updated_at || campaign.created_at
+                });
+            });
+
+            // Sort by time (most recent first)
+            activities.sort((a, b) => new Date(b.time) - new Date(a.time));
+
+            // Display activities
+            const activityContent = document.getElementById('recentActivityContent');
+            
+            if (activities.length === 0) {
+                activityContent.innerHTML = `
+                    <div class="text-center py-4">
+                        <i class="fas fa-history fa-3x text-muted mb-3"></i>
+                        <p class="text-muted">No hay actividad reciente</p>
+                    </div>
+                `;
+                return;
+            }
+
+            activityContent.innerHTML = activities.slice(0, 10).map(activity => `
+                <div class="activity-item">
+                    <div class="activity-icon ${activity.type}">
+                        <i class="${activity.icon}"></i>
+                    </div>
+                    <div class="flex-grow-1">
+                        <div class="fw-medium">${activity.message}</div>
+                        <small class="text-muted">${formatTime(activity.time)}</small>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Format time for display
+        function formatTime(timeString) {
+            if (!timeString) return 'Hace un momento';
+            
+            try {
+                const date = new Date(timeString);
+                const now = new Date();
+                const diffMs = now - date;
+                const diffMins = Math.floor(diffMs / 60000);
+                const diffHours = Math.floor(diffMins / 60);
+                const diffDays = Math.floor(diffHours / 24);
+
+                if (diffMins < 1) return 'Hace un momento';
+                if (diffMins < 60) return `Hace ${diffMins} minuto${diffMins > 1 ? 's' : ''}`;
+                if (diffHours < 24) return `Hace ${diffHours} hora${diffHours > 1 ? 's' : ''}`;
+                if (diffDays < 7) return `Hace ${diffDays} día${diffDays > 1 ? 's' : ''}`;
+                
+                return date.toLocaleDateString();
+            } catch (error) {
+                return 'Fecha inválida';
+            }
+        }
+
+        // Quick action: Assign all extensions
+        async function assignAllExtensions() {
+            if (!confirm('¿Asignar extensiones a todos los agentes sin extensión?')) return;
+
+            try {
+                const agents = Object.values(dashboardData.agents);
+                const agentsWithoutExtension = agents.filter(a => !a.extension_info);
+                
+                if (agentsWithoutExtension.length === 0) {
+                    showToast('Todos los agentes ya tienen extensión asignada', 'info');
+                    return;
+                }
+
+                let assigned = 0;
+                for (const agent of agentsWithoutExtension) {
+                    try {
+                        const response = await fetch(`/api/agents/${agent.id}/assign-extension`, {
+                            method: 'POST'
+                        });
+                        if (response.ok) assigned++;
+                    } catch (error) {
+                        console.error(`Error assigning extension to ${agent.name}:`, error);
+                    }
+                }
+
+                showToast(`${assigned} extensiones asignadas exitosamente`, 'success');
+                await loadDashboardData();
+                
+            } catch (error) {
+                console.error('Error in bulk extension assignment:', error);
+                showToast('Error asignando extensiones', 'error');
+            }
+        }
+
+        // Quick action: System health check
+        async function systemHealthCheck() {
+            showToast('Verificando estado del sistema...', 'info');
+            await checkSystemHealth();
+            showToast('Verificación de sistema completada', 'success');
+        }
+
+        // Refresh dashboard
+        async function refreshDashboard() {
+            const refreshIcon = document.getElementById('refreshIcon');
+            refreshIcon.classList.add('fa-spin');
+            
+            try {
+                await loadDashboardData();
+                showToast('Dashboard actualizado', 'success');
+            } catch (error) {
+                showToast('Error actualizando dashboard', 'error');
+            } finally {
+                refreshIcon.classList.remove('fa-spin');
+            }
+        }
+
+        // Show toast notification
+        function showToast(message, type = 'info') {
+            const toastContainer = document.querySelector('.toast-container');
+            const toastId = 'toast-' + Date.now();
+            
+            const bgClass = type === 'success' ? 'bg-success' : 
+                           type === 'error' ? 'bg-danger' : 'bg-info';
+            
+            const toastHtml = `
+                <div id="${toastId}" class="toast ${bgClass} text-white" role="alert">
+                    <div class="toast-header ${bgClass} text-white border-0">
+                        <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-circle' : 'info-circle'} me-2"></i>
+                        <strong class="me-auto">VoIP Auto Dialer</strong>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast"></button>
+                    </div>
+                    <div class="toast-body">
+                        ${message}
+                    </div>
+                </div>
+            `;
+            
+            toastContainer.insertAdjacentHTML('beforeend', toastHtml);
+            
+            const toastElement = document.getElementById(toastId);
+            const toast = new bootstrap.Toast(toastElement, { delay: 4000 });
+            toast.show();
+            
+            toastElement.addEventListener('hidden.bs.toast', () => {
+                toastElement.remove();
+            });
+        }
+    </script>
+</body>
+</html>

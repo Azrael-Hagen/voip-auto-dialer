@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PortSIP>
+    <Account>
+        <DisplayName>Juan Pérez</DisplayName>
+        <UserName>1501</UserName>
+        <Password>vMXBB$*o!PzE</Password>
+        <SIPServer>localhost</SIPServer>
+        <SIPServerPort>5060</SIPServerPort>
+        <Transport>UDP</Transport>
+        <RegisterServer>localhost</RegisterServer>
+        <RegisterServerPort>5060</RegisterServerPort>
+    </Account>
+</PortSIP>

@@ -1,0 +1,453 @@
+{% extends "base.html" %}
+
+{% block title %}Gestión de Campañas - VoIP Auto Dialer{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <!-- Header de la página -->
+    <div class="page-header">
+        <div class="d-flex justify-content-between align-items-center">
+            <div>
+                <h2 class="mb-1">Gestión de Campañas</h2>
+                <p class="text-muted mb-0">Administración y configuración de campañas de llamadas</p>
+            </div>
+            <div class="d-flex gap-2">
+                <button class="btn btn-outline-primary btn-sm" onclick="refreshCampaigns()">
+                    <i class="fas fa-sync-alt me-1"></i>Actualizar
+                </button>
+                <a href="/" class="btn btn-secondary btn-sm">
+                    <i class="fas fa-arrow-left me-1"></i>Volver al Dashboard
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tarjetas de estadísticas -->
+    <div class="row mb-4">
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                Total Campañas
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="totalCampaigns">
+                                0
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-bullhorn fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                Campañas Activas
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="activeCampaigns">
+                                0
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-play-circle fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                Campañas Completadas
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="completedCampaigns">
+                                0
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-check-circle fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                Total Llamadas
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="totalCalls">
+                                0
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-phone fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Formulario y lista de campañas -->
+    <div class="row">
+        <!-- Formulario para crear campaña -->
+        <div class="col-md-6">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Crear Nueva Campaña</h6>
+                </div>
+                <div class="card-body">
+                    <form id="campaignForm">
+                        <div class="mb-3">
+                            <label for="campaignName" class="form-label">Nombre de la Campaña</label>
+                            <input type="text" class="form-control" id="campaignName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="campaignDescription" class="form-label">Descripción</label>
+                            <textarea class="form-control" id="campaignDescription" rows="3"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="campaignStatus" class="form-label">Estado</label>
+                            <select class="form-control" id="campaignStatus" required>
+                                <option value="inactive">Inactiva</option>
+                                <option value="active">Activa</option>
+                                <option value="paused">Pausada</option>
+                                <option value="completed">Completada</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="phoneNumbers" class="form-label">Lista de Teléfonos</label>
+                            <textarea class="form-control" id="phoneNumbers" rows="5" 
+                                placeholder="Ingrese un número por línea&#10;+1234567890&#10;+0987654321"></textarea>
+                            <small class="form-text text-muted">Un número por línea</small>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-plus me-1"></i>Crear Campaña
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Asignación de agentes -->
+            <div class="card shadow">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Agentes Disponibles</h6>
+                </div>
+                <div class="card-body">
+                    <div id="availableAgents">
+                        <!-- Se llenará con JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lista de campañas -->
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-header py-3 d-flex justify-content-between align-items-center">
+                    <h6 class="m-0 font-weight-bold text-primary">Lista de Campañas</h6>
+                    <button class="btn btn-outline-primary btn-sm" onclick="refreshCampaigns()">
+                        <i class="fas fa-sync-alt me-1"></i>Actualizar
+                    </button>
+                </div>
+                <div class="card-body">
+                    <div id="campaignsList">
+                        <!-- Se llenará con JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('Página de campañas cargada');
+    loadCampaigns();
+    loadAvailableAgents();
+    
+    // Configurar formulario
+    document.getElementById('campaignForm').addEventListener('submit', handleCampaignSubmit);
+});
+
+async function loadCampaigns() {
+    try {
+        const response = await fetch('/api/campaigns');
+        if (response.ok) {
+            const campaigns = await response.json();
+            updateCampaignsList(campaigns);
+            updateCampaignStats(campaigns);
+        }
+    } catch (error) {
+        console.error('Error cargando campañas:', error);
+        showNotification('Error cargando campañas', 'error');
+    }
+}
+
+async function loadAvailableAgents() {
+    try {
+        const response = await fetch('/api/agents');
+        if (response.ok) {
+            const agentsData = await response.json();
+            
+            // Manejar diferentes formatos de respuesta
+            let agents = [];
+            if (Array.isArray(agentsData)) {
+                agents = agentsData;
+            } else if (agentsData.agents && Array.isArray(agentsData.agents)) {
+                agents = agentsData.agents;
+            } else if (typeof agentsData === 'object') {
+                agents = Object.values(agentsData);
+            }
+            
+            updateAvailableAgents(agents);
+        }
+    } catch (error) {
+        console.error('Error cargando agentes:', error);
+    }
+}
+
+function updateCampaignsList(campaigns) {
+    const container = document.getElementById('campaignsList');
+    if (!container) return;
+    
+    const campaignArray = Array.isArray(campaigns) ? campaigns : Object.values(campaigns);
+    
+    if (campaignArray.length === 0) {
+        container.innerHTML = `
+            <div class="text-center text-muted py-4">
+                <i class="fas fa-bullhorn fa-3x mb-3"></i>
+                <p>No hay campañas registradas</p>
+            </div>
+        `;
+        return;
+    }
+    
+    container.innerHTML = campaignArray.map(campaign => {
+        const status = campaign.status || 'inactive';
+        const statusClass = getStatusClass(status);
+        const progress = campaign.progress || 0;
+        const phoneCount = campaign.phone_list ? campaign.phone_list.length : 0;
+        const callsMade = campaign.calls_made || 0;
+        
+        return `
+            <div class="card mb-3">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <div>
+                            <h6 class="card-title mb-1">${campaign.name}</h6>
+                            <p class="card-text text-muted mb-2">${campaign.description || 'Sin descripción'}</p>
+                        </div>
+                        <span class="badge bg-${statusClass}">${status.toUpperCase()}</span>
+                    </div>
+                    
+                    <div class="row text-center mb-3">
+                        <div class="col-4">
+                            <div class="text-xs font-weight-bold text-uppercase mb-1">Teléfonos</div>
+                            <div class="h6 mb-0 text-primary">${phoneCount}</div>
+                        </div>
+                        <div class="col-4">
+                            <div class="text-xs font-weight-bold text-uppercase mb-1">Llamadas</div>
+                            <div class="h6 mb-0 text-success">${callsMade}</div>
+                        </div>
+                        <div class="col-4">
+                            <div class="text-xs font-weight-bold text-uppercase mb-1">Progreso</div>
+                            <div class="h6 mb-0 text-info">${progress}%</div>
+                        </div>
+                    </div>
+                    
+                    <div class="progress mb-3" style="height: 6px;">
+                        <div class="progress-bar bg-success" role="progressbar" 
+                             style="width: ${progress}%" aria-valuenow="${progress}" 
+                             aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    
+                    <div class="btn-group btn-group-sm w-100">
+                        <button class="btn btn-outline-primary" onclick="editCampaign('${campaign.id}')">
+                            <i class="fas fa-edit"></i> Editar
+                        </button>
+                        ${status === 'active' ? 
+                            `<button class="btn btn-outline-warning" onclick="pauseCampaign('${campaign.id}')">
+                                <i class="fas fa-pause"></i> Pausar
+                            </button>` :
+                            `<button class="btn btn-outline-success" onclick="activateCampaign('${campaign.id}')">
+                                <i class="fas fa-play"></i> Activar
+                            </button>`
+                        }
+                        <button class="btn btn-outline-info" onclick="completeCampaign('${campaign.id}')">
+                            <i class="fas fa-check"></i> Completar
+                        </button>
+                        <button class="btn btn-outline-danger" onclick="deleteCampaign('${campaign.id}')">
+                            <i class="fas fa-trash"></i> Eliminar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        `;
+    }).join('');
+}
+
+function updateAvailableAgents(agents) {
+    const container = document.getElementById('availableAgents');
+    if (!container) return;
+    
+    const agentsWithExtensions = agents.filter(agent => agent.extension_info);
+    
+    if (agentsWithExtensions.length === 0) {
+        container.innerHTML = `
+            <div class="text-center text-muted">
+                <i class="fas fa-users fa-2x mb-2"></i>
+                <p class="mb-0">No hay agentes con extensiones disponibles</p>
+            </div>
+        `;
+        return;
+    }
+    
+    container.innerHTML = agentsWithExtensions.map(agent => {
+        const extension = agent.extension_info.extension;
+        return `
+            <div class="d-flex justify-content-between align-items-center mb-2 p-2 border rounded">
+                <div>
+                    <strong>${agent.name}</strong>
+                    <br>
+                    <small class="text-muted">Ext. ${extension}</small>
+                </div>
+                <button class="btn btn-sm btn-outline-primary" onclick="assignToCampaign('${agent.id}')">
+                    <i class="fas fa-plus"></i> Asignar
+                </button>
+            </div>
+        `;
+    }).join('');
+}
+
+function updateCampaignStats(campaigns) {
+    const campaignArray = Array.isArray(campaigns) ? campaigns : Object.values(campaigns);
+    const total = campaignArray.length;
+    const active = campaignArray.filter(c => c.status === 'active').length;
+    const completed = campaignArray.filter(c => c.status === 'completed').length;
+    const totalCalls = campaignArray.reduce((sum, c) => sum + (c.calls_made || 0), 0);
+    
+    document.getElementById('totalCampaigns').textContent = total;
+    document.getElementById('activeCampaigns').textContent = active;
+    document.getElementById('completedCampaigns').textContent = completed;
+    document.getElementById('totalCalls').textContent = totalCalls;
+}
+
+function getStatusClass(status) {
+    switch (status) {
+        case 'active': return 'success';
+        case 'paused': return 'warning';
+        case 'completed': return 'info';
+        case 'inactive': return 'secondary';
+        default: return 'secondary';
+    }
+}
+
+async function handleCampaignSubmit(e) {
+    e.preventDefault();
+    
+    const phoneNumbers = document.getElementById('phoneNumbers').value
+        .split('\n')
+        .map(phone => phone.trim())
+        .filter(phone => phone.length > 0);
+    
+    const formData = {
+        name: document.getElementById('campaignName').value,
+        description: document.getElementById('campaignDescription').value,
+        status: document.getElementById('campaignStatus').value,
+        phone_list: phoneNumbers
+    };
+    
+    try {
+        const response = await fetch('/api/campaigns', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+        });
+        
+        if (response.ok) {
+            showNotification('Campaña creada exitosamente', 'success');
+            document.getElementById('campaignForm').reset();
+            loadCampaigns();
+        } else {
+            showNotification('Error creando campaña', 'error');
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        showNotification('Error de conexión', 'error');
+    }
+}
+
+async function deleteCampaign(campaignId) {
+    if (!confirm('¿Estás seguro de que quieres eliminar esta campaña?')) {
+        return;
+    }
+    
+    try {
+        const response = await fetch(`/api/campaigns/${campaignId}`, {
+            method: 'DELETE'
+        });
+        
+        if (response.ok) {
+            showNotification('Campaña eliminada exitosamente', 'success');
+            loadCampaigns();
+        } else {
+            showNotification('Error eliminando campaña', 'error');
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        showNotification('Error de conexión', 'error');
+    }
+}
+
+function editCampaign(campaignId) {
+    showNotification('Función de edición en desarrollo', 'info');
+}
+
+function pauseCampaign(campaignId) {
+    showNotification('Función de pausa en desarrollo', 'info');
+}
+
+function activateCampaign(campaignId) {
+    showNotification('Función de activación en desarrollo', 'info');
+}
+
+function completeCampaign(campaignId) {
+    showNotification('Función de completar en desarrollo', 'info');
+}
+
+function assignToCampaign(agentId) {
+    showNotification('Función de asignación en desarrollo', 'info');
+}
+
+function refreshCampaigns() {
+    loadCampaigns();
+    loadAvailableAgents();
+    showNotification('Campañas actualizadas', 'info');
+}
+
+function showNotification(message, type) {
+    // Notificación simple por ahora
+    alert(message);
+}
+</script>
+{% endblock %}

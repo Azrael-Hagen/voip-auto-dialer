@@ -1,0 +1,42 @@
+{
+  "id": "5161c806-1762-44fc-899f-2d328d996935",
+  "name": "Prueba",
+  "description": "",
+  "status": "draft",
+  "caller_id": "+1234567890",
+  "max_concurrent_calls": 5,
+  "calls_per_minute": 10,
+  "calling_hours_start": "09:00",
+  "calling_hours_end": "17:00",
+  "calling_days": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "timezone": "UTC",
+  "leads": [
+    {
+      "id": "65f29817-4066-4bb5-9380-5a0acfdb1b45",
+      "phone_number": "+1111111111",
+      "first_name": "Test",
+      "last_name": "",
+      "email": "",
+      "company": "",
+      "attempts": 0,
+      "max_attempts": 3,
+      "result": "pending",
+      "last_call_time": null,
+      "next_call_time": null,
+      "total_talk_time": 0.0,
+      "custom_data": {}
+    }
+  ],
+  "created_at": "2026-02-18T12:13:59.556691",
+  "started_at": null,
+  "completed_at": null,
+  "calls_made": 0,
+  "calls_answered": 0,
+  "total_leads": 1
+}

@@ -1,0 +1,45 @@
+{
+  "providers": [
+    {
+      "name": "mock_primary",
+      "type": "mock",
+      "enabled": true,
+      "config": {
+        "cost_per_minute": 0.02,
+        "success_rate": 0.85,
+        "avg_duration": 120
+      }
+    },
+    {
+      "name": "asterisk_local",
+      "type": "freepbx",
+      "enabled": true,
+      "config": {
+        "ami_host": "localhost",
+        "ami_port": 5038,
+        "ami_username": "voip_dialer",
+        "ami_password": "VoipDialer2024!",
+        "context": "from-internal",
+        "channel_prefix": "PJSIP",
+        "timeout": 30000
+      }
+    },
+    {
+      "name": "freepbx_vm",
+      "type": "freepbx",
+      "enabled": false,
+      "config": {
+        "ami_host": "192.168.1.100",
+        "ami_port": 5038,
+        "ami_username": "admin",
+        "ami_password": "secret",
+        "context": "from-internal",
+        "channel_prefix": "PJSIP",
+        "timeout": 30000
+      }
+    }
+  ],
+  "load_balance_strategy": "round_robin",
+  "health_check_interval": 60,
+  "max_concurrent_calls": 50
+}

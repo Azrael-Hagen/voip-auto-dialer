@@ -1,0 +1,12 @@
+providers:
+  mock_pbx:
+    type: "mock"
+    enabled: true
+    cost_per_minute: 0.01
+    
+  # Agregar tus proveedores reales aquí
+  # twilio:
+  #   type: "twilio"
+  #   account_sid: "tu_account_sid"
+  #   auth_token: "tu_auth_token"
+  #   from_number: "+1234567890"

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PortSIP>
+    <Account>
+        <DisplayName>Agente Prueba 1002</DisplayName>
+        <UserName>1006</UserName>
+        <Password>HRSmNIYf</Password>
+        <SIPServer>localhost</SIPServer>
+        <SIPServerPort>5060</SIPServerPort>
+        <Transport>UDP</Transport>
+        <Domain>localhost</Domain>
+    </Account>
+</PortSIP>

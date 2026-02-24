@@ -1,0 +1,17 @@
+{
+  "agent_5596c98e": {
+    "id": "agent_5596c98e",
+    "name": "Test Agent 52512",
+    "email": "test@production.com",
+    "phone": "+1234567890",
+    "status": "offline",
+    "created_at": "2026-02-24T11:01:52.122033",
+    "last_activity": null,
+    "extension_info": {
+      "extension": "1000",
+      "password": "xfc%&U$yR$NV",
+      "status": "assigned",
+      "assigned_at": "2026-02-24T11:01:52.134782"
+    }
+  }
+}

@@ -1,0 +1,4167 @@
+{
+  "1000": {
+    "extension": "1000",
+    "password": "MofJsCH2",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1496",
+    "provider": "local"
+  },
+  "1001": {
+    "extension": "1001",
+    "password": "&8^R9*6feG1w",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Mar\u00eda Garc\u00eda",
+    "provider": "local"
+  },
+  "1002": {
+    "extension": "1002",
+    "password": "uWVbfhVwD*Fw",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Carlos L\u00f3pez",
+    "provider": "local"
+  },
+  "1003": {
+    "extension": "1003",
+    "password": "q33aOAbz",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agent agent_001",
+    "provider": "local"
+  },
+  "1004": {
+    "extension": "1004",
+    "password": "VdIPY2An",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1000",
+    "provider": "local"
+  },
+  "1005": {
+    "extension": "1005",
+    "password": "bXiLdohE",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1001",
+    "provider": "local"
+  },
+  "1006": {
+    "extension": "1006",
+    "password": "HRSmNIYf",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1002",
+    "provider": "local"
+  },
+  "1007": {
+    "extension": "1007",
+    "password": "zowv3sTu",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1003",
+    "provider": "local"
+  },
+  "1008": {
+    "extension": "1008",
+    "password": "UtuRSyAI",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1004",
+    "provider": "local"
+  },
+  "1009": {
+    "extension": "1009",
+    "password": "tTU4b4pa",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1005",
+    "provider": "local"
+  },
+  "1010": {
+    "extension": "1010",
+    "password": "yrMSoilM",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1006",
+    "provider": "local"
+  },
+  "1011": {
+    "extension": "1011",
+    "password": "SV1SLKsT",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1007",
+    "provider": "local"
+  },
+  "1012": {
+    "extension": "1012",
+    "password": "BA3OEpZt",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1008",
+    "provider": "local"
+  },
+  "1013": {
+    "extension": "1013",
+    "password": "6Cr7UadZ",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1009",
+    "provider": "local"
+  },
+  "1014": {
+    "extension": "1014",
+    "password": "DbO5YR04",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1010",
+    "provider": "local"
+  },
+  "1015": {
+    "extension": "1015",
+    "password": "4kxDxIx7",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1011",
+    "provider": "local"
+  },
+  "1016": {
+    "extension": "1016",
+    "password": "pdmSWbjd",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1012",
+    "provider": "local"
+  },
+  "1017": {
+    "extension": "1017",
+    "password": "TNKBoPGW",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1013",
+    "provider": "local"
+  },
+  "1018": {
+    "extension": "1018",
+    "password": "65PtUH4x",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1014",
+    "provider": "local"
+  },
+  "1019": {
+    "extension": "1019",
+    "password": "C5P82VsX",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1015",
+    "provider": "local"
+  },
+  "1020": {
+    "extension": "1020",
+    "password": "G8IysRAa",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1016",
+    "provider": "local"
+  },
+  "1021": {
+    "extension": "1021",
+    "password": "G3yAcGa7",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1017",
+    "provider": "local"
+  },
+  "1022": {
+    "extension": "1022",
+    "password": "50l1UIvf",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1018",
+    "provider": "local"
+  },
+  "1023": {
+    "extension": "1023",
+    "password": "nBGKyz2Z",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1019",
+    "provider": "local"
+  },
+  "1024": {
+    "extension": "1024",
+    "password": "CCa2jpOe",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1020",
+    "provider": "local"
+  },
+  "1025": {
+    "extension": "1025",
+    "password": "Ocl0wIkf",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1021",
+    "provider": "local"
+  },
+  "1026": {
+    "extension": "1026",
+    "password": "nzACWtdL",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1022",
+    "provider": "local"
+  },
+  "1027": {
+    "extension": "1027",
+    "password": "aUb4L0yz",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1023",
+    "provider": "local"
+  },
+  "1028": {
+    "extension": "1028",
+    "password": "8lSaHfR7",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1024",
+    "provider": "local"
+  },
+  "1029": {
+    "extension": "1029",
+    "password": "eY0ghSRI",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1025",
+    "provider": "local"
+  },
+  "1030": {
+    "extension": "1030",
+    "password": "z1I5r68Z",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1026",
+    "provider": "local"
+  },
+  "1031": {
+    "extension": "1031",
+    "password": "W1k9UoOp",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1027",
+    "provider": "local"
+  },
+  "1032": {
+    "extension": "1032",
+    "password": "bxR1RD9M",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1028",
+    "provider": "local"
+  },
+  "1033": {
+    "extension": "1033",
+    "password": "6kKZsI9C",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1029",
+    "provider": "local"
+  },
+  "1034": {
+    "extension": "1034",
+    "password": "msmTf3C6",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1030",
+    "provider": "local"
+  },
+  "1035": {
+    "extension": "1035",
+    "password": "VG6SFwoX",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1031",
+    "provider": "local"
+  },
+  "1036": {
+    "extension": "1036",
+    "password": "ybUjqnKn",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1032",
+    "provider": "local"
+  },
+  "1037": {
+    "extension": "1037",
+    "password": "21UjmnT0",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1033",
+    "provider": "local"
+  },
+  "1038": {
+    "extension": "1038",
+    "password": "ZiGRTshN",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1034",
+    "provider": "local"
+  },
+  "1039": {
+    "extension": "1039",
+    "password": "mJpo0n6H",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1035",
+    "provider": "local"
+  },
+  "1040": {
+    "extension": "1040",
+    "password": "CI07WFfJ",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1036",
+    "provider": "local"
+  },
+  "1041": {
+    "extension": "1041",
+    "password": "R72toRrf",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1037",
+    "provider": "local"
+  },
+  "1042": {
+    "extension": "1042",
+    "password": "qFdFRtSZ",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1038",
+    "provider": "local"
+  },
+  "1043": {
+    "extension": "1043",
+    "password": "Q7BKIys6",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1039",
+    "provider": "local"
+  },
+  "1044": {
+    "extension": "1044",
+    "password": "hNHDnAk9",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1040",
+    "provider": "local"
+  },
+  "1045": {
+    "extension": "1045",
+    "password": "XkI9E94l",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1041",
+    "provider": "local"
+  },
+  "1046": {
+    "extension": "1046",
+    "password": "Wmv6Peva",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1042",
+    "provider": "local"
+  },
+  "1047": {
+    "extension": "1047",
+    "password": "nbLgIMAC",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1043",
+    "provider": "local"
+  },
+  "1048": {
+    "extension": "1048",
+    "password": "afrCnChL",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1044",
+    "provider": "local"
+  },
+  "1049": {
+    "extension": "1049",
+    "password": "UC1j6tc5",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1045",
+    "provider": "local"
+  },
+  "1050": {
+    "extension": "1050",
+    "password": "KkDwdnIr",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1046",
+    "provider": "local"
+  },
+  "1051": {
+    "extension": "1051",
+    "password": "xqcSklQv",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1047",
+    "provider": "local"
+  },
+  "1052": {
+    "extension": "1052",
+    "password": "f7PL81Bp",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1048",
+    "provider": "local"
+  },
+  "1053": {
+    "extension": "1053",
+    "password": "l5Mc9R6j",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1049",
+    "provider": "local"
+  },
+  "1054": {
+    "extension": "1054",
+    "password": "rYyn4C6j",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1050",
+    "provider": "local"
+  },
+  "1055": {
+    "extension": "1055",
+    "password": "HCIsEcjo",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1051",
+    "provider": "local"
+  },
+  "1056": {
+    "extension": "1056",
+    "password": "hGMKn5xH",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1052",
+    "provider": "local"
+  },
+  "1057": {
+    "extension": "1057",
+    "password": "PzXHsvw2",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1053",
+    "provider": "local"
+  },
+  "1058": {
+    "extension": "1058",
+    "password": "Nb5ffkhc",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1054",
+    "provider": "local"
+  },
+  "1059": {
+    "extension": "1059",
+    "password": "JZFgFcqK",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1055",
+    "provider": "local"
+  },
+  "1060": {
+    "extension": "1060",
+    "password": "8wDMMkls",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1056",
+    "provider": "local"
+  },
+  "1061": {
+    "extension": "1061",
+    "password": "W0SYswgH",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1057",
+    "provider": "local"
+  },
+  "1062": {
+    "extension": "1062",
+    "password": "fQZBrd8V",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1058",
+    "provider": "local"
+  },
+  "1063": {
+    "extension": "1063",
+    "password": "7ONZPXDN",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1059",
+    "provider": "local"
+  },
+  "1064": {
+    "extension": "1064",
+    "password": "RXfjXIO3",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1060",
+    "provider": "local"
+  },
+  "1065": {
+    "extension": "1065",
+    "password": "EaI8op5l",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1061",
+    "provider": "local"
+  },
+  "1066": {
+    "extension": "1066",
+    "password": "RfbDK5Sq",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1062",
+    "provider": "local"
+  },
+  "1067": {
+    "extension": "1067",
+    "password": "Yxp5hBzJ",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1063",
+    "provider": "local"
+  },
+  "1068": {
+    "extension": "1068",
+    "password": "MIBs8XzL",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1064",
+    "provider": "local"
+  },
+  "1069": {
+    "extension": "1069",
+    "password": "Y6LJifnF",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1065",
+    "provider": "local"
+  },
+  "1070": {
+    "extension": "1070",
+    "password": "QXWa88Ym",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1066",
+    "provider": "local"
+  },
+  "1071": {
+    "extension": "1071",
+    "password": "fcUe9EUp",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1067",
+    "provider": "local"
+  },
+  "1072": {
+    "extension": "1072",
+    "password": "qVbJaGIL",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1068",
+    "provider": "local"
+  },
+  "1073": {
+    "extension": "1073",
+    "password": "3pkRGrxw",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1069",
+    "provider": "local"
+  },
+  "1074": {
+    "extension": "1074",
+    "password": "zrqCLvx2",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1070",
+    "provider": "local"
+  },
+  "1075": {
+    "extension": "1075",
+    "password": "15ScYKnf",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1071",
+    "provider": "local"
+  },
+  "1076": {
+    "extension": "1076",
+    "password": "GljDrI3e",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1072",
+    "provider": "local"
+  },
+  "1077": {
+    "extension": "1077",
+    "password": "51mwTuBz",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1073",
+    "provider": "local"
+  },
+  "1078": {
+    "extension": "1078",
+    "password": "6EpNiCEb",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1074",
+    "provider": "local"
+  },
+  "1079": {
+    "extension": "1079",
+    "password": "OXhippnc",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1075",
+    "provider": "local"
+  },
+  "1080": {
+    "extension": "1080",
+    "password": "UnV1B7Dc",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1076",
+    "provider": "local"
+  },
+  "1081": {
+    "extension": "1081",
+    "password": "d5RHmPg3",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1077",
+    "provider": "local"
+  },
+  "1082": {
+    "extension": "1082",
+    "password": "XfdD5xC6",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1078",
+    "provider": "local"
+  },
+  "1083": {
+    "extension": "1083",
+    "password": "C8k3vzA4",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1079",
+    "provider": "local"
+  },
+  "1084": {
+    "extension": "1084",
+    "password": "aByd3MtE",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1080",
+    "provider": "local"
+  },
+  "1085": {
+    "extension": "1085",
+    "password": "szzmQxmo",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1081",
+    "provider": "local"
+  },
+  "1086": {
+    "extension": "1086",
+    "password": "4Ty1D8s1",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1082",
+    "provider": "local"
+  },
+  "1087": {
+    "extension": "1087",
+    "password": "utktGaR3",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1083",
+    "provider": "local"
+  },
+  "1088": {
+    "extension": "1088",
+    "password": "8heuSTZC",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1084",
+    "provider": "local"
+  },
+  "1089": {
+    "extension": "1089",
+    "password": "xI4bkark",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1085",
+    "provider": "local"
+  },
+  "1090": {
+    "extension": "1090",
+    "password": "3EOg414c",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1086",
+    "provider": "local"
+  },
+  "1091": {
+    "extension": "1091",
+    "password": "X4oqefsk",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1087",
+    "provider": "local"
+  },
+  "1092": {
+    "extension": "1092",
+    "password": "t1IgPl7H",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1088",
+    "provider": "local"
+  },
+  "1093": {
+    "extension": "1093",
+    "password": "iZAfcLmG",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1089",
+    "provider": "local"
+  },
+  "1094": {
+    "extension": "1094",
+    "password": "9Y9788ky",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1090",
+    "provider": "local"
+  },
+  "1095": {
+    "extension": "1095",
+    "password": "XoGMLWyM",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1091",
+    "provider": "local"
+  },
+  "1096": {
+    "extension": "1096",
+    "password": "OlxAcyWM",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1092",
+    "provider": "local"
+  },
+  "1097": {
+    "extension": "1097",
+    "password": "Cl1fmQ29",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1093",
+    "provider": "local"
+  },
+  "1098": {
+    "extension": "1098",
+    "password": "BI6mx842",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1094",
+    "provider": "local"
+  },
+  "1099": {
+    "extension": "1099",
+    "password": "C1npSjfq",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1095",
+    "provider": "local"
+  },
+  "1100": {
+    "extension": "1100",
+    "password": "xS3wz16B",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1096",
+    "provider": "local"
+  },
+  "1101": {
+    "extension": "1101",
+    "password": "CdNm7kEn",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1097",
+    "provider": "local"
+  },
+  "1102": {
+    "extension": "1102",
+    "password": "s3CDwE7k",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1098",
+    "provider": "local"
+  },
+  "1103": {
+    "extension": "1103",
+    "password": "SRo5CIQ3",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1099",
+    "provider": "local"
+  },
+  "1104": {
+    "extension": "1104",
+    "password": "nGUA6wMJ",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1100",
+    "provider": "local"
+  },
+  "1105": {
+    "extension": "1105",
+    "password": "QRB4uok7",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1101",
+    "provider": "local"
+  },
+  "1106": {
+    "extension": "1106",
+    "password": "CLGV6aYU",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1102",
+    "provider": "local"
+  },
+  "1107": {
+    "extension": "1107",
+    "password": "eK2sCxr8",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1103",
+    "provider": "local"
+  },
+  "1108": {
+    "extension": "1108",
+    "password": "CQ8eMk1x",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1104",
+    "provider": "local"
+  },
+  "1109": {
+    "extension": "1109",
+    "password": "YmlDiTt4",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1105",
+    "provider": "local"
+  },
+  "1110": {
+    "extension": "1110",
+    "password": "7lM5VP6y",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1106",
+    "provider": "local"
+  },
+  "1111": {
+    "extension": "1111",
+    "password": "ZIKCf3Ej",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1107",
+    "provider": "local"
+  },
+  "1112": {
+    "extension": "1112",
+    "password": "0KSuZ3Gz",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1108",
+    "provider": "local"
+  },
+  "1113": {
+    "extension": "1113",
+    "password": "jNdjJPZ1",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1109",
+    "provider": "local"
+  },
+  "1114": {
+    "extension": "1114",
+    "password": "hLEjlEhk",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1110",
+    "provider": "local"
+  },
+  "1115": {
+    "extension": "1115",
+    "password": "GtY1pedi",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1111",
+    "provider": "local"
+  },
+  "1116": {
+    "extension": "1116",
+    "password": "wgAoDDxL",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1112",
+    "provider": "local"
+  },
+  "1117": {
+    "extension": "1117",
+    "password": "Mr27d4Rh",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1113",
+    "provider": "local"
+  },
+  "1118": {
+    "extension": "1118",
+    "password": "wucSNVDH",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1114",
+    "provider": "local"
+  },
+  "1119": {
+    "extension": "1119",
+    "password": "0ne3Elyf",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1115",
+    "provider": "local"
+  },
+  "1120": {
+    "extension": "1120",
+    "password": "SqmaC10y",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1116",
+    "provider": "local"
+  },
+  "1121": {
+    "extension": "1121",
+    "password": "baizbOtX",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1117",
+    "provider": "local"
+  },
+  "1122": {
+    "extension": "1122",
+    "password": "eWvIZVrm",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1118",
+    "provider": "local"
+  },
+  "1123": {
+    "extension": "1123",
+    "password": "fjYCwpYl",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1119",
+    "provider": "local"
+  },
+  "1124": {
+    "extension": "1124",
+    "password": "wqfw3yN1",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1120",
+    "provider": "local"
+  },
+  "1125": {
+    "extension": "1125",
+    "password": "3bv7dReW",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1121",
+    "provider": "local"
+  },
+  "1126": {
+    "extension": "1126",
+    "password": "eO7bcFwP",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1122",
+    "provider": "local"
+  },
+  "1127": {
+    "extension": "1127",
+    "password": "7WXV20Yy",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1123",
+    "provider": "local"
+  },
+  "1128": {
+    "extension": "1128",
+    "password": "KyLH00ky",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1124",
+    "provider": "local"
+  },
+  "1129": {
+    "extension": "1129",
+    "password": "3ugR6PKa",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1125",
+    "provider": "local"
+  },
+  "1130": {
+    "extension": "1130",
+    "password": "bdPsO7Cx",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1126",
+    "provider": "local"
+  },
+  "1131": {
+    "extension": "1131",
+    "password": "2QjzGrqw",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1127",
+    "provider": "local"
+  },
+  "1132": {
+    "extension": "1132",
+    "password": "ryptdUok",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1128",
+    "provider": "local"
+  },
+  "1133": {
+    "extension": "1133",
+    "password": "vGAarDwo",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1129",
+    "provider": "local"
+  },
+  "1134": {
+    "extension": "1134",
+    "password": "jslcijtP",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1130",
+    "provider": "local"
+  },
+  "1135": {
+    "extension": "1135",
+    "password": "Yqsv0ywI",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1131",
+    "provider": "local"
+  },
+  "1136": {
+    "extension": "1136",
+    "password": "DPC4n5FK",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1132",
+    "provider": "local"
+  },
+  "1137": {
+    "extension": "1137",
+    "password": "EV2dVhhD",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1133",
+    "provider": "local"
+  },
+  "1138": {
+    "extension": "1138",
+    "password": "FP855hwD",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1134",
+    "provider": "local"
+  },
+  "1139": {
+    "extension": "1139",
+    "password": "R8OpTbMj",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1135",
+    "provider": "local"
+  },
+  "1140": {
+    "extension": "1140",
+    "password": "POTmyWXW",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1136",
+    "provider": "local"
+  },
+  "1141": {
+    "extension": "1141",
+    "password": "CSoxZig5",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1137",
+    "provider": "local"
+  },
+  "1142": {
+    "extension": "1142",
+    "password": "MvvxolRR",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1138",
+    "provider": "local"
+  },
+  "1143": {
+    "extension": "1143",
+    "password": "IO8V0JyX",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1139",
+    "provider": "local"
+  },
+  "1144": {
+    "extension": "1144",
+    "password": "GzBAQMEv",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1140",
+    "provider": "local"
+  },
+  "1145": {
+    "extension": "1145",
+    "password": "nzOgiCdP",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1141",
+    "provider": "local"
+  },
+  "1146": {
+    "extension": "1146",
+    "password": "eEsaW60I",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1142",
+    "provider": "local"
+  },
+  "1147": {
+    "extension": "1147",
+    "password": "cBHfAMFm",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1143",
+    "provider": "local"
+  },
+  "1148": {
+    "extension": "1148",
+    "password": "G7apVTqo",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1144",
+    "provider": "local"
+  },
+  "1149": {
+    "extension": "1149",
+    "password": "4OjsaNR1",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1145",
+    "provider": "local"
+  },
+  "1150": {
+    "extension": "1150",
+    "password": "6NAEpzD0",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1146",
+    "provider": "local"
+  },
+  "1151": {
+    "extension": "1151",
+    "password": "gUDQnYiC",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1147",
+    "provider": "local"
+  },
+  "1152": {
+    "extension": "1152",
+    "password": "RRRbC0Rr",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1148",
+    "provider": "local"
+  },
+  "1153": {
+    "extension": "1153",
+    "password": "F2DaSAj4",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1149",
+    "provider": "local"
+  },
+  "1154": {
+    "extension": "1154",
+    "password": "MtgzTdry",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1150",
+    "provider": "local"
+  },
+  "1155": {
+    "extension": "1155",
+    "password": "aEzjkhBs",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1151",
+    "provider": "local"
+  },
+  "1156": {
+    "extension": "1156",
+    "password": "JhLYOwbK",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1152",
+    "provider": "local"
+  },
+  "1157": {
+    "extension": "1157",
+    "password": "sFgCzAqv",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1153",
+    "provider": "local"
+  },
+  "1158": {
+    "extension": "1158",
+    "password": "Dod6JLZh",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1154",
+    "provider": "local"
+  },
+  "1159": {
+    "extension": "1159",
+    "password": "kpNrGIBO",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1155",
+    "provider": "local"
+  },
+  "1160": {
+    "extension": "1160",
+    "password": "hySuL2Hz",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1156",
+    "provider": "local"
+  },
+  "1161": {
+    "extension": "1161",
+    "password": "3Z74Y8aY",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1157",
+    "provider": "local"
+  },
+  "1162": {
+    "extension": "1162",
+    "password": "8005thab",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1158",
+    "provider": "local"
+  },
+  "1163": {
+    "extension": "1163",
+    "password": "U7FJIcT2",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1159",
+    "provider": "local"
+  },
+  "1164": {
+    "extension": "1164",
+    "password": "OmsvzpcJ",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1160",
+    "provider": "local"
+  },
+  "1165": {
+    "extension": "1165",
+    "password": "p5HjshCY",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1161",
+    "provider": "local"
+  },
+  "1166": {
+    "extension": "1166",
+    "password": "gNtXoW7G",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1162",
+    "provider": "local"
+  },
+  "1167": {
+    "extension": "1167",
+    "password": "d8Cy8k4i",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1163",
+    "provider": "local"
+  },
+  "1168": {
+    "extension": "1168",
+    "password": "RsF3UORw",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1164",
+    "provider": "local"
+  },
+  "1169": {
+    "extension": "1169",
+    "password": "E0OYH3SB",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1165",
+    "provider": "local"
+  },
+  "1170": {
+    "extension": "1170",
+    "password": "zfQw5pz3",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1166",
+    "provider": "local"
+  },
+  "1171": {
+    "extension": "1171",
+    "password": "Ztumwpt2",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1167",
+    "provider": "local"
+  },
+  "1172": {
+    "extension": "1172",
+    "password": "fdtJ1W61",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1168",
+    "provider": "local"
+  },
+  "1173": {
+    "extension": "1173",
+    "password": "TaaRbSWC",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1169",
+    "provider": "local"
+  },
+  "1174": {
+    "extension": "1174",
+    "password": "WGNwGSXc",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1170",
+    "provider": "local"
+  },
+  "1175": {
+    "extension": "1175",
+    "password": "6mJwFajf",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1171",
+    "provider": "local"
+  },
+  "1176": {
+    "extension": "1176",
+    "password": "qwaE7q0e",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1172",
+    "provider": "local"
+  },
+  "1177": {
+    "extension": "1177",
+    "password": "zz3fcxGH",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1173",
+    "provider": "local"
+  },
+  "1178": {
+    "extension": "1178",
+    "password": "kiSlnEVe",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1174",
+    "provider": "local"
+  },
+  "1179": {
+    "extension": "1179",
+    "password": "DK5gCLkv",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1175",
+    "provider": "local"
+  },
+  "1180": {
+    "extension": "1180",
+    "password": "i6hVKZMf",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1176",
+    "provider": "local"
+  },
+  "1181": {
+    "extension": "1181",
+    "password": "WhlcxdEs",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1177",
+    "provider": "local"
+  },
+  "1182": {
+    "extension": "1182",
+    "password": "RmQWmPw2",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1178",
+    "provider": "local"
+  },
+  "1183": {
+    "extension": "1183",
+    "password": "w9QJooWW",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1179",
+    "provider": "local"
+  },
+  "1184": {
+    "extension": "1184",
+    "password": "48KHV4TK",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1180",
+    "provider": "local"
+  },
+  "1185": {
+    "extension": "1185",
+    "password": "kbU8H4PT",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1181",
+    "provider": "local"
+  },
+  "1186": {
+    "extension": "1186",
+    "password": "Mhr0y5Vs",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1182",
+    "provider": "local"
+  },
+  "1187": {
+    "extension": "1187",
+    "password": "Vbm1oxEw",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1183",
+    "provider": "local"
+  },
+  "1188": {
+    "extension": "1188",
+    "password": "KdoPzIiB",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1184",
+    "provider": "local"
+  },
+  "1189": {
+    "extension": "1189",
+    "password": "1QDDWpDj",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1185",
+    "provider": "local"
+  },
+  "1190": {
+    "extension": "1190",
+    "password": "lUeJmAsc",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1186",
+    "provider": "local"
+  },
+  "1191": {
+    "extension": "1191",
+    "password": "2ggXWvbN",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1187",
+    "provider": "local"
+  },
+  "1192": {
+    "extension": "1192",
+    "password": "xwkVe7OI",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1188",
+    "provider": "local"
+  },
+  "1193": {
+    "extension": "1193",
+    "password": "6rEn26un",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1189",
+    "provider": "local"
+  },
+  "1194": {
+    "extension": "1194",
+    "password": "z8Y0lb7A",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1190",
+    "provider": "local"
+  },
+  "1195": {
+    "extension": "1195",
+    "password": "U2TxTUIY",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1191",
+    "provider": "local"
+  },
+  "1196": {
+    "extension": "1196",
+    "password": "dPc2ZTkW",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1192",
+    "provider": "local"
+  },
+  "1197": {
+    "extension": "1197",
+    "password": "NBpEU6Su",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1193",
+    "provider": "local"
+  },
+  "1198": {
+    "extension": "1198",
+    "password": "NVL1b2tN",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1194",
+    "provider": "local"
+  },
+  "1199": {
+    "extension": "1199",
+    "password": "Y4NiCSh2",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1195",
+    "provider": "local"
+  },
+  "1200": {
+    "extension": "1200",
+    "password": "L8NlAdS5",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1196",
+    "provider": "local"
+  },
+  "1201": {
+    "extension": "1201",
+    "password": "Oaf3qBJ8",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1197",
+    "provider": "local"
+  },
+  "1202": {
+    "extension": "1202",
+    "password": "ZwLRY4ob",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1198",
+    "provider": "local"
+  },
+  "1203": {
+    "extension": "1203",
+    "password": "23pAtqAN",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1199",
+    "provider": "local"
+  },
+  "1204": {
+    "extension": "1204",
+    "password": "XrBRk2fW",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1200",
+    "provider": "local"
+  },
+  "1205": {
+    "extension": "1205",
+    "password": "OqMV815r",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1201",
+    "provider": "local"
+  },
+  "1206": {
+    "extension": "1206",
+    "password": "pqddhILC",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1202",
+    "provider": "local"
+  },
+  "1207": {
+    "extension": "1207",
+    "password": "uW1NG5dZ",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1203",
+    "provider": "local"
+  },
+  "1208": {
+    "extension": "1208",
+    "password": "A3lWBweF",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1204",
+    "provider": "local"
+  },
+  "1209": {
+    "extension": "1209",
+    "password": "YO04Rvsr",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1205",
+    "provider": "local"
+  },
+  "1210": {
+    "extension": "1210",
+    "password": "y9pt3qCr",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1206",
+    "provider": "local"
+  },
+  "1211": {
+    "extension": "1211",
+    "password": "vKWg1wTY",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1207",
+    "provider": "local"
+  },
+  "1212": {
+    "extension": "1212",
+    "password": "0w4hrhSV",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1208",
+    "provider": "local"
+  },
+  "1213": {
+    "extension": "1213",
+    "password": "vQBU6Mlo",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1209",
+    "provider": "local"
+  },
+  "1214": {
+    "extension": "1214",
+    "password": "sWbOTMFb",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1210",
+    "provider": "local"
+  },
+  "1215": {
+    "extension": "1215",
+    "password": "21XZw23D",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1211",
+    "provider": "local"
+  },
+  "1216": {
+    "extension": "1216",
+    "password": "Bof0NhxG",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1212",
+    "provider": "local"
+  },
+  "1217": {
+    "extension": "1217",
+    "password": "wxHEXFFJ",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1213",
+    "provider": "local"
+  },
+  "1218": {
+    "extension": "1218",
+    "password": "CSubHbEp",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1214",
+    "provider": "local"
+  },
+  "1219": {
+    "extension": "1219",
+    "password": "dF1M1jDN",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1215",
+    "provider": "local"
+  },
+  "1220": {
+    "extension": "1220",
+    "password": "3iuRdP6t",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1216",
+    "provider": "local"
+  },
+  "1221": {
+    "extension": "1221",
+    "password": "lgFnzcpm",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1217",
+    "provider": "local"
+  },
+  "1222": {
+    "extension": "1222",
+    "password": "LiMzKseI",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1218",
+    "provider": "local"
+  },
+  "1223": {
+    "extension": "1223",
+    "password": "ZjJhjb9M",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1219",
+    "provider": "local"
+  },
+  "1224": {
+    "extension": "1224",
+    "password": "wtQr7xaX",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1220",
+    "provider": "local"
+  },
+  "1225": {
+    "extension": "1225",
+    "password": "FdMXOoBA",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1221",
+    "provider": "local"
+  },
+  "1226": {
+    "extension": "1226",
+    "password": "LJUDDJUG",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1222",
+    "provider": "local"
+  },
+  "1227": {
+    "extension": "1227",
+    "password": "1hZ2qThl",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1223",
+    "provider": "local"
+  },
+  "1228": {
+    "extension": "1228",
+    "password": "Hzbti3IJ",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1224",
+    "provider": "local"
+  },
+  "1229": {
+    "extension": "1229",
+    "password": "poVq6LOt",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1225",
+    "provider": "local"
+  },
+  "1230": {
+    "extension": "1230",
+    "password": "CD2YIqw6",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1226",
+    "provider": "local"
+  },
+  "1231": {
+    "extension": "1231",
+    "password": "g48M4Uez",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1227",
+    "provider": "local"
+  },
+  "1232": {
+    "extension": "1232",
+    "password": "5cecP7fG",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1228",
+    "provider": "local"
+  },
+  "1233": {
+    "extension": "1233",
+    "password": "9UX2W8ht",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1229",
+    "provider": "local"
+  },
+  "1234": {
+    "extension": "1234",
+    "password": "3tqjO2J4",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1230",
+    "provider": "local"
+  },
+  "1235": {
+    "extension": "1235",
+    "password": "b8edGfV1",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1231",
+    "provider": "local"
+  },
+  "1236": {
+    "extension": "1236",
+    "password": "HqJvrgDV",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1232",
+    "provider": "local"
+  },
+  "1237": {
+    "extension": "1237",
+    "password": "XDJkYVMj",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1233",
+    "provider": "local"
+  },
+  "1238": {
+    "extension": "1238",
+    "password": "kFe6wDPa",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1234",
+    "provider": "local"
+  },
+  "1239": {
+    "extension": "1239",
+    "password": "UJdEhmvx",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1235",
+    "provider": "local"
+  },
+  "1240": {
+    "extension": "1240",
+    "password": "CRWMTivT",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1236",
+    "provider": "local"
+  },
+  "1241": {
+    "extension": "1241",
+    "password": "8mAyNkfC",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1237",
+    "provider": "local"
+  },
+  "1242": {
+    "extension": "1242",
+    "password": "F5tPfVkc",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1238",
+    "provider": "local"
+  },
+  "1243": {
+    "extension": "1243",
+    "password": "hQQyGefM",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1239",
+    "provider": "local"
+  },
+  "1244": {
+    "extension": "1244",
+    "password": "K8jSwCK8",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1240",
+    "provider": "local"
+  },
+  "1245": {
+    "extension": "1245",
+    "password": "OWJ780cS",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1241",
+    "provider": "local"
+  },
+  "1246": {
+    "extension": "1246",
+    "password": "ufUjrRSS",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1242",
+    "provider": "local"
+  },
+  "1247": {
+    "extension": "1247",
+    "password": "O7jbCRSB",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1243",
+    "provider": "local"
+  },
+  "1248": {
+    "extension": "1248",
+    "password": "Bc7vjkF8",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1244",
+    "provider": "local"
+  },
+  "1249": {
+    "extension": "1249",
+    "password": "JyBkeDLu",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1245",
+    "provider": "local"
+  },
+  "1250": {
+    "extension": "1250",
+    "password": "oEMmOnQp",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1246",
+    "provider": "local"
+  },
+  "1251": {
+    "extension": "1251",
+    "password": "gZGfAu2W",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1247",
+    "provider": "local"
+  },
+  "1252": {
+    "extension": "1252",
+    "password": "BbwZODJk",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1248",
+    "provider": "local"
+  },
+  "1253": {
+    "extension": "1253",
+    "password": "u3KrVcr3",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1249",
+    "provider": "local"
+  },
+  "1254": {
+    "extension": "1254",
+    "password": "9nztr3Pf",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1250",
+    "provider": "local"
+  },
+  "1255": {
+    "extension": "1255",
+    "password": "7Dzjnfbi",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1251",
+    "provider": "local"
+  },
+  "1256": {
+    "extension": "1256",
+    "password": "eNrlAuMG",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1252",
+    "provider": "local"
+  },
+  "1257": {
+    "extension": "1257",
+    "password": "KlPHxD7n",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1253",
+    "provider": "local"
+  },
+  "1258": {
+    "extension": "1258",
+    "password": "PWgzXqRp",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1254",
+    "provider": "local"
+  },
+  "1259": {
+    "extension": "1259",
+    "password": "S2OfaF7D",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1255",
+    "provider": "local"
+  },
+  "1260": {
+    "extension": "1260",
+    "password": "4pfYStHT",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1256",
+    "provider": "local"
+  },
+  "1261": {
+    "extension": "1261",
+    "password": "cmqG9yqg",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1257",
+    "provider": "local"
+  },
+  "1262": {
+    "extension": "1262",
+    "password": "AY3LofrB",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1258",
+    "provider": "local"
+  },
+  "1263": {
+    "extension": "1263",
+    "password": "efnS4LXx",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1259",
+    "provider": "local"
+  },
+  "1264": {
+    "extension": "1264",
+    "password": "dd8bjVWw",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1260",
+    "provider": "local"
+  },
+  "1265": {
+    "extension": "1265",
+    "password": "0UPODPmC",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1261",
+    "provider": "local"
+  },
+  "1266": {
+    "extension": "1266",
+    "password": "nvbQq1AB",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1262",
+    "provider": "local"
+  },
+  "1267": {
+    "extension": "1267",
+    "password": "PiHIkVZu",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1263",
+    "provider": "local"
+  },
+  "1268": {
+    "extension": "1268",
+    "password": "rjj3UaeE",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1264",
+    "provider": "local"
+  },
+  "1269": {
+    "extension": "1269",
+    "password": "LAZFPMR4",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1265",
+    "provider": "local"
+  },
+  "1270": {
+    "extension": "1270",
+    "password": "PEvqruSZ",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1266",
+    "provider": "local"
+  },
+  "1271": {
+    "extension": "1271",
+    "password": "4NvP1cqm",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1267",
+    "provider": "local"
+  },
+  "1272": {
+    "extension": "1272",
+    "password": "W3DSoK7p",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1268",
+    "provider": "local"
+  },
+  "1273": {
+    "extension": "1273",
+    "password": "aSCrt9ey",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1269",
+    "provider": "local"
+  },
+  "1274": {
+    "extension": "1274",
+    "password": "7vaFlbX0",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1270",
+    "provider": "local"
+  },
+  "1275": {
+    "extension": "1275",
+    "password": "nKztTp6c",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1271",
+    "provider": "local"
+  },
+  "1276": {
+    "extension": "1276",
+    "password": "BCfTh4zk",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1272",
+    "provider": "local"
+  },
+  "1277": {
+    "extension": "1277",
+    "password": "GdubEtIH",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1273",
+    "provider": "local"
+  },
+  "1278": {
+    "extension": "1278",
+    "password": "puQG9XpZ",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1274",
+    "provider": "local"
+  },
+  "1279": {
+    "extension": "1279",
+    "password": "r6o5Qulb",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1275",
+    "provider": "local"
+  },
+  "1280": {
+    "extension": "1280",
+    "password": "Rds6cIUH",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1276",
+    "provider": "local"
+  },
+  "1281": {
+    "extension": "1281",
+    "password": "Nsjc6YOI",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1277",
+    "provider": "local"
+  },
+  "1282": {
+    "extension": "1282",
+    "password": "zxFHE8E9",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1278",
+    "provider": "local"
+  },
+  "1283": {
+    "extension": "1283",
+    "password": "2WfzCwDR",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1279",
+    "provider": "local"
+  },
+  "1284": {
+    "extension": "1284",
+    "password": "4iVClyNJ",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1280",
+    "provider": "local"
+  },
+  "1285": {
+    "extension": "1285",
+    "password": "xsrjIVTj",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1281",
+    "provider": "local"
+  },
+  "1286": {
+    "extension": "1286",
+    "password": "KJ0RTDxz",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1282",
+    "provider": "local"
+  },
+  "1287": {
+    "extension": "1287",
+    "password": "fcpbMYtp",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1283",
+    "provider": "local"
+  },
+  "1288": {
+    "extension": "1288",
+    "password": "ghxY82Qk",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1284",
+    "provider": "local"
+  },
+  "1289": {
+    "extension": "1289",
+    "password": "imc9jG7b",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1285",
+    "provider": "local"
+  },
+  "1290": {
+    "extension": "1290",
+    "password": "dYI8psfv",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1286",
+    "provider": "local"
+  },
+  "1291": {
+    "extension": "1291",
+    "password": "4BB3spoG",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1287",
+    "provider": "local"
+  },
+  "1292": {
+    "extension": "1292",
+    "password": "dDG4alm6",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1288",
+    "provider": "local"
+  },
+  "1293": {
+    "extension": "1293",
+    "password": "syNYas20",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1289",
+    "provider": "local"
+  },
+  "1294": {
+    "extension": "1294",
+    "password": "HheZPtWp",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1290",
+    "provider": "local"
+  },
+  "1295": {
+    "extension": "1295",
+    "password": "ccPH8hK8",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1291",
+    "provider": "local"
+  },
+  "1296": {
+    "extension": "1296",
+    "password": "ELm06Y5b",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1292",
+    "provider": "local"
+  },
+  "1297": {
+    "extension": "1297",
+    "password": "IP8w51E8",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1293",
+    "provider": "local"
+  },
+  "1298": {
+    "extension": "1298",
+    "password": "giFIiEXn",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1294",
+    "provider": "local"
+  },
+  "1299": {
+    "extension": "1299",
+    "password": "f0RmmEgs",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1295",
+    "provider": "local"
+  },
+  "1300": {
+    "extension": "1300",
+    "password": "AJ7StT6U",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1296",
+    "provider": "local"
+  },
+  "1301": {
+    "extension": "1301",
+    "password": "SOIJDW6S",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1297",
+    "provider": "local"
+  },
+  "1302": {
+    "extension": "1302",
+    "password": "mGLqRcK5",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1298",
+    "provider": "local"
+  },
+  "1303": {
+    "extension": "1303",
+    "password": "JgZ6as7G",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1299",
+    "provider": "local"
+  },
+  "1304": {
+    "extension": "1304",
+    "password": "oNo1Gabv",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1300",
+    "provider": "local"
+  },
+  "1305": {
+    "extension": "1305",
+    "password": "LOCVhBpJ",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1301",
+    "provider": "local"
+  },
+  "1306": {
+    "extension": "1306",
+    "password": "HPtGP6EF",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1302",
+    "provider": "local"
+  },
+  "1307": {
+    "extension": "1307",
+    "password": "KN615GkJ",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1303",
+    "provider": "local"
+  },
+  "1308": {
+    "extension": "1308",
+    "password": "VVrh7VTR",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1304",
+    "provider": "local"
+  },
+  "1309": {
+    "extension": "1309",
+    "password": "OsNDNz7P",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1305",
+    "provider": "local"
+  },
+  "1310": {
+    "extension": "1310",
+    "password": "s9279vBt",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1306",
+    "provider": "local"
+  },
+  "1311": {
+    "extension": "1311",
+    "password": "u0HZqU2q",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1307",
+    "provider": "local"
+  },
+  "1312": {
+    "extension": "1312",
+    "password": "XUjlAuWe",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1308",
+    "provider": "local"
+  },
+  "1313": {
+    "extension": "1313",
+    "password": "CrWrhZba",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1309",
+    "provider": "local"
+  },
+  "1314": {
+    "extension": "1314",
+    "password": "cmQgOizb",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1310",
+    "provider": "local"
+  },
+  "1315": {
+    "extension": "1315",
+    "password": "tHplFixV",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1311",
+    "provider": "local"
+  },
+  "1316": {
+    "extension": "1316",
+    "password": "yTtCSKbN",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1312",
+    "provider": "local"
+  },
+  "1317": {
+    "extension": "1317",
+    "password": "zxNL7lCI",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1313",
+    "provider": "local"
+  },
+  "1318": {
+    "extension": "1318",
+    "password": "2jgeEu27",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1314",
+    "provider": "local"
+  },
+  "1319": {
+    "extension": "1319",
+    "password": "nwtVAkVh",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1315",
+    "provider": "local"
+  },
+  "1320": {
+    "extension": "1320",
+    "password": "fq3uQyi9",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1316",
+    "provider": "local"
+  },
+  "1321": {
+    "extension": "1321",
+    "password": "uSsqMiUp",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1317",
+    "provider": "local"
+  },
+  "1322": {
+    "extension": "1322",
+    "password": "MevrzntZ",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1318",
+    "provider": "local"
+  },
+  "1323": {
+    "extension": "1323",
+    "password": "9tf7R11I",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1319",
+    "provider": "local"
+  },
+  "1324": {
+    "extension": "1324",
+    "password": "23pTseB8",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1320",
+    "provider": "local"
+  },
+  "1325": {
+    "extension": "1325",
+    "password": "T86SFqup",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1321",
+    "provider": "local"
+  },
+  "1326": {
+    "extension": "1326",
+    "password": "bW8dddGv",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1322",
+    "provider": "local"
+  },
+  "1327": {
+    "extension": "1327",
+    "password": "XCwq51u3",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1323",
+    "provider": "local"
+  },
+  "1328": {
+    "extension": "1328",
+    "password": "BKnBzT3u",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1324",
+    "provider": "local"
+  },
+  "1329": {
+    "extension": "1329",
+    "password": "kDQcoa4U",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1325",
+    "provider": "local"
+  },
+  "1330": {
+    "extension": "1330",
+    "password": "gaFRFABJ",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1326",
+    "provider": "local"
+  },
+  "1331": {
+    "extension": "1331",
+    "password": "aNQ3dDnE",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1327",
+    "provider": "local"
+  },
+  "1332": {
+    "extension": "1332",
+    "password": "TIgbibKS",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1328",
+    "provider": "local"
+  },
+  "1333": {
+    "extension": "1333",
+    "password": "V746ziWT",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1329",
+    "provider": "local"
+  },
+  "1334": {
+    "extension": "1334",
+    "password": "W5znHrVZ",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1330",
+    "provider": "local"
+  },
+  "1335": {
+    "extension": "1335",
+    "password": "cT6GDXHk",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1331",
+    "provider": "local"
+  },
+  "1336": {
+    "extension": "1336",
+    "password": "aqNXX8EN",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1332",
+    "provider": "local"
+  },
+  "1337": {
+    "extension": "1337",
+    "password": "5egUZVKh",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1333",
+    "provider": "local"
+  },
+  "1338": {
+    "extension": "1338",
+    "password": "HWresfeM",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1334",
+    "provider": "local"
+  },
+  "1339": {
+    "extension": "1339",
+    "password": "jQUocNLq",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1335",
+    "provider": "local"
+  },
+  "1340": {
+    "extension": "1340",
+    "password": "ReBy1JSE",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1336",
+    "provider": "local"
+  },
+  "1341": {
+    "extension": "1341",
+    "password": "NlImflxO",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1337",
+    "provider": "local"
+  },
+  "1342": {
+    "extension": "1342",
+    "password": "VCopRtxF",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1338",
+    "provider": "local"
+  },
+  "1343": {
+    "extension": "1343",
+    "password": "nZc0vrY2",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1339",
+    "provider": "local"
+  },
+  "1344": {
+    "extension": "1344",
+    "password": "2Pvehopl",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1340",
+    "provider": "local"
+  },
+  "1345": {
+    "extension": "1345",
+    "password": "kW3PVx2v",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1341",
+    "provider": "local"
+  },
+  "1346": {
+    "extension": "1346",
+    "password": "DMZ73izV",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1342",
+    "provider": "local"
+  },
+  "1347": {
+    "extension": "1347",
+    "password": "WJF1XlC6",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1343",
+    "provider": "local"
+  },
+  "1348": {
+    "extension": "1348",
+    "password": "i1Kcrfmj",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1344",
+    "provider": "local"
+  },
+  "1349": {
+    "extension": "1349",
+    "password": "CwiMecnL",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1345",
+    "provider": "local"
+  },
+  "1350": {
+    "extension": "1350",
+    "password": "XEDG5E3l",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1346",
+    "provider": "local"
+  },
+  "1351": {
+    "extension": "1351",
+    "password": "Y4BD8Hq7",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1347",
+    "provider": "local"
+  },
+  "1352": {
+    "extension": "1352",
+    "password": "rLE6cJ9k",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1348",
+    "provider": "local"
+  },
+  "1353": {
+    "extension": "1353",
+    "password": "gQEEaXlD",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1349",
+    "provider": "local"
+  },
+  "1354": {
+    "extension": "1354",
+    "password": "2kPB87Y2",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1350",
+    "provider": "local"
+  },
+  "1355": {
+    "extension": "1355",
+    "password": "SFuwI5L0",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1351",
+    "provider": "local"
+  },
+  "1356": {
+    "extension": "1356",
+    "password": "DsiM5D6B",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1352",
+    "provider": "local"
+  },
+  "1357": {
+    "extension": "1357",
+    "password": "nCremy8G",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1353",
+    "provider": "local"
+  },
+  "1358": {
+    "extension": "1358",
+    "password": "Xc24RVxP",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1354",
+    "provider": "local"
+  },
+  "1359": {
+    "extension": "1359",
+    "password": "jJlPTZw1",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1355",
+    "provider": "local"
+  },
+  "1360": {
+    "extension": "1360",
+    "password": "zsWUpOxN",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1356",
+    "provider": "local"
+  },
+  "1361": {
+    "extension": "1361",
+    "password": "6djpBtoQ",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1357",
+    "provider": "local"
+  },
+  "1362": {
+    "extension": "1362",
+    "password": "tFXh5Pkx",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1358",
+    "provider": "local"
+  },
+  "1363": {
+    "extension": "1363",
+    "password": "ZUSK9uN9",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1359",
+    "provider": "local"
+  },
+  "1364": {
+    "extension": "1364",
+    "password": "1k9p793z",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1360",
+    "provider": "local"
+  },
+  "1365": {
+    "extension": "1365",
+    "password": "VsrmwkP3",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1361",
+    "provider": "local"
+  },
+  "1366": {
+    "extension": "1366",
+    "password": "fzKANvWh",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1362",
+    "provider": "local"
+  },
+  "1367": {
+    "extension": "1367",
+    "password": "YgHO6JYw",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1363",
+    "provider": "local"
+  },
+  "1368": {
+    "extension": "1368",
+    "password": "U8emycCp",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1364",
+    "provider": "local"
+  },
+  "1369": {
+    "extension": "1369",
+    "password": "s6KTrMBt",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1365",
+    "provider": "local"
+  },
+  "1370": {
+    "extension": "1370",
+    "password": "JC0q5ai7",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1366",
+    "provider": "local"
+  },
+  "1371": {
+    "extension": "1371",
+    "password": "LnYA6bAm",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1367",
+    "provider": "local"
+  },
+  "1372": {
+    "extension": "1372",
+    "password": "pvNrqGFP",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1368",
+    "provider": "local"
+  },
+  "1373": {
+    "extension": "1373",
+    "password": "ZIlUixPY",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1369",
+    "provider": "local"
+  },
+  "1374": {
+    "extension": "1374",
+    "password": "nsz4n3cm",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1370",
+    "provider": "local"
+  },
+  "1375": {
+    "extension": "1375",
+    "password": "MIcf9gnx",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1371",
+    "provider": "local"
+  },
+  "1376": {
+    "extension": "1376",
+    "password": "wZjff5GU",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1372",
+    "provider": "local"
+  },
+  "1377": {
+    "extension": "1377",
+    "password": "o9phfjuH",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1373",
+    "provider": "local"
+  },
+  "1378": {
+    "extension": "1378",
+    "password": "6JsNJp5p",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1374",
+    "provider": "local"
+  },
+  "1379": {
+    "extension": "1379",
+    "password": "vxcezubn",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1375",
+    "provider": "local"
+  },
+  "1380": {
+    "extension": "1380",
+    "password": "s7jWcDqo",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1376",
+    "provider": "local"
+  },
+  "1381": {
+    "extension": "1381",
+    "password": "o11AZyVw",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1377",
+    "provider": "local"
+  },
+  "1382": {
+    "extension": "1382",
+    "password": "XYOlTxjw",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1378",
+    "provider": "local"
+  },
+  "1383": {
+    "extension": "1383",
+    "password": "vZFm4ZII",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1379",
+    "provider": "local"
+  },
+  "1384": {
+    "extension": "1384",
+    "password": "ptmEACvY",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1380",
+    "provider": "local"
+  },
+  "1385": {
+    "extension": "1385",
+    "password": "FUn84boH",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1381",
+    "provider": "local"
+  },
+  "1386": {
+    "extension": "1386",
+    "password": "otIqPbOd",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1382",
+    "provider": "local"
+  },
+  "1387": {
+    "extension": "1387",
+    "password": "P5LSdaXx",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1383",
+    "provider": "local"
+  },
+  "1388": {
+    "extension": "1388",
+    "password": "C5NvpGbx",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1384",
+    "provider": "local"
+  },
+  "1389": {
+    "extension": "1389",
+    "password": "FxiMP9wK",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1385",
+    "provider": "local"
+  },
+  "1390": {
+    "extension": "1390",
+    "password": "XjE5ADfo",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1386",
+    "provider": "local"
+  },
+  "1391": {
+    "extension": "1391",
+    "password": "iOCaj85g",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1387",
+    "provider": "local"
+  },
+  "1392": {
+    "extension": "1392",
+    "password": "FybauruR",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1388",
+    "provider": "local"
+  },
+  "1393": {
+    "extension": "1393",
+    "password": "7nIScPDA",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1389",
+    "provider": "local"
+  },
+  "1394": {
+    "extension": "1394",
+    "password": "A257hMlJ",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1390",
+    "provider": "local"
+  },
+  "1395": {
+    "extension": "1395",
+    "password": "YIlh6rMU",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1391",
+    "provider": "local"
+  },
+  "1396": {
+    "extension": "1396",
+    "password": "RZlznJvx",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1392",
+    "provider": "local"
+  },
+  "1397": {
+    "extension": "1397",
+    "password": "pVrS2js9",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1393",
+    "provider": "local"
+  },
+  "1398": {
+    "extension": "1398",
+    "password": "serF9muk",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1394",
+    "provider": "local"
+  },
+  "1399": {
+    "extension": "1399",
+    "password": "DTsU8Gzn",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1395",
+    "provider": "local"
+  },
+  "1400": {
+    "extension": "1400",
+    "password": "KPFNO0Q2",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1396",
+    "provider": "local"
+  },
+  "1401": {
+    "extension": "1401",
+    "password": "6l8RnSkE",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1397",
+    "provider": "local"
+  },
+  "1402": {
+    "extension": "1402",
+    "password": "KJmBfOvS",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1398",
+    "provider": "local"
+  },
+  "1403": {
+    "extension": "1403",
+    "password": "0f7uhkZA",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1399",
+    "provider": "local"
+  },
+  "1404": {
+    "extension": "1404",
+    "password": "6V5DCsYl",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1400",
+    "provider": "local"
+  },
+  "1405": {
+    "extension": "1405",
+    "password": "CdzCBtNB",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1401",
+    "provider": "local"
+  },
+  "1406": {
+    "extension": "1406",
+    "password": "gwQl16xn",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1402",
+    "provider": "local"
+  },
+  "1407": {
+    "extension": "1407",
+    "password": "FSFq8Y2h",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1403",
+    "provider": "local"
+  },
+  "1408": {
+    "extension": "1408",
+    "password": "XFnniWuO",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1404",
+    "provider": "local"
+  },
+  "1409": {
+    "extension": "1409",
+    "password": "zNYu3kOy",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1405",
+    "provider": "local"
+  },
+  "1410": {
+    "extension": "1410",
+    "password": "beDIQhSL",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1406",
+    "provider": "local"
+  },
+  "1411": {
+    "extension": "1411",
+    "password": "DsH6Uz7N",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1407",
+    "provider": "local"
+  },
+  "1412": {
+    "extension": "1412",
+    "password": "oQloZwap",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1408",
+    "provider": "local"
+  },
+  "1413": {
+    "extension": "1413",
+    "password": "RskGZSCw",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1409",
+    "provider": "local"
+  },
+  "1414": {
+    "extension": "1414",
+    "password": "TFsIsQU5",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1410",
+    "provider": "local"
+  },
+  "1415": {
+    "extension": "1415",
+    "password": "t5Inr34V",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1411",
+    "provider": "local"
+  },
+  "1416": {
+    "extension": "1416",
+    "password": "LnfJaJ2J",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1412",
+    "provider": "local"
+  },
+  "1417": {
+    "extension": "1417",
+    "password": "ByjYuQUG",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1413",
+    "provider": "local"
+  },
+  "1418": {
+    "extension": "1418",
+    "password": "C40Rjsqp",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1414",
+    "provider": "local"
+  },
+  "1419": {
+    "extension": "1419",
+    "password": "0ydMugWq",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1415",
+    "provider": "local"
+  },
+  "1420": {
+    "extension": "1420",
+    "password": "ybaxuoNA",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1416",
+    "provider": "local"
+  },
+  "1421": {
+    "extension": "1421",
+    "password": "S2PiOQpZ",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1417",
+    "provider": "local"
+  },
+  "1422": {
+    "extension": "1422",
+    "password": "Mg7pE2Jf",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1418",
+    "provider": "local"
+  },
+  "1423": {
+    "extension": "1423",
+    "password": "fn1PFzjg",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1419",
+    "provider": "local"
+  },
+  "1424": {
+    "extension": "1424",
+    "password": "Umnrtosi",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1420",
+    "provider": "local"
+  },
+  "1425": {
+    "extension": "1425",
+    "password": "1RKfSMEv",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1421",
+    "provider": "local"
+  },
+  "1426": {
+    "extension": "1426",
+    "password": "wWWWOUN4",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1422",
+    "provider": "local"
+  },
+  "1427": {
+    "extension": "1427",
+    "password": "vZ6pImMZ",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1423",
+    "provider": "local"
+  },
+  "1428": {
+    "extension": "1428",
+    "password": "NEVMCklm",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1424",
+    "provider": "local"
+  },
+  "1429": {
+    "extension": "1429",
+    "password": "r6RripNT",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1425",
+    "provider": "local"
+  },
+  "1430": {
+    "extension": "1430",
+    "password": "cfm7rTcV",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1426",
+    "provider": "local"
+  },
+  "1431": {
+    "extension": "1431",
+    "password": "gsVxixJR",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1427",
+    "provider": "local"
+  },
+  "1432": {
+    "extension": "1432",
+    "password": "o9PGjMFd",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1428",
+    "provider": "local"
+  },
+  "1433": {
+    "extension": "1433",
+    "password": "b5crgKhZ",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1429",
+    "provider": "local"
+  },
+  "1434": {
+    "extension": "1434",
+    "password": "ykGd93Hm",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1430",
+    "provider": "local"
+  },
+  "1435": {
+    "extension": "1435",
+    "password": "mhyxwCzH",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1431",
+    "provider": "local"
+  },
+  "1436": {
+    "extension": "1436",
+    "password": "W3IkgB7M",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1432",
+    "provider": "local"
+  },
+  "1437": {
+    "extension": "1437",
+    "password": "zmBle3zK",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1433",
+    "provider": "local"
+  },
+  "1438": {
+    "extension": "1438",
+    "password": "hsqkqjPy",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1434",
+    "provider": "local"
+  },
+  "1439": {
+    "extension": "1439",
+    "password": "bbWfdHSW",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1435",
+    "provider": "local"
+  },
+  "1440": {
+    "extension": "1440",
+    "password": "vmvAhaFf",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1436",
+    "provider": "local"
+  },
+  "1441": {
+    "extension": "1441",
+    "password": "hKQddLzA",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1437",
+    "provider": "local"
+  },
+  "1442": {
+    "extension": "1442",
+    "password": "PEQU0YJE",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1438",
+    "provider": "local"
+  },
+  "1443": {
+    "extension": "1443",
+    "password": "eApzA0O3",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1439",
+    "provider": "local"
+  },
+  "1444": {
+    "extension": "1444",
+    "password": "0sNApJIl",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1440",
+    "provider": "local"
+  },
+  "1445": {
+    "extension": "1445",
+    "password": "LS1BnnA8",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1441",
+    "provider": "local"
+  },
+  "1446": {
+    "extension": "1446",
+    "password": "canAOdpJ",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1442",
+    "provider": "local"
+  },
+  "1447": {
+    "extension": "1447",
+    "password": "kHDsncct",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1443",
+    "provider": "local"
+  },
+  "1448": {
+    "extension": "1448",
+    "password": "qe9eF3jz",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1444",
+    "provider": "local"
+  },
+  "1449": {
+    "extension": "1449",
+    "password": "3nkk83mK",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1445",
+    "provider": "local"
+  },
+  "1450": {
+    "extension": "1450",
+    "password": "dx8ln8YT",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1446",
+    "provider": "local"
+  },
+  "1451": {
+    "extension": "1451",
+    "password": "kxLZaTuK",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1447",
+    "provider": "local"
+  },
+  "1452": {
+    "extension": "1452",
+    "password": "zRTWhr2z",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1448",
+    "provider": "local"
+  },
+  "1453": {
+    "extension": "1453",
+    "password": "S8gDrDLh",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1449",
+    "provider": "local"
+  },
+  "1454": {
+    "extension": "1454",
+    "password": "vCTp6Is5",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1450",
+    "provider": "local"
+  },
+  "1455": {
+    "extension": "1455",
+    "password": "IY9S6wdU",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1451",
+    "provider": "local"
+  },
+  "1456": {
+    "extension": "1456",
+    "password": "cDNw8Skl",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1452",
+    "provider": "local"
+  },
+  "1457": {
+    "extension": "1457",
+    "password": "WZLWW1ML",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1453",
+    "provider": "local"
+  },
+  "1458": {
+    "extension": "1458",
+    "password": "nlwvWieR",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1454",
+    "provider": "local"
+  },
+  "1459": {
+    "extension": "1459",
+    "password": "AyhbCcFF",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1455",
+    "provider": "local"
+  },
+  "1460": {
+    "extension": "1460",
+    "password": "17R1nGTd",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1456",
+    "provider": "local"
+  },
+  "1461": {
+    "extension": "1461",
+    "password": "xYhorRg2",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1457",
+    "provider": "local"
+  },
+  "1462": {
+    "extension": "1462",
+    "password": "gsVaVTMv",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1458",
+    "provider": "local"
+  },
+  "1463": {
+    "extension": "1463",
+    "password": "lbTcuxUP",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1459",
+    "provider": "local"
+  },
+  "1464": {
+    "extension": "1464",
+    "password": "RA9mhLRP",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1460",
+    "provider": "local"
+  },
+  "1465": {
+    "extension": "1465",
+    "password": "qmGrnpNO",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1461",
+    "provider": "local"
+  },
+  "1466": {
+    "extension": "1466",
+    "password": "KddULH5X",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1462",
+    "provider": "local"
+  },
+  "1467": {
+    "extension": "1467",
+    "password": "UD70ilH4",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1463",
+    "provider": "local"
+  },
+  "1468": {
+    "extension": "1468",
+    "password": "ZszCPw3T",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1464",
+    "provider": "local"
+  },
+  "1469": {
+    "extension": "1469",
+    "password": "sFGp00EN",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1465",
+    "provider": "local"
+  },
+  "1470": {
+    "extension": "1470",
+    "password": "2ymbpMRF",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1466",
+    "provider": "local"
+  },
+  "1471": {
+    "extension": "1471",
+    "password": "PZe3fhVi",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1467",
+    "provider": "local"
+  },
+  "1472": {
+    "extension": "1472",
+    "password": "I1yji2Br",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1468",
+    "provider": "local"
+  },
+  "1473": {
+    "extension": "1473",
+    "password": "0MH8qZOG",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1469",
+    "provider": "local"
+  },
+  "1474": {
+    "extension": "1474",
+    "password": "IzIHegMN",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1470",
+    "provider": "local"
+  },
+  "1475": {
+    "extension": "1475",
+    "password": "igGiARUH",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1471",
+    "provider": "local"
+  },
+  "1476": {
+    "extension": "1476",
+    "password": "yCplohCb",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1472",
+    "provider": "local"
+  },
+  "1477": {
+    "extension": "1477",
+    "password": "bTJAJ1Zn",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1473",
+    "provider": "local"
+  },
+  "1478": {
+    "extension": "1478",
+    "password": "yUUdO9V2",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1474",
+    "provider": "local"
+  },
+  "1479": {
+    "extension": "1479",
+    "password": "BoMjfxEa",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1475",
+    "provider": "local"
+  },
+  "1480": {
+    "extension": "1480",
+    "password": "VJK99JJ8",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1476",
+    "provider": "local"
+  },
+  "1481": {
+    "extension": "1481",
+    "password": "DuybSQIU",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1477",
+    "provider": "local"
+  },
+  "1482": {
+    "extension": "1482",
+    "password": "vZrtUGUi",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1478",
+    "provider": "local"
+  },
+  "1483": {
+    "extension": "1483",
+    "password": "cwZja8yq",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1479",
+    "provider": "local"
+  },
+  "1484": {
+    "extension": "1484",
+    "password": "xSEQGpsS",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1480",
+    "provider": "local"
+  },
+  "1485": {
+    "extension": "1485",
+    "password": "hRTQEGKv",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1481",
+    "provider": "local"
+  },
+  "1486": {
+    "extension": "1486",
+    "password": "hOqBDFFs",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1482",
+    "provider": "local"
+  },
+  "1487": {
+    "extension": "1487",
+    "password": "r8RFfvpo",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1483",
+    "provider": "local"
+  },
+  "1488": {
+    "extension": "1488",
+    "password": "Ssfpcxqd",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1484",
+    "provider": "local"
+  },
+  "1489": {
+    "extension": "1489",
+    "password": "VPdSElGK",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1485",
+    "provider": "local"
+  },
+  "1490": {
+    "extension": "1490",
+    "password": "VOCC2SbZ",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1486",
+    "provider": "local"
+  },
+  "1491": {
+    "extension": "1491",
+    "password": "JCjTe56x",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1487",
+    "provider": "local"
+  },
+  "1492": {
+    "extension": "1492",
+    "password": "rqhr7M7O",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1488",
+    "provider": "local"
+  },
+  "1493": {
+    "extension": "1493",
+    "password": "UKdtPWR4",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1489",
+    "provider": "local"
+  },
+  "1494": {
+    "extension": "1494",
+    "password": "81K9qzCW",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1490",
+    "provider": "local"
+  },
+  "1495": {
+    "extension": "1495",
+    "password": "n8k237Ud",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1491",
+    "provider": "local"
+  },
+  "1496": {
+    "extension": "1496",
+    "password": "MWyUnEkV",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1492",
+    "provider": "local"
+  },
+  "1497": {
+    "extension": "1497",
+    "password": "7NoIIz4f",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1493",
+    "provider": "local"
+  },
+  "1498": {
+    "extension": "1498",
+    "password": "LCwI66cx",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1494",
+    "provider": "local"
+  },
+  "1499": {
+    "extension": "1499",
+    "password": "gBHZHjtW",
+    "assigned": false,
+    "server_ip": "127.0.0.1",
+    "display_name": "Agente Prueba 1495",
+    "provider": "local"
+  },
+  "1500": {
+    "extension": "1500",
+    "password": "qUFIhJ^x^YLn",
+    "assigned": false,
+    "server_ip": "127.0.0.1"
+  },
+  "1501": {
+    "extension": "1501",
+    "password": "vMXBB$*o!PzE",
+    "assigned": true,
+    "server_ip": "127.0.0.1"
+  },
+  "1502": {
+    "extension": "1502",
+    "password": "B@P^LFNT1ziy",
+    "status": "assigned",
+    "assigned_to": "1000",
+    "assigned_at": "2026-02-23T15:29:36.631989",
+    "created_at": "2026-02-23T15:29:36.631978",
+    "agent_name": "agent_7da905b0"
+  },
+  "1503": {
+    "extension": "1503",
+    "password": "@*SPAKl9Lrmo",
+    "status": "assigned",
+    "assigned_to": "1000",
+    "assigned_at": "2026-02-23T15:31:58.847151",
+    "created_at": "2026-02-23T15:31:58.847137",
+    "agent_name": "agent_90f21eb3"
+  },
+  "1504": {
+    "extension": "1504",
+    "password": "w*M7m6krrSaq",
+    "status": "assigned",
+    "assigned_to": "1000",
+    "assigned_at": "2026-02-23T15:33:19.954597",
+    "created_at": "2026-02-23T15:33:19.954586",
+    "agent_name": "agent_989f4b31"
+  },
+  "1505": {
+    "extension": "1505",
+    "password": "C#1ZBXIMBaiX",
+    "status": "assigned",
+    "assigned_to": "1000",
+    "assigned_at": "2026-02-23T15:39:47.359029",
+    "created_at": "2026-02-23T15:39:47.359016",
+    "agent_name": "agent_4ad2165e"
+  },
+  "1506": {
+    "extension": "1506",
+    "password": "SyIWi!c7!Nqt",
+    "status": "assigned",
+    "assigned_to": "1000",
+    "assigned_at": "2026-02-23T15:56:51.372343",
+    "created_at": "2026-02-23T15:56:51.372331",
+    "agent_name": "agent_35abd124"
+  },
+  "1507": {
+    "extension": "1507",
+    "password": "*KrvYK6SQiYj",
+    "status": "assigned",
+    "assigned_to": "1000",
+    "assigned_at": "2026-02-23T18:43:53.717069",
+    "created_at": "2026-02-23T18:43:53.717051",
+    "agent_name": "agent_b8dae174"
+  },
+  "1508": {
+    "extension": "1508",
+    "password": "5CJzjZw%ndXy",
+    "status": "assigned",
+    "assigned_to": "1000",
+    "assigned_at": "2026-02-23T18:58:33.858559",
+    "created_at": "2026-02-23T18:58:33.858544",
+    "agent_name": "agent_84e76cda"
+  },
+  "1509": {
+    "extension": "1509",
+    "password": "J*XIbBSDISc9",
+    "status": "assigned",
+    "assigned_to": "1000",
+    "assigned_at": "2026-02-23T19:03:20.048660",
+    "created_at": "2026-02-23T19:03:20.048639",
+    "agent_name": "agent_a8704e3a"
+  },
+  "1510": {
+    "extension": "1510",
+    "password": "Ud1Um2L^Znzn",
+    "status": "assigned",
+    "assigned_to": "1000",
+    "assigned_at": "2026-02-23T19:16:34.647447",
+    "created_at": "2026-02-23T19:16:34.647431",
+    "agent_name": "agent_281f9770"
+  },
+  "1511": {
+    "extension": "1511",
+    "password": "8W6Lh$52LO&A",
+    "status": "assigned",
+    "assigned_to": "1000",
+    "assigned_at": "2026-02-23T19:17:20.597118",
+    "created_at": "2026-02-23T19:17:20.597106",
+    "agent_name": "agent_aadc436a"
+  },
+  "1512": {
+    "extension": "1512",
+    "password": "bvD3B&wGqc3H",
+    "status": "assigned",
+    "assigned_to": "1000",
+    "assigned_at": "2026-02-23T19:25:05.859960",
+    "created_at": "2026-02-23T19:25:05.859947",
+    "agent_name": "agent_7f8f36ef"
+  },
+  "1513": {
+    "extension": "1513",
+    "password": "puCyn&0yDGbP",
+    "status": "assigned",
+    "assigned_to": "1000",
+    "assigned_at": "2026-02-23T19:30:23.027033",
+    "created_at": "2026-02-23T19:30:23.027016",
+    "agent_name": "agent_f0957d03"
+  },
+  "1514": {
+    "extension": "1514",
+    "password": "bTmCSY*5TOI8",
+    "status": "assigned",
+    "assigned_to": "1000",
+    "assigned_at": "2026-02-23T19:35:47.669864",
+    "created_at": "2026-02-23T19:35:47.669847",
+    "agent_name": "agent_99f5b9e2"
+  },
+  "1515": {
+    "extension": "1515",
+    "password": "!TcEzSvI*YE4",
+    "status": "assigned",
+    "assigned_to": "1000",
+    "assigned_at": "2026-02-23T19:40:35.202027",
+    "created_at": "2026-02-23T19:40:35.202016",
+    "agent_name": "agent_37fb6058"
+  },
+  "1516": {
+    "extension": "1516",
+    "password": "UarQ%Si!4kxx",
+    "status": "assigned",
+    "assigned_to": "1000",
+    "assigned_at": "2026-02-23T19:47:46.229842",
+    "created_at": "2026-02-23T19:47:46.229829",
+    "agent_name": "agent_3a06af31"
+  },
+  "1517": {
+    "extension": "1517",
+    "password": "SQP*Vp$ndL1N",
+    "status": "assigned",
+    "assigned_to": "1000",
+    "assigned_at": "2026-02-23T19:53:23.408766",
+    "created_at": "2026-02-23T19:53:23.408753",
+    "agent_name": "agent_b5fdc585"
+  },
+  "1518": {
+    "extension": "1518",
+    "password": "xfc%&U$yR$NV",
+    "status": "assigned",
+    "assigned_to": "1000",
+    "assigned_at": "2026-02-24T11:01:52.127677",
+    "created_at": "2026-02-24T11:01:52.127663",
+    "agent_name": "agent_5596c98e"
+  }
+}

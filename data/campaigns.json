@@ -1,0 +1,44 @@
+{
+  "campaign_001": {
+    "id": "campaign_001",
+    "name": "Campa\u00f1a de Ventas Q1",
+    "description": "Campa\u00f1a de ventas para el primer trimestre",
+    "status": "active",
+    "phone_list": [
+      "+1111111111",
+      "+2222222222",
+      "+3333333333"
+    ],
+    "assigned_agents": [
+      "agent_001"
+    ],
+    "created_at": "2026-02-19T09:00:00",
+    "calls_made": 15,
+    "progress": 45
+  },
+  "test_campaign_1771538148": {
+    "id": "test_campaign_1771538148",
+    "name": "Campa\u00f1a de Prueba",
+    "description": "Campa\u00f1a para testing",
+    "status": "inactive",
+    "phone_list": [
+      "+1111111111",
+      "+2222222222"
+    ],
+    "assigned_agents": [],
+    "created_at": "2026-02-19T15:55:48.232196"
+  },
+  "test_campaign_1771538526": {
+    "id": "test_campaign_1771538526",
+    "name": "Campa\u00f1a de Prueba",
+    "description": "Campa\u00f1a para testing",
+    "status": "active",
+    "phone_list": [
+      "+1111111111",
+      "+2222222222"
+    ],
+    "assigned_agents": [],
+    "created_at": "2026-02-19T16:02:06.229827",
+    "updated_at": "2026-02-19T16:02:06.233326"
+  }
+}

@@ -1,0 +1,530 @@
+"""
+Servidor web principal para VoIP Auto Dialer
+FastAPI con endpoints completos para agentes, extensiones y configuraciones
+"""
+import os
+import sys
+from pathlib import Path
+from typing import Dict, List, Optional
+
+# Agregar el directorio raíz al path
+project_root = Path(__file__).parent.parent
+sys.path.insert(0, str(project_root))
+
+from fastapi import FastAPI, HTTPException, Request, Form
+from fastapi.responses import HTMLResponse, FileResponse
+from fastapi.staticfiles import StaticFiles
+from fastapi.templating import Jinja2Templates
+from pydantic import BaseModel
+from datetime import datetime
+import uvicorn
+
+from core.logging_config import get_logger, log_system_event
+from core.extension_manager import extension_manager
+from core.agent_manager_clean import agent_manager
+
+# Configuración de la aplicación
+app = FastAPI(
+    title="VoIP Auto Dialer",
+    description="Sistema de llamadas automatizadas con gestión de agentes y extensiones",
+    version="1.0.0"
+)
+
+# Logger
+logger = get_logger("web_server")
+
+# Configurar archivos estáticos y templates
+static_dir = Path(__file__).parent / "static"
+templates_dir = Path(__file__).parent / "templates"
+
+app.mount("/static", StaticFiles(directory=str(static_dir)), name="static")
+templates = Jinja2Templates(directory=str(templates_dir))
+
+# Modelos Pydantic
+class AgentCreate(BaseModel):
+    name: str
+    email: str
+    phone: str
+
+class AgentUpdate(BaseModel):
+    name: Optional[str] = None
+    email: Optional[str] = None
+    phone: Optional[str] = None
+    status: Optional[str] = None
+
+class ExtensionAssign(BaseModel):
+    agent_id: str
+
+# ============================================================================
+# RUTAS WEB (HTML)
+# ============================================================================
+
+@app.get("/", response_class=HTMLResponse)
+async def dashboard(request: Request):
+    """Página principal - Dashboard"""
+    try:
+        # Obtener estadísticas
+        agent_stats = agent_manager.get_agent_stats()
+        extension_stats = extension_manager.get_stats()
+        
+        # Datos para el template
+        context = {
+            "request": request,
+            "agent_stats": agent_stats,
+            "extension_stats": extension_stats,
+            "total_extensions": extension_stats["total_extensions"],
+            "assigned_extensions": extension_stats["assigned_extensions"],
+            "available_extensions": extension_stats["available_extensions"],
+            "campaigns": {
+                "campaign_001": {
+                    "id": "campaign_001",
+                    "name": "Campaña de Ventas Q1",
+                    "status": "active",
+                    "numbers_count": 1500,
+                    "completed_calls": 450,
+                    "success_rate": 32.5,
+                    "created_at": "2026-02-15T10:00:00"
+                }
+            }
+        }
+        
+        return templates.TemplateResponse("dashboard.html", context)
+        
+    except Exception as e:
+        logger.error(f"Error en dashboard: {e}")
+        raise HTTPException(status_code=500, detail=f"Error interno: {str(e)}")
+
+@app.get("/agents", response_class=HTMLResponse)
+async def agents_page(request: Request):
+    """Página de gestión de agentes"""
+    try:
+        # Obtener datos para el template
+        agents = agent_manager.get_all_agents()
+        agent_stats = agent_manager.get_agent_stats()
+        
+        context = {
+            "request": request,
+            "agents": agents,
+            "agent_stats": agent_stats
+        }
+        
+        return templates.TemplateResponse("agents.html", context)
+        
+    except Exception as e:
+        logger.error(f"Error en página de agentes: {e}")
+        raise HTTPException(status_code=500, detail=f"Error interno: {str(e)}")
+
+@app.get("/campaigns", response_class=HTMLResponse)
+async def campaigns_page(request: Request):
+    """Página de gestión de campañas"""
+    try:
+        # Datos de ejemplo para campañas
+        campaigns = {
+            "campaign_001": {
+                "id": "campaign_001",
+                "name": "Campaña de Ventas Q1",
+                "description": "Campaña de ventas para el primer trimestre",
+                "status": "active",
+                "numbers_count": 1500,
+                "completed_calls": 450,
+                "success_rate": 32.5,
+                "created_at": "2026-02-15T10:00:00",
+                "last_activity": "2026-02-20T14:30:00"
+            },
+            "campaign_002": {
+                "id": "campaign_002", 
+                "name": "Campaña de Prueba",
+                "description": "Campaña para pruebas del sistema",
+                "status": "inactive",
+                "numbers_count": 100,
+                "completed_calls": 0,
+                "success_rate": 0.0,
+                "created_at": "2026-02-18T09:00:00",
+                "last_activity": None
+            }
+        }
+        
+        context = {
+            "request": request,
+            "campaigns": campaigns
+        }
+        
+        return templates.TemplateResponse("campaigns.html", context)
+        
+    except Exception as e:
+        logger.error(f"Error en página de campañas: {e}")
+        raise HTTPException(status_code=500, detail=f"Error interno: {str(e)}")
+
+# ============================================================================
+# API ENDPOINTS - AGENTES
+# ============================================================================
+
+@app.get("/api/agents")
+async def get_agents():
+    """Obtener lista de agentes con estructura consistente"""
+    try:
+        agents_dict = agent_manager.get_all_agents()
+        # Convertir diccionario a lista para compatibilidad con frontend
+        agents_list = list(agents_dict.values()) if isinstance(agents_dict, dict) else agents_dict
+        return {
+            "success": True,
+            "agents": agents_list,
+            "count": len(agents_list)
+        }
+    except Exception as e:
+        logger.error(f"Error obteniendo agentes: {e}")
+        return {
+            "success": False,
+            "agents": [],
+            "count": 0,
+            "error": str(e)
+        }
+
+@app.post("/api/agents")
+async def create_agent(agent: AgentCreate):
+    """Crear nuevo agente"""
+    try:
+        new_agent = agent_manager.create_agent(
+            name=agent.name,
+            email=agent.email,
+            phone=agent.phone
+        )
+        return {"message": "Agente creado exitosamente", "agent": new_agent}
+    except Exception as e:
+        logger.error(f"Error creando agente: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/agents/{agent_id}")
+async def get_agent(agent_id: str):
+    """Obtener agente específico"""
+    agent = agent_manager.get_agent(agent_id)
+    if not agent:
+        raise HTTPException(status_code=404, detail="Agente no encontrado")
+    return {"agent": agent}
+
+@app.put("/api/agents/{agent_id}")
+async def update_agent(agent_id: str, agent_update: AgentUpdate):
+    """Actualizar agente"""
+    try:
+        # Filtrar campos no nulos
+        update_data = {k: v for k, v in agent_update.dict().items() if v is not None}
+        
+        updated_agent = agent_manager.update_agent(agent_id, **update_data)
+        if not updated_agent:
+            raise HTTPException(status_code=404, detail="Agente no encontrado")
+        
+        return {"message": "Agente actualizado", "agent": updated_agent}
+    except Exception as e:
+        logger.error(f"Error actualizando agente {agent_id}: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.delete("/api/agents/{agent_id}")
+async def delete_agent(agent_id: str):
+    """Eliminar agente"""
+    try:
+        success = agent_manager.delete_agent(agent_id)
+        if not success:
+            raise HTTPException(status_code=404, detail="Agente no encontrado")
+        
+        return {"message": "Agente eliminado exitosamente"}
+    except Exception as e:
+        logger.error(f"Error eliminando agente {agent_id}: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+# ============================================================================
+# API ENDPOINTS - EXTENSIONES
+# ============================================================================
+
+@app.post("/api/agents/{agent_id}/assign-extension")
+async def assign_extension(agent_id: str):
+    """Asignar extensión automática a un agente"""
+    try:
+        # Verificar que el agente existe
+        agent = agent_manager.get_agent(agent_id)
+        if not agent:
+            raise HTTPException(status_code=404, detail="Agente no encontrado")
+        
+        # Asignar extensión
+        extension_info = agent_manager.assign_extension_to_agent(agent_id)
+        if not extension_info:
+            raise HTTPException(status_code=400, detail="No hay extensiones disponibles")
+        
+        return {
+            "message": "Extensión asignada exitosamente",
+            "extension": extension_info["extension"],
+            "password": extension_info["password"],
+            "status": extension_info["status"]
+        }
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Error asignando extensión a {agent_id}: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.post("/api/agents/{agent_id}/release-extension")
+async def release_extension(agent_id: str):
+    """Liberar extensión de un agente"""
+    try:
+        success = agent_manager.release_extension_from_agent(agent_id)
+        if not success:
+            raise HTTPException(status_code=404, detail="Agente no encontrado o sin extensión")
+        
+        return {"message": "Extensión liberada exitosamente"}
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Error liberando extensión de {agent_id}: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/extensions/stats")
+async def get_extension_stats():
+    """Obtener estadísticas de extensiones"""
+    try:
+        stats = extension_manager.get_stats()
+        return {
+            "total": stats.get("total_extensions", 0),
+            "assigned": stats.get("assigned_extensions", 0),
+            "available": stats.get("available_extensions", 0),
+            "utilization": stats.get("utilization_rate", 0.0)
+        }
+    except Exception as e:
+        logger.error(f"Error obteniendo estadísticas de extensiones: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/agents/{agent_id}/softphone-config/{config_type}")
+async def download_softphone_config(agent_id: str, config_type: str):
+    """Descargar configuración de softphone"""
+    try:
+        # Verificar tipo de configuración válido
+        valid_types = ['zoiper', 'portsip', 'generic']
+        if config_type not in valid_types:
+            raise HTTPException(status_code=400, detail="Tipo de configuración inválido")
+        
+        # Obtener ruta del archivo de configuración
+        config_path = extension_manager.get_softphone_config(agent_id, config_type)
+        if not config_path:
+            raise HTTPException(status_code=404, detail="Configuración no encontrada")
+        
+        # Determinar tipo de archivo y nombre
+        file_extensions = {
+            'zoiper': 'conf',
+            'portsip': 'xml', 
+            'generic': 'txt'
+        }
+        
+        extension_info = extension_manager.get_extension_info(agent_id)
+        ext_number = extension_info['extension'] if extension_info else 'unknown'
+        
+        filename = f"{config_type}_config_{ext_number}.{file_extensions[config_type]}"
+        
+        return FileResponse(
+            path=config_path,
+            filename=filename,
+            media_type='application/octet-stream'
+        )
+        
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Error descargando configuración {config_type} para {agent_id}: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+# ============================================================================
+# API ENDPOINTS - SISTEMA
+# ============================================================================
+
+@app.get("/api/health")
+async def health_check():
+    """Health check del sistema"""
+    try:
+        # Verificar componentes críticos
+        agent_stats = agent_manager.get_agent_stats()
+        extension_stats = extension_manager.get_stats()
+        
+        return {
+            "status": "healthy",
+            "timestamp": datetime.now().isoformat(),
+            "components": {
+                "agent_manager": "ok",
+                "extension_manager": "ok"
+            },
+            "stats": {
+                "agents": agent_stats,
+                "extensions": extension_stats
+            }
+        }
+    except Exception as e:
+        logger.error(f"Error en health check: {e}")
+        return {
+            "status": "unhealthy",
+            "error": str(e),
+            "timestamp": datetime.now().isoformat()
+        }
+
+@app.get("/api/campaigns")
+async def get_campaigns():
+    """Obtener lista de campañas (datos de ejemplo)"""
+    campaigns = {
+        "campaign_001": {
+            "id": "campaign_001",
+            "name": "Campaña de Ventas Q1",
+            "description": "Campaña de ventas para el primer trimestre",
+            "status": "active",
+            "numbers_count": 1500,
+            "completed_calls": 450,
+            "success_rate": 32.5,
+            "created_at": "2026-02-15T10:00:00",
+            "last_activity": "2026-02-20T14:30:00"
+        }
+    }
+    
+    return {"campaigns": list(campaigns.values())}
+
+# ============================================================================
+# EVENTOS DE APLICACIÓN
+# ============================================================================
+
+@app.on_event("startup")
+async def startup_event():
+    """Evento de inicio de la aplicación"""
+    log_system_event("startup", "Servidor web iniciado")
+    logger.info("VoIP Auto Dialer Web Server iniciado")
+    
+    # Verificar componentes críticos
+    try:
+        agent_stats = agent_manager.get_agent_stats()
+        extension_stats = extension_manager.get_stats()
+        
+        logger.info(f"Agentes cargados: {agent_stats['total']}")
+        logger.info(f"Extensiones disponibles: {extension_stats['available_extensions']}")
+        
+    except Exception as e:
+        logger.error(f"Error verificando componentes: {e}")
+
+@app.on_event("shutdown")
+async def shutdown_event():
+    """Evento de cierre de la aplicación"""
+    log_system_event("shutdown", "Servidor web cerrando")
+    logger.info("Cerrando servidor web...")
+
+# ============================================================================
+# FUNCIÓN PRINCIPAL
+# ============================================================================
+
+def main():
+    """Función principal para ejecutar el servidor"""
+    print("🚀 INICIANDO VOIP AUTO DIALER WEB SERVER")
+    print("=" * 60)
+    
+    # Verificar estructura del proyecto
+    required_dirs = ["core", "web", "data", "logs"]
+    for dir_name in required_dirs:
+        if not os.path.exists(dir_name):
+            print(f"❌ Error: Directorio {dir_name} no encontrado")
+            return
+        print(f"✅ Directorio encontrado: {dir_name}")
+    
+    # Verificar archivos críticos
+    required_files = [
+        "core/logging_config.py",
+        "core/extension_manager.py", 
+        "core/agent_manager_clean.py"
+    ]
+    
+    for file_path in required_files:
+        if not os.path.exists(file_path):
+            print(f"❌ Error: Archivo {file_path} no encontrado")
+            return
+        print(f"✅ Archivo encontrado: {file_path}")
+    
+    print("\n🔄 Inicializando componentes...")
+    
+    try:
+        # Verificar que los managers se inicialicen correctamente
+        agent_stats = agent_manager.get_agent_stats()
+        extension_stats = extension_manager.get_stats()
+        
+        print(f"✅ Agent Manager: {agent_stats['total']} agentes")
+        print(f"✅ Extension Manager: {extension_stats['available_extensions']} disponibles")
+        
+    except Exception as e:
+        print(f"❌ Error inicializando componentes: {e}")
+        return
+    
+    print("\n" + "=" * 60)
+    print("🌐 SERVIDOR WEB LISTO")
+    print("=" * 60)
+    print("📊 Dashboard:    http://localhost:8000/")
+    print("👥 Agentes:      http://localhost:8000/agents")
+    print("📢 Campañas:     http://localhost:8000/campaigns")
+    print("🔧 API Health:   http://localhost:8000/api/health")
+    print("=" * 60)
+    print("💡 Presiona Ctrl+C para detener el servidor")
+    print("=" * 60)
+    
+    # Ejecutar servidor
+    uvicorn.run(
+        "web.main:app",
+        host="0.0.0.0",
+        port=8000,
+        reload=True,
+        log_level="info"
+    )
+
+
+@app.get("/api/extensions/available")
+async def get_available_extensions():
+    """Obtener extensiones disponibles"""
+    try:
+        # Cargar extensiones desde el archivo
+        import json
+        extensions_file = project_root / "data" / "extensions.json"
+        
+        with open(extensions_file, 'r') as f:
+            extensions = json.load(f)
+        
+        # Filtrar solo las disponibles
+        available = []
+        for ext_num, ext_data in extensions.items():
+            if isinstance(ext_data, dict) and not ext_data.get('assigned', False):
+                available.append(ext_num)
+            elif not isinstance(ext_data, dict):
+                # Formato antiguo, asumir disponible
+                available.append(ext_num)
+        
+        return {
+            "available_extensions": available,
+            "count": len(available)
+        }
+        
+    except Exception as e:
+        logger.error(f"Error obteniendo extensiones disponibles: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.post("/api/agents")
+async def create_agent(agent: AgentCreate):
+    """Crear un nuevo agente"""
+    try:
+        # Crear agente usando el manager
+        agent_data = {
+            "name": agent.name,
+            "email": agent.email,
+            "phone": agent.phone
+        }
+        
+        new_agent = agent_manager.create_agent(**agent_data)
+        
+        # Asegurar que el agente tiene un ID
+        if not new_agent or 'id' not in new_agent:
+            raise HTTPException(status_code=500, detail="Error creando agente: ID no generado")
+        
+        logger.info(f"Agente creado: {new_agent['id']}")
+        return new_agent
+        
+    except Exception as e:
+        logger.error(f"Error creando agente: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+if __name__ == "__main__":
+    main()

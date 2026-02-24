@@ -1,0 +1,15 @@
+=== CONFIGURACIÓN SIP ===
+Extensión: 1007
+Contraseña: zowv3sTu
+Servidor SIP: localhost
+Puerto: 5060
+Transporte: UDP
+Nombre: Agente Prueba 1003
+
+=== INSTRUCCIONES ===
+1. Instala tu aplicación SIP favorita (Zoiper, PortSIP, etc.)
+2. Crea una nueva cuenta SIP
+3. Usa los datos de arriba para configurar la cuenta
+4. Guarda y registra la cuenta
+
+Fecha de generación: 2026-02-19 18:48:48

@@ -1,0 +1,329 @@
+<!-- Archivo: web/templates/dashboard_production.html -->
+<!-- Reemplazar TODO el contenido con este código basado en dashboard_clean.html -->
+
+{% extends "base.html" %}
+
+{% block title %}Dashboard - VoIP Auto Dialer{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <!-- Header del Dashboard -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h2 class="mb-1">Dashboard Profesional</h2>
+                    <p class="text-muted mb-0">Monitoreo en tiempo real del sistema VoIP</p>
+                </div>
+                <div class="d-flex gap-2">
+                    <button class="btn btn-outline-primary btn-sm" onclick="refreshDashboard()">
+                        <i class="fas fa-sync-alt me-1"></i>Actualizar
+                    </button>
+                    <a href="/providers" class="btn btn-primary btn-sm">
+                        <i class="fas fa-cog me-1"></i>Gestionar Proveedores
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tarjetas de Estadísticas -->
+    <div class="row mb-4">
+        <!-- Estado del Sistema -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                Estado del Sistema
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="systemStatus">
+                                {{ realtime_data.system_status }}
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-server fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Total de Agentes -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                Total de Agentes
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="totalAgents">
+                                {{ agent_stats.total }}
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-users fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Extensiones Totales -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                Extensiones
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="totalExtensions">
+                                {{ extension_stats.total }}
+                            </div>
+                            <div class="text-xs text-muted">
+                                {{ extension_stats.assigned }} asignadas
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-phone fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Proveedores -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                Proveedores VoIP
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="totalProviders">
+                                {{ provider_count }}
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-network-wired fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tabla de Agentes -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3 d-flex justify-content-between align-items-center">
+                    <h6 class="m-0 font-weight-bold text-primary">Agentes Registrados</h6>
+                    <a href="/dev/agents" class="btn btn-primary btn-sm">
+                        <i class="fas fa-plus me-1"></i>Gestionar Agentes
+                    </a>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="agentsTable">
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Email</th>
+                                    <th>Teléfono</th>
+                                    <th>Extensión</th>
+                                    <th>Estado</th>
+                                    <th>Creado</th>
+                                </tr>
+                            </thead>
+                            <tbody id="agentsTableBody">
+                                <!-- Se llenará con JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sistema de Auto-Registro -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3 d-flex justify-content-between align-items-center">
+                    <h6 class="m-0 font-weight-bold text-primary">Sistema de Auto-Registro</h6>
+                    <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-success btn-sm" id="startAutoRegister">
+                            <i class="fas fa-play me-1"></i>Iniciar
+                        </button>
+                        <button type="button" class="btn btn-danger btn-sm" id="stopAutoRegister">
+                            <i class="fas fa-stop me-1"></i>Detener
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="text-center">
+                                <div class="text-xs font-weight-bold text-uppercase mb-1">Estado</div>
+                                <div class="h6 mb-0" id="autoRegisterStatus">
+                                    {% if auto_register_status.monitoring %}
+                                        <span class="text-success">Activo</span>
+                                    {% else %}
+                                        <span class="text-danger">Inactivo</span>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="text-center">
+                                <div class="text-xs font-weight-bold text-uppercase mb-1">Softphones</div>
+                                <div class="h6 mb-0" id="registeredEndpoints">
+                                    {{ auto_register_status.registered_endpoints }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="text-center">
+                                <div class="text-xs font-weight-bold text-uppercase mb-1">Última Actualización</div>
+                                <div class="h6 mb-0">
+                                    <small class="text-muted">Hace unos segundos</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// JavaScript simple y funcional
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('Dashboard profesional cargado');
+    
+    // Cargar agentes
+    loadAgents();
+    
+    // Auto-refresh cada 30 segundos
+    setInterval(loadAgents, 30000);
+    
+    // Botones de auto-registro
+    document.getElementById('startAutoRegister')?.addEventListener('click', startAutoRegister);
+    document.getElementById('stopAutoRegister')?.addEventListener('click', stopAutoRegister);
+});
+
+async function loadAgents() {
+    try {
+        const response = await fetch('/api/agents');
+        if (response.ok) {
+            const agentsData = await response.json();
+            
+            // Manejar diferentes formatos de respuesta
+            let agents = [];
+            if (Array.isArray(agentsData)) {
+                agents = agentsData;
+            } else if (agentsData.agents && Array.isArray(agentsData.agents)) {
+                agents = agentsData.agents;
+            } else if (typeof agentsData === 'object') {
+                agents = Object.values(agentsData);
+            }
+            
+            updateAgentsTable(agents);
+            updateAgentCount(agents.length);
+        }
+    } catch (error) {
+        console.error('Error cargando agentes:', error);
+    }
+}
+
+function updateAgentsTable(agents) {
+    const tbody = document.getElementById('agentsTableBody');
+    if (!tbody) return;
+    
+    if (agents.length === 0) {
+        tbody.innerHTML = `
+            <tr>
+                <td colspan="6" class="text-center text-muted">
+                    <i class="fas fa-info-circle me-2"></i>
+                    No hay agentes registrados
+                </td>
+            </tr>
+        `;
+        return;
+    }
+    
+    tbody.innerHTML = agents.map(agent => {
+        const extension = agent.extension_info ? agent.extension_info.extension : 'Sin asignar';
+        const status = agent.status || 'offline';
+        const statusClass = status === 'online' ? 'success' : 'secondary';
+        const createdDate = agent.created_at ? new Date(agent.created_at).toLocaleDateString() : 'N/A';
+        
+        return `
+            <tr>
+                <td><strong>${agent.name}</strong></td>
+                <td>${agent.email}</td>
+                <td>${agent.phone}</td>
+                <td>
+                    ${extension !== 'Sin asignar' ? 
+                        `<span class="badge bg-primary">${extension}</span>` : 
+                        '<span class="text-muted">Sin asignar</span>'
+                    }
+                </td>
+                <td>
+                    <span class="badge bg-${statusClass}">${status}</span>
+                </td>
+                <td><small class="text-muted">${createdDate}</small></td>
+            </tr>
+        `;
+    }).join('');
+}
+
+function updateAgentCount(count) {
+    const totalAgentsElement = document.getElementById('totalAgents');
+    if (totalAgentsElement) {
+        totalAgentsElement.textContent = count;
+    }
+}
+
+async function startAutoRegister() {
+    try {
+        const response = await fetch('/api/auto-register/start', { method: 'POST' });
+        if (response.ok) {
+            document.getElementById('autoRegisterStatus').innerHTML = '<span class="text-success">Activo</span>';
+            showNotification('Sistema de auto-registro iniciado', 'success');
+        }
+    } catch (error) {
+        console.error('Error iniciando auto-registro:', error);
+        showNotification('Error iniciando auto-registro', 'error');
+    }
+}
+
+async function stopAutoRegister() {
+    try {
+        const response = await fetch('/api/auto-register/stop', { method: 'POST' });
+        if (response.ok) {
+            document.getElementById('autoRegisterStatus').innerHTML = '<span class="text-danger">Inactivo</span>';
+            showNotification('Sistema de auto-registro detenido', 'warning');
+        }
+    } catch (error) {
+        console.error('Error deteniendo auto-registro:', error);
+        showNotification('Error deteniendo auto-registro', 'error');
+    }
+}
+
+function refreshDashboard() {
+    location.reload();
+}
+
+function showNotification(message, type) {
+    // Notificación simple
+    alert(message);
+}
+</script>
+{% endblock %}

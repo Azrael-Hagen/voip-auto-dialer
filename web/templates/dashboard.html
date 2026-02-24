@@ -1,0 +1,288 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - VoIP Auto Dialer{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <h1 class="h3 mb-4">
+            <i class="fas fa-tachometer-alt me-2"></i>
+            Dashboard del Sistema
+        </h1>
+        <p class="text-muted">Panel de control del sistema VoIP Auto Dialer</p>
+    </div>
+</div>
+
+<!-- Tarjetas de estadísticas principales -->
+<div class="row g-4 mb-4">
+    <!-- Total Agentes -->
+    <div class="col-xl-2 col-md-4 col-sm-6">
+        <div class="card stat-card h-100">
+            <div class="card-body">
+                <div class="d-flex align-items-center">
+                    <div class="stat-icon bg-success">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="ms-3">
+                        <div class="stat-label">Total Agentes</div>
+                        <div class="stat-value">{{ agent_stats.total }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Agentes Online -->
+    <div class="col-xl-2 col-md-4 col-sm-6">
+        <div class="card stat-card h-100">
+            <div class="card-body">
+                <div class="d-flex align-items-center">
+                    <div class="stat-icon bg-info">
+                        <i class="fas fa-circle"></i>
+                    </div>
+                    <div class="ms-3">
+                        <div class="stat-label">En Línea</div>
+                        <div class="stat-value">{{ agent_stats.online }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Total Campañas -->
+    <div class="col-xl-2 col-md-4 col-sm-6">
+        <div class="card stat-card h-100">
+            <div class="card-body">
+                <div class="d-flex align-items-center">
+                    <div class="stat-icon bg-warning">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <div class="ms-3">
+                        <div class="stat-label">Total Campañas</div>
+                        <div class="stat-value">{{ campaigns|length }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Campañas Activas -->
+    <div class="col-xl-2 col-md-4 col-sm-6">
+        <div class="card stat-card h-100">
+            <div class="card-body">
+                <div class="d-flex align-items-center">
+                    <div class="stat-icon bg-primary">
+                        <i class="fas fa-play"></i>
+                    </div>
+                    <div class="ms-3">
+                        <div class="stat-label">Campañas Activas</div>
+                        <div class="stat-value">
+                            {% set active_campaigns = campaigns.values() | selectattr("status", "equalto", "active") | list %}
+                            {{ active_campaigns|length }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Total Extensiones -->
+    <div class="col-xl-2 col-md-4 col-sm-6">
+        <div class="card stat-card h-100">
+            <div class="card-body">
+                <div class="d-flex align-items-center">
+                    <div class="stat-icon bg-secondary">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div class="ms-3">
+                        <div class="stat-label">Total Extensiones</div>
+                        <div class="stat-value">{{ extension_stats.total_extensions }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Extensiones Asignadas -->
+    <div class="col-xl-2 col-md-4 col-sm-6">
+        <div class="card stat-card h-100">
+            <div class="card-body">
+                <div class="d-flex align-items-center">
+                    <div class="stat-icon bg-success">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <div class="ms-3">
+                        <div class="stat-label">Extensiones Asignadas</div>
+                        <div class="stat-value">{{ extension_stats.assigned_extensions }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Fila adicional para extensiones disponibles -->
+<div class="row g-4 mb-4">
+    <div class="col-xl-2 col-md-4 col-sm-6">
+        <div class="card stat-card h-100">
+            <div class="card-body">
+                <div class="d-flex align-items-center">
+                    <div class="stat-icon bg-info">
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="ms-3">
+                        <div class="stat-label">Disponibles</div>
+                        <div class="stat-value">{{ extension_stats.available_extensions }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botón de gestión -->
+    <div class="col-xl-10 col-md-8 col-sm-6">
+        <div class="card h-100">
+            <div class="card-body d-flex align-items-center justify-content-center">
+                <a href="/agents" class="btn btn-primary btn-lg">
+                    <i class="fas fa-users me-2"></i>
+                    Gestionar Agentes
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Campañas Activas -->
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h5 class="card-title mb-0">
+                    <i class="fas fa-bullhorn me-2"></i>
+                    Campañas Activas
+                </h5>
+            </div>
+            <div class="card-body">
+                {% if campaigns %}
+                    {% for campaign_id, campaign in campaigns.items() if campaign.status == 'active' %}
+                    <div class="campaign-card mb-3">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div>
+                                <h6 class="campaign-title">{{ campaign.name }}</h6>
+                                <p class="campaign-description text-muted">{{ campaign.description }}</p>
+                                <div class="campaign-stats">
+                                    <span class="badge bg-success me-2">{{ campaign.status|upper }}</span>
+                                    <small class="text-muted">
+                                        {{ campaign.numbers_count }} números • 
+                                        {{ campaign.completed_calls }} llamadas completadas • 
+                                        {{ campaign.success_rate }}% éxito
+                                    </small>
+                                </div>
+                            </div>
+                            <div class="campaign-actions">
+                                <button class="btn btn-sm btn-outline-warning me-1">
+                                    <i class="fas fa-pause"></i> Pausar
+                                </button>
+                                <button class="btn btn-sm btn-outline-info">
+                                    <i class="fas fa-eye"></i> Ver
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                {% else %}
+                    <div class="text-center py-4">
+                        <i class="fas fa-bullhorn fa-3x text-muted mb-3"></i>
+                        <h5 class="text-muted">No hay campañas activas</h5>
+                        <p class="text-muted">Crea una nueva campaña para comenzar</p>
+                        <a href="/campaigns" class="btn btn-primary">
+                            <i class="fas fa-plus me-2"></i>
+                            Nueva Campaña
+                        </a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.stat-card {
+    border: none;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    transition: all 0.15s ease-in-out;
+}
+
+.stat-card:hover {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+}
+
+.stat-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+}
+
+.stat-label {
+    font-size: 0.875rem;
+    color: #6c757d;
+    font-weight: 500;
+}
+
+.stat-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #212529;
+}
+
+.campaign-card {
+    border: 1px solid #dee2e6;
+    border-radius: 0.375rem;
+    padding: 1rem;
+    background-color: #f8f9fa;
+}
+
+.campaign-title {
+    color: #495057;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.campaign-description {
+    font-size: 0.875rem;
+    margin-bottom: 0.75rem;
+}
+
+.campaign-stats {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.campaign-actions {
+    display: flex;
+    gap: 0.25rem;
+}
+
+@media (max-width: 768px) {
+    .stat-value {
+        font-size: 1.25rem;
+    }
+    
+    .campaign-card {
+        padding: 0.75rem;
+    }
+    
+    .campaign-actions {
+        margin-top: 0.75rem;
+        width: 100%;
+    }
+}
+</style>
+{% endblock %}

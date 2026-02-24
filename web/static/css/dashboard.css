@@ -1,0 +1,448 @@
+/* ============================================================================
+   VARIABLES CSS GLOBALES
+   ============================================================================ */
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+    --success-color: #28a745;
+    --danger-color: #dc3545;
+    --warning-color: #ffc107;
+    --info-color: #17a2b8;
+    --light-color: #f8f9fa;
+    --dark-color: #343a40;
+    --purple-color: #6f42c1;
+    --pink-color: #e83e8c;
+    --orange-color: #fd7e14;
+    --cyan-color: #20c997;
+    
+    --border-radius: 0.375rem;
+    --box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    --transition: all 0.15s ease-in-out;
+}
+
+/* ============================================================================
+   RESET Y BASE
+   ============================================================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* ============================================================================
+   HEADER Y NAVEGACIÓN
+   ============================================================================ */
+.navbar {
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 1rem 0;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: white !important;
+}
+
+.navbar-nav .nav-link {
+    color: rgba(255,255,255,0.9) !important;
+    font-weight: 500;
+    margin: 0 0.5rem;
+    transition: var(--transition);
+}
+
+.navbar-nav .nav-link:hover {
+    color: white !important;
+    background-color: rgba(255,255,255,0.1);
+    border-radius: var(--border-radius);
+}
+
+.navbar-nav .nav-link.active {
+    color: white !important;
+    background-color: rgba(255,255,255,0.2);
+    border-radius: var(--border-radius);
+}
+
+/* ============================================================================
+   TARJETAS DE ESTADÍSTICAS
+   ============================================================================ */
+.stats-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    box-shadow: var(--box-shadow);
+    transition: var(--transition);
+    border-left: 4px solid var(--primary-color);
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.stat-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.stat-card-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--secondary-color);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.stat-card-icon {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    color: white;
+}
+
+.stat-card-value {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--dark-color);
+    margin-bottom: 0.25rem;
+}
+
+.stat-card-description {
+    font-size: 0.875rem;
+    color: var(--secondary-color);
+}
+
+/* Colores específicos para diferentes tipos de tarjetas */
+.stat-card.agents { border-left-color: var(--success-color); }
+.stat-card.agents .stat-card-icon { background-color: var(--success-color); }
+
+.stat-card.online { border-left-color: var(--info-color); }
+.stat-card.online .stat-card-icon { background-color: var(--info-color); }
+
+.stat-card.campaigns { border-left-color: var(--warning-color); }
+.stat-card.campaigns .stat-card-icon { background-color: var(--warning-color); }
+
+.stat-card.extensions { border-left-color: var(--purple-color); }
+.stat-card.extensions .stat-card-icon { background-color: var(--purple-color); }
+
+/* ============================================================================
+   TABLAS
+   ============================================================================ */
+.table-container {
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    overflow: visible;
+    position: relative;
+}
+
+.table-header {
+    background: linear-gradient(135deg, var(--purple-color) 0%, #5a32a3 100%);
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+    margin-bottom: 0;
+}
+
+.table-responsive {
+    overflow: visible !important;
+    position: relative;
+}
+
+.table {
+    margin-bottom: 0;
+}
+
+.table th {
+    background-color: #f8f9fa;
+    border-top: none;
+    font-weight: 600;
+    color: var(--dark-color);
+    padding: 1rem 0.75rem;
+}
+
+.table td {
+    padding: 1rem 0.75rem;
+    vertical-align: middle;
+    border-top: 1px solid #dee2e6;
+}
+
+/* ============================================================================
+   BADGES Y ESTADOS
+   ============================================================================ */
+.badge {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.375rem 0.75rem;
+    border-radius: 0.25rem;
+}
+
+.badge.status-online { background-color: var(--success-color); }
+.badge.status-offline { background-color: var(--secondary-color); }
+.badge.status-busy { background-color: var(--warning-color); }
+.badge.status-unknown { background-color: var(--info-color); }
+
+/* ============================================================================
+   BOTONES
+   ============================================================================ */
+.btn {
+    border-radius: var(--border-radius);
+    font-weight: 500;
+    transition: var(--transition);
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    transform: translateY(-1px);
+}
+
+.btn-success {
+    background-color: var(--success-color);
+    color: white;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+}
+
+.btn-outline-primary {
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    background-color: transparent;
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* ============================================================================
+   DROPDOWNS - CORRECCIÓN CRÍTICA PARA TABLAS
+   ============================================================================ */
+
+/* Contenedor dropdown en tablas */
+.table .dropdown {
+    position: relative !important;
+}
+
+/* Botón dropdown */
+.table .dropdown-toggle {
+    position: relative;
+    z-index: 1;
+    border: none;
+    background: var(--primary-color);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius);
+    font-size: 0.875rem;
+    transition: var(--transition);
+}
+
+.table .dropdown-toggle:hover {
+    background-color: #0056b3;
+    transform: translateY(-1px);
+}
+
+.table .dropdown-toggle::after {
+    margin-left: 0.5rem;
+}
+
+/* Menú dropdown - CONFIGURACIÓN CRÍTICA */
+.table .dropdown-menu {
+    position: absolute !important;
+    top: 100% !important;
+    left: 0 !important;
+    z-index: 9999 !important;
+    display: none;
+    min-width: 200px !important;
+    padding: 0.5rem 0;
+    margin: 0.125rem 0 0;
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: var(--border-radius);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.175);
+    transform: none !important;
+}
+
+/* Dropdown visible */
+.table .dropdown-menu.show {
+    display: block !important;
+    position: absolute !important;
+    z-index: 9999 !important;
+}
+
+/* Items del dropdown */
+.table .dropdown-item {
+    display: block;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    clear: both;
+    font-weight: 400;
+    color: #212529;
+    text-align: inherit;
+    text-decoration: none;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
+    font-size: 0.875rem;
+    transition: var(--transition);
+}
+
+.table .dropdown-item:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.table .dropdown-item i {
+    width: 16px;
+    text-align: center;
+    margin-right: 0.5rem;
+}
+
+/* ============================================================================
+   FORMULARIOS
+   ============================================================================ */
+.form-control {
+    border-radius: var(--border-radius);
+    border: 1px solid #ced4da;
+    padding: 0.5rem 0.75rem;
+    transition: var(--transition);
+}
+
+.form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* ============================================================================
+   UTILIDADES
+   ============================================================================ */
+.fade-in-up {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.text-muted {
+    color: var(--secondary-color) !important;
+}
+
+.mb-4 { margin-bottom: 1.5rem !important; }
+.mb-3 { margin-bottom: 1rem !important; }
+.mb-2 { margin-bottom: 0.5rem !important; }
+.me-2 { margin-right: 0.5rem !important; }
+
+/* ============================================================================
+   RESPONSIVE
+   ============================================================================ */
+@media (max-width: 768px) {
+    .stats-cards {
+        grid-template-columns: 1fr;
+    }
+    
+    .table-responsive {
+        font-size: 0.875rem;
+    }
+    
+    .btn {
+        font-size: 0.875rem;
+        padding: 0.375rem 0.75rem;
+    }
+}
+
+/* ============================================================================
+   CORRECCIONES FINALES PARA DROPDOWNS EN TABLAS
+   ============================================================================ */
+
+/* Contenedor de tabla con overflow controlado */
+.table-responsive {
+    overflow: visible !important;
+    position: relative;
+}
+
+/* Dropdown en celdas de tabla */
+.table .dropdown {
+    position: relative !important;
+}
+
+/* Menú dropdown con posicionamiento correcto */
+.table .dropdown-menu {
+    position: absolute !important;
+    z-index: 9999 !important;
+    top: 100% !important;
+    left: 0 !important;
+    transform: none !important;
+    margin-top: 2px !important;
+    min-width: 200px !important;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Dropdown cuando está visible */
+.table .dropdown-menu.show {
+    position: absolute !important;
+    z-index: 9999 !important;
+    display: block !important;
+}
+
+/* Botón dropdown */
+.table .dropdown-toggle {
+    position: relative;
+    z-index: 1;
+}
+
+/* Items del dropdown */
+.table .dropdown-item {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    transition: all 0.2s ease;
+}
+
+.table .dropdown-item:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Iconos en dropdown items */
+.table .dropdown-item i {
+    width: 16px;
+    text-align: center;
+    margin-right: 0.5rem;
+}
