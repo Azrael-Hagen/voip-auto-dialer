@@ -1,0 +1,5 @@
+print(6)
+
+def install():
+    """Stub for the original apport install function."""
+    pass

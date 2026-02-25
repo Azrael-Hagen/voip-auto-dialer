@@ -334,13 +334,63 @@ async function deleteProvider(providerId) {
 }
 
 function editProvider(providerId) {
-    // Por implementar
-    showNotification('Función de edición en desarrollo', 'info');
+    // Obtener datos del formulario de edición
+    const name = document.getElementById("editName").value;
+    const host = document.getElementById("editHost").value;
+    const port = parseInt(document.getElementById("editPort").value);
+    const username = document.getElementById("editUsername").value;
+    const password = document.getElementById("editPassword").value;
+    const type = document.getElementById("editType").value;
+    const context = document.getElementById("editContext").value;
+    const active = document.getElementById("editActive").checked;
+
+    const providerData = {
+        name,
+        host,
+        port,
+        username,
+        password,
+        type,
+        context,
+        active
+    };
+
+    fetch(`/api/providers/${providerId}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(providerData)
+    })
+    .then(response => {
+        if (!response.ok) throw new Error("Error al actualizar proveedor");
+        return response.json();
+    })
+    .then(updatedProvider => {
+        showNotification(`Proveedor ${updatedProvider.name} actualizado correctamente`, "success");
+        refreshProviders();
+    })
+    .catch(error => {
+        console.error(error);
+        showNotification("No se pudo actualizar el proveedor", "error");
+    });
 }
 
-function testConnection() {
-    // Por implementar
-    showNotification('Prueba de conexión en desarrollo', 'info');
+
+function testConnection(providerId) {
+    fetch(`/api/providers/${providerId}/test`, {
+        method: "POST"
+    })
+    .then(response => {
+        if (!response.ok) throw new Error("Error al probar conexión");
+        return response.json();
+    })
+    .then(result => {
+        showNotification(`Resultado de prueba: ${result.status}`, "info");
+        refreshProviders();
+    })
+    .catch(error => {
+        console.error(error);
+        showNotification("No se pudo probar la conexión", "error");
+    });
 }
 
 function refreshProviders() {
