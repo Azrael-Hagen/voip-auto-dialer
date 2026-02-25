@@ -1,0 +1,34 @@
+{
+  "timestamp": "2026-02-24T20:57:18.689665",
+  "files_removed": [
+    "setup_complete_voip_system.py",
+    "scripts/analyze_web_system.py",
+    "scripts/debug_dashboard.py",
+    "scripts/debug_extension_issue.py",
+    "scripts/diagnose_current_state.py",
+    "scripts/diagnose_frontend.py",
+    "scripts/diagnose_server_code.py",
+    "scripts/fix_extension_assignment.py",
+    "scripts/fix_extension_format_mismatch.py",
+    "scripts/fix_pjsip_includes.py",
+    "scripts/fix_remaining_server_errors.py",
+    "scripts/fix_web_server_errors.py",
+    "scripts/get_extension_credentials.py",
+    "scripts/test_manual_load.py",
+    "scripts/test_production_system.py",
+    "scripts/test_web_interface.py",
+    "scripts/verify_fix.py",
+    "scripts/verify_pjsip_syntax.py",
+    "core/agent_manager_clean.py.backup",
+    "core/extension_manager.py.backup_20260223_144512",
+    "web/main.py.backup_20260223_144512",
+    "web/main.py.backup_20260223_150731",
+    "web/main.py.backup_minimal_20260223_151158",
+    "data/extensions.json.backup_20260223_150452"
+  ],
+  "dirs_removed": [
+    "asterisk_backup_20260221_235028"
+  ],
+  "files_count": 24,
+  "dirs_count": 0
+}
