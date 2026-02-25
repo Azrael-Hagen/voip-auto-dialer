@@ -1,406 +1,744 @@
-{% extends "base.html" %}
 
-{% block title %}Gestión de Proveedores - VoIP Auto Dialer{% endblock %}
-
-{% block content %}
-<div class="container-fluid">
-    <!-- Header de la página -->
-    <div class="page-header">
-        <div class="d-flex justify-content-between align-items-center">
-            <div>
-                <h2 class="mb-1">Gestión de Proveedores VoIP</h2>
-                <p class="text-muted mb-0">Configuración y administración de proveedores de telefonía</p>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Proveedores - VoIP Auto Dialer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .border-left-primary { border-left: 4px solid #4e73df !important; }
+        .border-left-success { border-left: 4px solid #1cc88a !important; }
+        .border-left-info { border-left: 4px solid #36b9cc !important; }
+        .border-left-warning { border-left: 4px solid #f6c23e !important; }
+        .text-gray-800 { color: #5a5c69 !important; }
+        .text-gray-300 { color: #dddfeb !important; }
+        .page-header { margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid #e3e6f0; }
+        .status-badge { font-size: 0.75rem; }
+        .provider-actions { white-space: nowrap; }
+        .connection-status { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 5px; }
+        .connection-status.connected { background-color: #28a745; }
+        .connection-status.disconnected { background-color: #dc3545; }
+        .connection-status.testing { background-color: #ffc107; animation: pulse 1s infinite; }
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
+        .modal-header { background-color: #f8f9fc; border-bottom: 1px solid #e3e6f0; }
+        .form-floating > label { color: #6c757d; }
+        .toast-container { position: fixed; top: 20px; right: 20px; z-index: 1055; }
+    </style>
+</head>
+<body>
+    <div class="container-fluid py-4">
+        <!-- Header de la página -->
+        <div class="page-header">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h2 class="mb-1">
+                        <i class="fas fa-network-wired text-primary me-2"></i>
+                        Gestión de Proveedores VoIP
+                    </h2>
+                    <p class="text-muted mb-0">Configuración y administración de proveedores de telefonía</p>
+                </div>
+                <div class="d-flex gap-2">
+                    <button class="btn btn-outline-primary btn-sm" onclick="refreshProviders()">
+                        <i class="fas fa-sync-alt me-1"></i>Actualizar
+                    </button>
+                    <button class="btn btn-primary btn-sm" onclick="showAddProviderModal()">
+                        <i class="fas fa-plus me-1"></i>Nuevo Proveedor
+                    </button>
+                    <a href="/" class="btn btn-secondary btn-sm">
+                        <i class="fas fa-arrow-left me-1"></i>Dashboard
+                    </a>
+                </div>
             </div>
-            <div class="d-flex gap-2">
-                <button class="btn btn-outline-primary btn-sm" onclick="refreshProviders()">
-                    <i class="fas fa-sync-alt me-1"></i>Actualizar
-                </button>
-                <a href="/" class="btn btn-secondary btn-sm">
-                    <i class="fas fa-arrow-left me-1"></i>Volver al Dashboard
-                </a>
+        </div>
+
+        <!-- Tarjetas de estadísticas -->
+        <div class="row mb-4">
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-primary shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                    Total Proveedores
+                                </div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800" id="totalProviders">0</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-network-wired fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-success shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                    Conectados
+                                </div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800" id="connectedProviders">0</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-check-circle fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-info shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                    Canales Disponibles
+                                </div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800" id="availableChannels">0</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-phone-alt fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-warning shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                    Llamadas Hoy
+                                </div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800" id="todayCalls">0</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-chart-line fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lista de proveedores -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card shadow">
+                    <div class="card-header py-3 d-flex justify-content-between align-items-center">
+                        <h6 class="m-0 font-weight-bold text-primary">Proveedores Configurados</h6>
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-sm btn-outline-secondary" onclick="exportProviders()">
+                                <i class="fas fa-download me-1"></i>Exportar
+                            </button>
+                            <button class="btn btn-sm btn-outline-info" onclick="testAllConnections()">
+                                <i class="fas fa-plug me-1"></i>Probar Todos
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover" id="providersTable">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Estado</th>
+                                        <th>Proveedor</th>
+                                        <th>Servidor</th>
+                                        <th>Puerto</th>
+                                        <th>Usuario</th>
+                                        <th>Tipo</th>
+                                        <th>Canales</th>
+                                        <th>Última Prueba</th>
+                                        <th class="text-center">Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="providersTableBody">
+                                    <tr>
+                                        <td colspan="9" class="text-center py-4">
+                                            <div class="spinner-border text-primary" role="status">
+                                                <span class="visually-hidden">Cargando...</span>
+                                            </div>
+                                            <p class="mt-2 text-muted">Cargando proveedores...</p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- Tarjetas de estadísticas -->
-    <div class="row mb-4">
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-primary shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Total Proveedores
-                            </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="totalProviders">
-                                0
-                            </div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-network-wired fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
+    <!-- Modal para agregar/editar proveedor -->
+    <div class="modal fade" id="providerModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="providerModalTitle">
+                        <i class="fas fa-plus-circle me-2"></i>Nuevo Proveedor VoIP
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
-            </div>
-        </div>
-
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-success shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                Proveedores Activos
-                            </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="activeProviders">
-                                0
-                            </div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-check-circle fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-info shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                                Conexiones Disponibles
-                            </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="availableConnections">
-                                0
-                            </div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-phone-alt fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-warning shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                Llamadas Realizadas
-                            </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="totalCalls">
-                                0
-                            </div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-chart-line fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Formulario para agregar proveedor -->
-    <div class="row mb-4">
-        <div class="col-12">
-            <div class="card shadow">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Agregar Nuevo Proveedor VoIP</h6>
-                </div>
-                <div class="card-body">
+                <div class="modal-body">
                     <form id="providerForm">
-                        <div class="row">
+                        <input type="hidden" id="providerId">
+                        
+                        <!-- Información básica -->
+                        <div class="row mb-3">
                             <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label for="providerName" class="form-label">Nombre del Proveedor</label>
-                                    <input type="text" class="form-control" id="providerName" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="providerHost" class="form-label">Servidor SIP</label>
-                                    <input type="text" class="form-control" id="providerHost" placeholder="sip.proveedor.com" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="providerPort" class="form-label">Puerto</label>
-                                    <input type="number" class="form-control" id="providerPort" value="5060" required>
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="providerName" placeholder="Nombre" required>
+                                    <label for="providerName">Nombre del Proveedor</label>
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label for="providerUsername" class="form-label">Usuario</label>
-                                    <input type="text" class="form-control" id="providerUsername" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="providerPassword" class="form-label">Contraseña</label>
-                                    <input type="password" class="form-control" id="providerPassword" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="providerType" class="form-label">Tipo de Proveedor</label>
-                                    <select class="form-control" id="providerType" required>
+                                <div class="form-floating">
+                                    <select class="form-select" id="providerType" required>
                                         <option value="">Seleccionar tipo</option>
                                         <option value="sip">SIP Estándar</option>
                                         <option value="trunk">Trunk SIP</option>
                                         <option value="peer">Peer SIP</option>
+                                        <option value="register">Register SIP</option>
                                     </select>
+                                    <label for="providerType">Tipo de Proveedor</label>
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <button type="submit" class="btn btn-primary">
-                                    <i class="fas fa-plus me-1"></i>Agregar Proveedor
-                                </button>
-                                <button type="button" class="btn btn-secondary ms-2" onclick="testConnection()">
-                                    <i class="fas fa-plug me-1"></i>Probar Conexión
-                                </button>
+
+                        <!-- Configuración de conexión -->
+                        <div class="row mb-3">
+                            <div class="col-md-8">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="providerHost" placeholder="sip.proveedor.com" required>
+                                    <label for="providerHost">Servidor SIP</label>
+                                </div>
                             </div>
+                            <div class="col-md-4">
+                                <div class="form-floating">
+                                    <input type="number" class="form-control" id="providerPort" value="5060" min="1" max="65535" required>
+                                    <label for="providerPort">Puerto</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Credenciales -->
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="providerUsername" placeholder="usuario" required>
+                                    <label for="providerUsername">Usuario</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="password" class="form-control" id="providerPassword" placeholder="contraseña" required>
+                                    <label for="providerPassword">Contraseña</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Configuración avanzada -->
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <select class="form-select" id="providerTransport">
+                                        <option value="UDP">UDP</option>
+                                        <option value="TCP">TCP</option>
+                                        <option value="TLS">TLS</option>
+                                    </select>
+                                    <label for="providerTransport">Transporte</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="providerContext" value="from-trunk" placeholder="from-trunk">
+                                    <label for="providerContext">Contexto</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Configuración adicional -->
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="number" class="form-control" id="providerChannels" value="10" min="1" max="100">
+                                    <label for="providerChannels">Canales Simultáneos</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="providerCodec" value="ulaw,alaw,gsm" placeholder="ulaw,alaw,gsm">
+                                    <label for="providerCodec">Códecs</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Descripción -->
+                        <div class="mb-3">
+                            <div class="form-floating">
+                                <textarea class="form-control" id="providerDescription" style="height: 80px" placeholder="Descripción opcional"></textarea>
+                                <label for="providerDescription">Descripción</label>
+                            </div>
+                        </div>
+
+                        <!-- Estado activo -->
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="checkbox" id="providerActive" checked>
+                            <label class="form-check-label" for="providerActive">
+                                Activar proveedor inmediatamente
+                            </label>
                         </div>
                     </form>
                 </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-outline-info" onclick="testProviderConnection()">
+                        <i class="fas fa-plug me-1"></i>Probar Conexión
+                    </button>
+                    <button type="button" class="btn btn-primary" onclick="saveProvider()">
+                        <i class="fas fa-save me-1"></i>Guardar Proveedor
+                    </button>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- Lista de proveedores -->
-    <div class="row">
-        <div class="col-12">
-            <div class="card shadow">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Proveedores Configurados</h6>
-                </div>
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-bordered" id="providersTable">
-                            <thead>
-                                <tr>
-                                    <th>Nombre</th>
-                                    <th>Servidor</th>
-                                    <th>Puerto</th>
-                                    <th>Usuario</th>
-                                    <th>Tipo</th>
-                                    <th>Estado</th>
-                                    <th>Creado</th>
-                                    <th>Acciones</th>
-                                </tr>
-                            </thead>
-                            <tbody id="providersTableBody">
-                                <!-- Se llenará con JavaScript -->
-                            </tbody>
-                        </table>
+    <!-- Toast container para notificaciones -->
+    <div class="toast-container"></div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        let currentProviders = {};
+        let editingProviderId = null;
+
+        // Inicialización
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Página de proveedores cargada');
+            loadProviders();
+            
+            // Configurar formulario
+            document.getElementById('providerForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                saveProvider();
+            });
+        });
+
+        // Cargar proveedores
+        async function loadProviders() {
+            try {
+                showLoading(true);
+                const response = await fetch('/api/providers');
+                
+                if (response.ok) {
+                    const providers = await response.json();
+                    currentProviders = providers;
+                    updateProvidersTable(providers);
+                    updateProviderStats(providers);
+                } else {
+                    throw new Error('Error al cargar proveedores');
+                }
+            } catch (error) {
+                console.error('Error cargando proveedores:', error);
+                showToast('Error cargando proveedores', 'error');
+                showEmptyTable();
+            } finally {
+                showLoading(false);
+            }
+        }
+
+        // Actualizar tabla de proveedores
+        function updateProvidersTable(providers) {
+            const tbody = document.getElementById('providersTableBody');
+            if (!tbody) return;
+            
+            const providerArray = Array.isArray(providers) ? providers : Object.values(providers);
+            
+            if (providerArray.length === 0) {
+                showEmptyTable();
+                return;
+            }
+            
+            tbody.innerHTML = providerArray.map(provider => {
+                const status = provider.status || 'disconnected';
+                const statusClass = status === 'connected' ? 'connected' : 'disconnected';
+                const statusText = status === 'connected' ? 'Conectado' : 'Desconectado';
+                const lastTest = provider.last_test ? new Date(provider.last_test).toLocaleString() : 'Nunca';
+                const channels = provider.channels || 10;
+                
+                return `
+                    <tr>
+                        <td>
+                            <span class="connection-status ${statusClass}"></span>
+                            <small class="text-muted">${statusText}</small>
+                        </td>
+                        <td>
+                            <strong>${provider.name}</strong>
+                            ${provider.description ? `<br><small class="text-muted">${provider.description}</small>` : ''}
+                        </td>
+                        <td><code>${provider.host}</code></td>
+                        <td><span class="badge bg-secondary">${provider.port}</span></td>
+                        <td><code>${provider.username}</code></td>
+                        <td><span class="badge bg-info">${provider.type}</span></td>
+                        <td><span class="badge bg-primary">${channels}</span></td>
+                        <td><small class="text-muted">${lastTest}</small></td>
+                        <td class="text-center provider-actions">
+                            <div class="btn-group btn-group-sm" role="group">
+                                <button class="btn btn-outline-primary" onclick="editProvider('${provider.id}')" title="Editar">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="btn btn-outline-info" onclick="testConnection('${provider.id}')" title="Probar">
+                                    <i class="fas fa-plug"></i>
+                                </button>
+                                <button class="btn btn-outline-${status === 'connected' ? 'warning' : 'success'}" 
+                                        onclick="toggleProvider('${provider.id}')" 
+                                        title="${status === 'connected' ? 'Desconectar' : 'Conectar'}">
+                                    <i class="fas fa-power-off"></i>
+                                </button>
+                                <button class="btn btn-outline-danger" onclick="deleteProvider('${provider.id}')" title="Eliminar">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        // Mostrar tabla vacía
+        function showEmptyTable() {
+            const tbody = document.getElementById('providersTableBody');
+            tbody.innerHTML = `
+                <tr>
+                    <td colspan="9" class="text-center py-5">
+                        <i class="fas fa-network-wired fa-3x text-muted mb-3"></i>
+                        <h5 class="text-muted">No hay proveedores configurados</h5>
+                        <p class="text-muted">Agrega tu primer proveedor VoIP para comenzar</p>
+                        <button class="btn btn-primary" onclick="showAddProviderModal()">
+                            <i class="fas fa-plus me-1"></i>Agregar Proveedor
+                        </button>
+                    </td>
+                </tr>
+            `;
+        }
+
+        // Actualizar estadísticas
+        function updateProviderStats(providers) {
+            const providerArray = Array.isArray(providers) ? providers : Object.values(providers);
+            const total = providerArray.length;
+            const connected = providerArray.filter(p => p.status === 'connected').length;
+            const totalChannels = providerArray.reduce((sum, p) => sum + (p.channels || 10), 0);
+            
+            document.getElementById('totalProviders').textContent = total;
+            document.getElementById('connectedProviders').textContent = connected;
+            document.getElementById('availableChannels').textContent = totalChannels;
+            document.getElementById('todayCalls').textContent = '0'; // Por implementar
+        }
+
+        // Mostrar modal para agregar proveedor
+        function showAddProviderModal() {
+            editingProviderId = null;
+            document.getElementById('providerModalTitle').innerHTML = '<i class="fas fa-plus-circle me-2"></i>Nuevo Proveedor VoIP';
+            document.getElementById('providerForm').reset();
+            document.getElementById('providerId').value = '';
+            document.getElementById('providerPort').value = '5060';
+            document.getElementById('providerTransport').value = 'UDP';
+            document.getElementById('providerContext').value = 'from-trunk';
+            document.getElementById('providerChannels').value = '10';
+            document.getElementById('providerCodec').value = 'ulaw,alaw,gsm';
+            document.getElementById('providerActive').checked = true;
+            
+            const modal = new bootstrap.Modal(document.getElementById('providerModal'));
+            modal.show();
+        }
+
+        // Editar proveedor
+        function editProvider(providerId) {
+            const provider = currentProviders[providerId];
+            if (!provider) {
+                showToast('Proveedor no encontrado', 'error');
+                return;
+            }
+            
+            editingProviderId = providerId;
+            document.getElementById('providerModalTitle').innerHTML = '<i class="fas fa-edit me-2"></i>Editar Proveedor';
+            
+            // Llenar formulario
+            document.getElementById('providerId').value = providerId;
+            document.getElementById('providerName').value = provider.name || '';
+            document.getElementById('providerType').value = provider.type || '';
+            document.getElementById('providerHost').value = provider.host || '';
+            document.getElementById('providerPort').value = provider.port || 5060;
+            document.getElementById('providerUsername').value = provider.username || '';
+            document.getElementById('providerPassword').value = provider.password || '';
+            document.getElementById('providerTransport').value = provider.transport || 'UDP';
+            document.getElementById('providerContext').value = provider.context || 'from-trunk';
+            document.getElementById('providerChannels').value = provider.channels || 10;
+            document.getElementById('providerCodec').value = provider.codec || 'ulaw,alaw,gsm';
+            document.getElementById('providerDescription').value = provider.description || '';
+            document.getElementById('providerActive').checked = provider.active !== false;
+            
+            const modal = new bootstrap.Modal(document.getElementById('providerModal'));
+            modal.show();
+        }
+
+        // Guardar proveedor
+        async function saveProvider() {
+            const formData = {
+                name: document.getElementById('providerName').value,
+                type: document.getElementById('providerType').value,
+                host: document.getElementById('providerHost').value,
+                port: parseInt(document.getElementById('providerPort').value),
+                username: document.getElementById('providerUsername').value,
+                password: document.getElementById('providerPassword').value,
+                transport: document.getElementById('providerTransport').value,
+                context: document.getElementById('providerContext').value,
+                channels: parseInt(document.getElementById('providerChannels').value),
+                codec: document.getElementById('providerCodec').value,
+                description: document.getElementById('providerDescription').value,
+                active: document.getElementById('providerActive').checked
+            };
+            
+            try {
+                const url = editingProviderId ? `/api/providers/${editingProviderId}` : '/api/providers';
+                const method = editingProviderId ? 'PUT' : 'POST';
+                
+                const response = await fetch(url, {
+                    method: method,
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData)
+                });
+                
+                if (response.ok) {
+                    const result = await response.json();
+                    showToast(`Proveedor ${editingProviderId ? 'actualizado' : 'creado'} exitosamente`, 'success');
+                    bootstrap.Modal.getInstance(document.getElementById('providerModal')).hide();
+                    loadProviders();
+                } else {
+                    const error = await response.json();
+                    throw new Error(error.detail || 'Error al guardar proveedor');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                showToast(error.message, 'error');
+            }
+        }
+
+        // Probar conexión
+        async function testConnection(providerId) {
+            try {
+                // Mostrar estado de prueba
+                updateProviderTestStatus(providerId, 'testing');
+                
+                const response = await fetch(`/api/providers/${providerId}/test`, {
+                    method: 'POST'
+                });
+                
+                if (response.ok) {
+                    const result = await response.json();
+                    showToast(`Prueba de conexión: ${result.status}`, result.success ? 'success' : 'warning');
+                    loadProviders(); // Recargar para actualizar estado
+                } else {
+                    throw new Error('Error en la prueba de conexión');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                showToast('Error probando conexión', 'error');
+                updateProviderTestStatus(providerId, 'disconnected');
+            }
+        }
+
+        // Actualizar estado de prueba visual
+        function updateProviderTestStatus(providerId, status) {
+            const rows = document.querySelectorAll('#providersTableBody tr');
+            rows.forEach(row => {
+                const buttons = row.querySelectorAll('button[onclick*="' + providerId + '"]');
+                if (buttons.length > 0) {
+                    const statusElement = row.querySelector('.connection-status');
+                    if (statusElement) {
+                        statusElement.className = `connection-status ${status}`;
+                    }
+                }
+            });
+        }
+
+        // Alternar estado del proveedor
+        async function toggleProvider(providerId) {
+            try {
+                const response = await fetch(`/api/providers/${providerId}/toggle`, {
+                    method: 'POST'
+                });
+                
+                if (response.ok) {
+                    const result = await response.json();
+                    showToast(result.message, 'success');
+                    loadProviders();
+                } else {
+                    throw new Error('Error al cambiar estado del proveedor');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                showToast('Error al cambiar estado', 'error');
+            }
+        }
+
+        // Eliminar proveedor
+        async function deleteProvider(providerId) {
+            const provider = currentProviders[providerId];
+            if (!provider) return;
+            
+            if (!confirm(`¿Estás seguro de que quieres eliminar el proveedor "${provider.name}"?\n\nEsta acción no se puede deshacer.`)) {
+                return;
+            }
+            
+            try {
+                const response = await fetch(`/api/providers/${providerId}`, {
+                    method: 'DELETE'
+                });
+                
+                if (response.ok) {
+                    showToast('Proveedor eliminado exitosamente', 'success');
+                    loadProviders();
+                } else {
+                    throw new Error('Error al eliminar proveedor');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                showToast('Error eliminando proveedor', 'error');
+            }
+        }
+
+        // Probar conexión desde modal
+        async function testProviderConnection() {
+            const formData = {
+                name: document.getElementById('providerName').value,
+                type: document.getElementById('providerType').value,
+                host: document.getElementById('providerHost').value,
+                port: parseInt(document.getElementById('providerPort').value),
+                username: document.getElementById('providerUsername').value,
+                password: document.getElementById('providerPassword').value,
+                transport: document.getElementById('providerTransport').value
+            };
+            
+            // Validar campos requeridos
+            if (!formData.name || !formData.host || !formData.username) {
+                showToast('Complete los campos requeridos para probar la conexión', 'warning');
+                return;
+            }
+            
+            try {
+                showToast('Probando conexión...', 'info');
+                
+                // Simular prueba de conexión (implementar según API)
+                const response = await fetch('/api/providers/test-connection', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData)
+                });
+                
+                if (response.ok) {
+                    const result = await response.json();
+                    showToast(`Conexión ${result.success ? 'exitosa' : 'fallida'}: ${result.message}`, 
+                             result.success ? 'success' : 'error');
+                } else {
+                    showToast('Error en la prueba de conexión', 'error');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                showToast('Error probando conexión', 'error');
+            }
+        }
+
+        // Probar todas las conexiones
+        async function testAllConnections() {
+            const providerArray = Object.values(currentProviders);
+            if (providerArray.length === 0) {
+                showToast('No hay proveedores para probar', 'warning');
+                return;
+            }
+            
+            showToast(`Probando ${providerArray.length} proveedores...`, 'info');
+            
+            for (const provider of providerArray) {
+                await testConnection(provider.id);
+                // Pequeña pausa entre pruebas
+                await new Promise(resolve => setTimeout(resolve, 1000));
+            }
+        }
+
+        // Exportar proveedores
+        function exportProviders() {
+            const dataStr = JSON.stringify(currentProviders, null, 2);
+            const dataBlob = new Blob([dataStr], {type: 'application/json'});
+            const url = URL.createObjectURL(dataBlob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `proveedores_voip_${new Date().toISOString().split('T')[0]}.json`;
+            link.click();
+            URL.revokeObjectURL(url);
+            showToast('Proveedores exportados', 'success');
+        }
+
+        // Refrescar proveedores
+        function refreshProviders() {
+            loadProviders();
+            showToast('Proveedores actualizados', 'info');
+        }
+
+        // Mostrar/ocultar loading
+        function showLoading(show) {
+            // Implementar indicador de carga si es necesario
+        }
+
+        // Sistema de notificaciones toast
+        function showToast(message, type = 'info') {
+            const toastContainer = document.querySelector('.toast-container');
+            const toastId = 'toast-' + Date.now();
+            
+            const bgClass = {
+                'success': 'bg-success',
+                'error': 'bg-danger',
+                'warning': 'bg-warning',
+                'info': 'bg-info'
+            }[type] || 'bg-info';
+            
+            const icon = {
+                'success': 'fa-check-circle',
+                'error': 'fa-exclamation-circle',
+                'warning': 'fa-exclamation-triangle',
+                'info': 'fa-info-circle'
+            }[type] || 'fa-info-circle';
+            
+            const toastHtml = `
+                <div id="${toastId}" class="toast align-items-center text-white ${bgClass} border-0" role="alert">
+                    <div class="d-flex">
+                        <div class="toast-body">
+                            <i class="fas ${icon} me-2"></i>${message}
+                        </div>
+                        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('Página de proveedores cargada');
-    loadProviders();
-    
-    // Configurar formulario
-    document.getElementById('providerForm').addEventListener('submit', handleProviderSubmit);
-});
-
-async function loadProviders() {
-    try {
-        const response = await fetch('/api/providers');
-        if (response.ok) {
-            const providers = await response.json();
-            updateProvidersTable(providers);
-            updateProviderStats(providers);
+            `;
+            
+            toastContainer.insertAdjacentHTML('beforeend', toastHtml);
+            const toastElement = document.getElementById(toastId);
+            const toast = new bootstrap.Toast(toastElement, { delay: 4000 });
+            toast.show();
+            
+            // Limpiar después de mostrar
+            toastElement.addEventListener('hidden.bs.toast', () => {
+                toastElement.remove();
+            });
         }
-    } catch (error) {
-        console.error('Error cargando proveedores:', error);
-        showNotification('Error cargando proveedores', 'error');
-    }
-}
+    </script>
+</body>
+</html>
 
-function updateProvidersTable(providers) {
-    const tbody = document.getElementById('providersTableBody');
-    if (!tbody) return;
-    
-    const providerArray = Array.isArray(providers) ? providers : Object.values(providers);
-    
-    if (providerArray.length === 0) {
-        tbody.innerHTML = `
-            <tr>
-                <td colspan="8" class="text-center text-muted">
-                    <i class="fas fa-info-circle me-2"></i>
-                    No hay proveedores configurados
-                </td>
-            </tr>
-        `;
-        return;
-    }
-    
-    tbody.innerHTML = providerArray.map(provider => {
-        const status = provider.status || 'inactive';
-        const statusClass = status === 'active' ? 'success' : 'secondary';
-        const createdDate = provider.created_at ? new Date(provider.created_at).toLocaleDateString() : 'N/A';
-        
-        return `
-            <tr>
-                <td><strong>${provider.name}</strong></td>
-                <td>${provider.host}</td>
-                <td>${provider.port}</td>
-                <td>${provider.username}</td>
-                <td><span class="badge bg-info">${provider.type}</span></td>
-                <td><span class="badge bg-${statusClass}">${status}</span></td>
-                <td><small class="text-muted">${createdDate}</small></td>
-                <td>
-                    <button class="btn btn-sm btn-outline-primary" onclick="editProvider('${provider.id}')">
-                        <i class="fas fa-edit"></i>
-                    </button>
-                    <button class="btn btn-sm btn-outline-danger ms-1" onclick="deleteProvider('${provider.id}')">
-                        <i class="fas fa-trash"></i>
-                    </button>
-                </td>
-            </tr>
-        `;
-    }).join('');
-}
-
-function updateProviderStats(providers) {
-    const providerArray = Array.isArray(providers) ? providers : Object.values(providers);
-    const total = providerArray.length;
-    const active = providerArray.filter(p => p.status === 'active').length;
-    
-    document.getElementById('totalProviders').textContent = total;
-    document.getElementById('activeProviders').textContent = active;
-    document.getElementById('availableConnections').textContent = active * 10; // Estimado
-    document.getElementById('totalCalls').textContent = '0'; // Por implementar
-}
-
-async function handleProviderSubmit(e) {
-    e.preventDefault();
-    
-    const formData = {
-        name: document.getElementById('providerName').value,
-        host: document.getElementById('providerHost').value,
-        port: parseInt(document.getElementById('providerPort').value),
-        username: document.getElementById('providerUsername').value,
-        password: document.getElementById('providerPassword').value,
-        type: document.getElementById('providerType').value
-    };
-    
-    try {
-        const response = await fetch('/api/providers', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(formData)
-        });
-        
-        if (response.ok) {
-            showNotification('Proveedor agregado exitosamente', 'success');
-            document.getElementById('providerForm').reset();
-            loadProviders();
-        } else {
-            showNotification('Error agregando proveedor', 'error');
-        }
-    } catch (error) {
-        console.error('Error:', error);
-        showNotification('Error de conexión', 'error');
-    }
-}
-
-async function deleteProvider(providerId) {
-    if (!confirm('¿Estás seguro de que quieres eliminar este proveedor?')) {
-        return;
-    }
-    
-    try {
-        const response = await fetch(`/api/providers/${providerId}`, {
-            method: 'DELETE'
-        });
-        
-        if (response.ok) {
-            showNotification('Proveedor eliminado exitosamente', 'success');
-            loadProviders();
-        } else {
-            showNotification('Error eliminando proveedor', 'error');
-        }
-    } catch (error) {
-        console.error('Error:', error);
-        showNotification('Error de conexión', 'error');
-    }
-}
-
-function editProvider(providerId) {
-    // Obtener datos del formulario de edición
-    const name = document.getElementById("editName").value;
-    const host = document.getElementById("editHost").value;
-    const port = parseInt(document.getElementById("editPort").value);
-    const username = document.getElementById("editUsername").value;
-    const password = document.getElementById("editPassword").value;
-    const type = document.getElementById("editType").value;
-    const context = document.getElementById("editContext").value;
-    const active = document.getElementById("editActive").checked;
-
-    const providerData = {
-        name,
-        host,
-        port,
-        username,
-        password,
-        type,
-        context,
-        active
-    };
-
-    fetch(`/api/providers/${providerId}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(providerData)
-    })
-    .then(response => {
-        if (!response.ok) throw new Error("Error al actualizar proveedor");
-        return response.json();
-    })
-    .then(updatedProvider => {
-        showNotification(`Proveedor ${updatedProvider.name} actualizado correctamente`, "success");
-        refreshProviders();
-    })
-    .catch(error => {
-        console.error(error);
-        showNotification("No se pudo actualizar el proveedor", "error");
-    });
-}
-
-
-function testConnection(providerId) {
-    fetch(`/api/providers/${providerId}/test`, {
-        method: "POST"
-    })
-    .then(response => {
-        if (!response.ok) throw new Error("Error al probar conexión");
-        return response.json();
-    })
-    .then(result => {
-        showNotification(`Resultado de prueba: ${result.status}`, "info");
-        refreshProviders();
-    })
-    .catch(error => {
-        console.error(error);
-        showNotification("No se pudo probar la conexión", "error");
-    });
-}
-
-function refreshProviders() {
-    loadProviders();
-    showNotification('Proveedores actualizados', 'info');
-}
-
-function showNotification(message, type) {
-    // Notificación simple por ahora
-    alert(message);
-}
-</script>
-{% endblock %}

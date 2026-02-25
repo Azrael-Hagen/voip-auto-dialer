@@ -1,62 +1,111 @@
 """
-Gestor de extensiones telefónicas para VoIP Auto Dialer
-Maneja la asignación automática de extensiones a agentes
+Extension Manager - Gestión de extensiones VoIP
+Versión limpia sin métodos duplicados
 """
+
 import json
-import os
+import logging
 import random
 import string
-from typing import Dict, List, Optional, Any
 from datetime import datetime
 from pathlib import Path
+from typing import Dict, List, Optional, Any
 
-from core.logging_config import get_logger
+from .logging_config import get_logger
 
 class ExtensionManager:
-    """Gestor de extensiones telefónicas"""
+    """Gestor de extensiones VoIP"""
     
-    def __init__(self, data_dir: str = "data"):
+    def __init__(self, extensions_file: str = None):
+        """Inicializar el gestor de extensiones"""
         self.logger = get_logger("extension_manager")
-        self.data_dir = Path(data_dir)
-        self.data_dir.mkdir(exist_ok=True)
         
-        # Archivos de datos
-        self.extensions_file = self.data_dir / "extensions.json"
-        self.config_dir = self.data_dir / "softphone_configs"
-        self.config_dir.mkdir(exist_ok=True)
+        # Configuración por defecto
+        self.project_root = Path(__file__).parent.parent
+        self.extensions_file = extensions_file or self.project_root / "data" / "extensions.json"
+        self.sip_server = "127.0.0.1"
         
-        # Configuración de extensiones
-        self.extension_range = (1000, 1999)  # Rango de extensiones
-        self.sip_server = "localhost"
-        self.sip_port = 5060
-        
-        # Cargar extensiones existentes
+        # Cargar extensiones
         self.extensions = self._load_extensions()
         
         self.logger.info(f"Extension Manager inicializado: {len(self.extensions)} extensiones")
     
     def _load_extensions(self) -> Dict[str, Dict[str, Any]]:
-        """Cargar extensiones desde archivo"""
-        if self.extensions_file.exists():
-            try:
+        """Cargar extensiones desde archivo JSON"""
+        try:
+            if self.extensions_file.exists():
                 with open(self.extensions_file, 'r') as f:
-                    return json.load(f)
-            except (json.JSONDecodeError, FileNotFoundError):
-                self.logger.warning("Error cargando extensions.json, creando nuevo")
-        
-
-    def get_available_extensions(self):
+                    extensions = json.load(f)
+                    
+                # Validar formato de extensiones
+                validated_extensions = {}
+                for ext_id, ext_data in extensions.items():
+                    if isinstance(ext_data, dict):
+                        validated_extensions[ext_id] = ext_data
+                    else:
+                        # Formato antiguo, convertir
+                        validated_extensions[ext_id] = {
+                            'extension': ext_id,
+                            'password': self._generate_password(),
+                            'assigned': False,
+                            'server_ip': self.sip_server,
+                            'display_name': '',
+                            'provider': 'local'
+                        }
+                
+                return validated_extensions
+            else:
+                self.logger.warning(f"Archivo de extensiones no encontrado: {self.extensions_file}")
+                return {}
+                
+        except Exception as e:
+            self.logger.error(f"Error cargando extensiones: {e}")
+            return {}
+    
+    def _save_extensions(self):
+        """Guardar extensiones en archivo JSON"""
+        try:
+            # Crear directorio si no existe
+            self.extensions_file.parent.mkdir(parents=True, exist_ok=True)
+            
+            with open(self.extensions_file, 'w') as f:
+                json.dump(self.extensions, f, indent=2)
+                
+        except Exception as e:
+            self.logger.error(f"Error guardando extensiones: {e}")
+    
+    def _generate_password(self, length: int = 12) -> str:
+        """Generar contraseña aleatoria para extensión"""
+        characters = string.ascii_letters + string.digits + "!@#$%^&*"
+        return ''.join(random.choice(characters) for _ in range(length))
+    
+    def get_extension_stats(self):
+        """Obtener estadísticas de extensiones"""
+        try:
+            total = len(self.extensions)
+            assigned = sum(1 for ext in self.extensions.values() 
+                          if ext.get('assigned', False) or ext.get('status') == 'assigned')
+            available = total - assigned
+            utilization = (assigned / total * 100) if total > 0 else 0
+            
+            return {
+                'total': total,
+                'assigned': assigned,
+                'available': available,
+                'utilization': round(utilization, 2)
+            }
+            
+        except Exception as e:
+            self.logger.error(f"Error obteniendo estadísticas: {e}")
+            return {'total': 0, 'assigned': 0, 'available': 0, 'utilization': 0}
+    
+    def get_available_extensions(self) -> List[str]:
         """Obtener lista de extensiones disponibles"""
         try:
             available = []
-            for ext_num, ext_data in self.extensions.items():
-                if isinstance(ext_data, dict):
-                    if not ext_data.get('assigned', False):
-                        available.append(ext_num)
-                else:
-                    # Formato antiguo, verificar si está asignada
-                    # Por ahora asumir disponible si no está en formato dict
-                    available.append(ext_num)
+            for ext_id, ext_data in self.extensions.items():
+                if not (ext_data.get('assigned', False) or ext_data.get('status') == 'assigned'):
+                    available.append(ext_id)
             
             self.logger.info(f"Extensiones disponibles encontradas: {len(available)}")
             return available
@@ -65,285 +114,366 @@ class ExtensionManager:
             self.logger.error(f"Error obteniendo extensiones disponibles: {e}")
             return []
     
-    def get_extension_stats(self):
-        """Obtener estadísticas de extensiones"""
-        try:
-            total = len(self.extensions)
-            assigned = 0
-            available = 0
-            
-            for ext_num, ext_data in self.extensions.items():
-                if isinstance(ext_data, dict) and ext_data.get('assigned', False):
-                    assigned += 1
-                else:
-                    available += 1
-            
-            return {
-                'total': total,
-                'assigned': assigned,
-                'available': available,
-                'utilization': (assigned / total * 100) if total > 0 else 0
-            }
-            
-        except Exception as e:
-            self.logger.error(f"Error obteniendo estadísticas: {e}")
-            return {'total': 0, 'assigned': 0, 'available': 0, 'utilization': 0}
-        return {}
-    
-    def _save_extensions(self):
-        """Guardar extensiones a archivo"""
-        try:
-            with open(self.extensions_file, 'w') as f:
-                json.dump(self.extensions, f, indent=2)
-        except Exception as e:
-            self.logger.error(f"Error guardando extensions.json: {e}")
-    
-    def _generate_password(self, length: int = 12) -> str:
-        """Generar contraseña aleatoria para extensión"""
-        chars = string.ascii_letters + string.digits + "!@#$%^&*"
-        return ''.join(random.choice(chars) for _ in range(length))
-    
-    def _find_next_available_extension(self) -> Optional[int]:
-        """Encontrar la siguiente extensión disponible"""
-        start, end = self.extension_range
-        
-        for ext_num in range(start, end + 1):
-            ext_str = str(ext_num)
-            if ext_str not in self.extensions or self.extensions[ext_str].get('status') == 'available':
-                return ext_num
-        
-        return None
-    
-    def create_extension_pool(self, count: int = 500) -> int:
-        """Crear un pool de extensiones disponibles"""
-        created = 0
-        start, end = self.extension_range
-        
-        for i in range(count):
-            ext_num = start + i
-            if ext_num > end:
-                break
-                
-            ext_str = str(ext_num)
-            if ext_str not in self.extensions:
-                self.extensions[ext_str] = {
-                    'extension': ext_str,
-                    'password': self._generate_password(),
-                    'status': 'available',
-                    'assigned_to': None,
-                    'assigned_at': None,
-                    'created_at': datetime.now().isoformat()
-                }
-                created += 1
-        
-        if created > 0:
-            self._save_extensions()
-            self.logger.info(f"Creadas {created} nuevas extensiones")
-        
-        return created
-    
     def assign_extension(self, agent_id: str, agent_name: str = None) -> Optional[Dict[str, Any]]:
-        """Asignar extensión automáticamente a un agente"""
+        """Asignar una extensión disponible a un agente"""
         try:
-            # Buscar extensión disponible
-            ext_num = self._find_next_available_extension()
-            if not ext_num:
-                self.logger.error("No hay extensiones disponibles")
+            available_extensions = self.get_available_extensions()
+            
+            if not available_extensions:
+                self.logger.warning("No hay extensiones disponibles")
                 return None
             
-            ext_str = str(ext_num)
-            
-            # Si la extensión no existe, crearla
-            if ext_str not in self.extensions:
-                self.extensions[ext_str] = {
-                    'extension': ext_str,
-                    'password': self._generate_password(),
-                    'status': 'available',
-                    'assigned_to': None,
-                    'assigned_at': None,
-                    'created_at': datetime.now().isoformat()
-                }
+            # Tomar la primera extensión disponible
+            extension_id = available_extensions[0]
+            extension_data = self.extensions[extension_id]
             
             # Asignar extensión
-            self.extensions[ext_str].update({
+            extension_data.update({
+                'assigned': True,
                 'status': 'assigned',
                 'assigned_to': agent_id,
                 'assigned_at': datetime.now().isoformat(),
-                'agent_name': agent_name or agent_id
+                'agent_name': agent_name or f"Agent {agent_id}",
+                'display_name': agent_name or f"Agent {agent_id}"
             })
             
             self._save_extensions()
             
             result = {
-                'extension': ext_str,
-                'password': self.extensions[ext_str]['password'],
-                'status': 'assigned',
-                'assigned_at': self.extensions[ext_str]['assigned_at']
+                'extension': extension_id,
+                'password': extension_data['password'],
+                'server_ip': extension_data.get('server_ip', self.sip_server),
+                'assigned_to': agent_id,
+                'assigned_at': extension_data['assigned_at']
             }
             
-            self.logger.info(f"Extensión {ext_str} asignada a {agent_id}")
+            self.logger.info(f"Extensión {extension_id} asignada a agente {agent_id}")
             return result
             
         except Exception as e:
             self.logger.error(f"Error asignando extensión: {e}")
             return None
     
-    def release_extension(self, agent_id: str) -> bool:
-        """Liberar extensión de un agente"""
+    def release_extension_by_agent(self, agent_id: str) -> bool:
+        """Liberar extensión asignada a un agente específico"""
         try:
-            for ext_str, ext_data in self.extensions.items():
+            for ext_id, ext_data in self.extensions.items():
                 if ext_data.get('assigned_to') == agent_id:
+                    # Liberar extensión
                     ext_data.update({
+                        'assigned': False,
                         'status': 'available',
                         'assigned_to': None,
                         'assigned_at': None,
                         'agent_name': None,
+                        'display_name': '',
                         'released_at': datetime.now().isoformat()
                     })
                     
                     self._save_extensions()
-                    self.logger.info(f"Extensión {ext_str} liberada de {agent_id}")
+                    self.logger.info(f"Extensión {ext_id} liberada del agente {agent_id}")
                     return True
             
-            self.logger.warning(f"No se encontró extensión asignada a {agent_id}")
+            self.logger.warning(f"No se encontró extensión asignada al agente {agent_id}")
             return False
             
         except Exception as e:
-            self.logger.error(f"Error liberando extensión: {e}")
+            self.logger.error(f"Error liberando extensión del agente {agent_id}: {e}")
             return False
     
-    def get_agent_extension(self, agent_id: str) -> Optional[Dict[str, Any]]:
-        """Obtener información de extensión de un agente"""
-        for ext_str, ext_data in self.extensions.items():
-            if ext_data.get('assigned_to') == agent_id:
-                return {
-                    'extension': ext_str,
-                    'password': ext_data['password'],
-                    'status': ext_data['status'],
-                    'assigned_at': ext_data.get('assigned_at')
-                }
-        return None
-    
-    def get_stats(self) -> Dict[str, Any]:
-        """Obtener estadísticas de extensiones"""
-        total = len(self.extensions)
-        assigned = sum(1 for ext in self.extensions.values() if ext.get('status') == 'assigned')
-        available = total - assigned
-        
-        return {
-            'total_extensions': total,
-            'assigned_extensions': assigned,
-            'available_extensions': available,
-            'utilization_rate': (assigned / total * 100) if total > 0 else 0.0
-        }
-    
-    def generate_softphone_config(self, agent_id: str, config_type: str = 'generic') -> Optional[str]:
-        """Generar archivo de configuración para softphone"""
-        ext_info = self.get_agent_extension(agent_id)
-        if not ext_info:
-            return None
-        
-        extension = ext_info['extension']
-        password = ext_info['password']
-        
-        # Obtener nombre del agente (si está disponible)
-        agent_name = "Usuario"
-        for ext_data in self.extensions.values():
-            if ext_data.get('assigned_to') == agent_id:
-                agent_name = ext_data.get('agent_name', agent_id)
-                break
-        
-        config_content = ""
-        file_extension = "txt"
-        
-        if config_type == 'zoiper':
-            config_content = f"""[{extension}]
-username={extension}
-password={password}
-domain={self.sip_server}
-proxy={self.sip_server}:{self.sip_port}
-transport=UDP
-display_name={agent_name}
-enabled=1
-register=1
-"""
-            file_extension = "conf"
-            
-        elif config_type == 'portsip':
-            config_content = f"""<?xml version="1.0" encoding="UTF-8"?>
-<PortSIP>
-    <Account>
-        <DisplayName>{agent_name}</DisplayName>
-        <UserName>{extension}</UserName>
-        <Password>{password}</Password>
-        <SIPServer>{self.sip_server}</SIPServer>
-        <SIPServerPort>{self.sip_port}</SIPServerPort>
-        <Transport>UDP</Transport>
-        <Enabled>true</Enabled>
-    </Account>
-</PortSIP>"""
-            file_extension = "xml"
-            
-        else:  # generic
-            config_content = f"""=== CONFIGURACIÓN SIP ===
-Extensión: {extension}
-Contraseña: {password}
-Servidor SIP: {self.sip_server}
-Puerto: {self.sip_port}
-Transporte: UDP
-Nombre: {agent_name}
-
-=== INSTRUCCIONES ===
-1. Instala tu aplicación SIP favorita (Zoiper, PortSIP, etc.)
-2. Crea una nueva cuenta SIP
-3. Usa los datos de arriba para configurar la cuenta
-4. Guarda y registra la cuenta
-
-=== SOPORTE ===
-Si tienes problemas, contacta al administrador del sistema.
-"""
-        
-        # Guardar archivo de configuración
-        config_filename = f"{config_type}_config_{extension}.{file_extension}"
-        config_path = self.config_dir / config_filename
-        
+    def get_extension_by_agent(self, agent_id: str) -> Optional[Dict[str, Any]]:
+        """Obtener extensión asignada a un agente"""
         try:
-            with open(config_path, 'w') as f:
-                f.write(config_content)
-            
-            self.logger.info(f"Configuración {config_type} generada para extensión {extension}")
-            return str(config_path)
+            for ext_id, ext_data in self.extensions.items():
+                if ext_data.get('assigned_to') == agent_id:
+                    return {
+                        'extension': ext_id,
+                        'password': ext_data['password'],
+                        'server_ip': ext_data.get('server_ip', self.sip_server),
+                        'display_name': ext_data.get('display_name', ''),
+                        'assigned_at': ext_data.get('assigned_at')
+                    }
+            return None
             
         except Exception as e:
-            self.logger.error(f"Error generando configuración: {e}")
+            self.logger.error(f"Error obteniendo extensión del agente {agent_id}: {e}")
             return None
     
-    def get_softphone_config(self, agent_id: str, config_type: str) -> Optional[str]:
-        """Obtener ruta del archivo de configuración de softphone"""
-        ext_info = self.get_agent_extension(agent_id)
-        if not ext_info:
+    def get_all_extensions(self) -> Dict[str, Dict[str, Any]]:
+        """Obtener todas las extensiones con información completa"""
+        try:
+            # Asegurar que todas las extensiones tengan el formato correcto
+            formatted_extensions = {}
+            for ext_num, ext_data in self.extensions.items():
+                if isinstance(ext_data, dict):
+                    # Asegurar campos requeridos
+                    formatted_ext = {
+                        'extension': ext_num,
+                        'password': ext_data.get('password', self._generate_password()),
+                        'assigned': ext_data.get('status') == 'assigned' or ext_data.get('assigned', False),
+                        'server_ip': ext_data.get('server_ip', self.sip_server),
+                        'display_name': ext_data.get('display_name', ext_data.get('agent_name', '')),
+                        'provider': ext_data.get('provider', 'local'),
+                        'assigned_to': ext_data.get('assigned_to'),
+                        'assigned_at': ext_data.get('assigned_at'),
+                        'created_at': ext_data.get('created_at', datetime.now().isoformat())
+                    }
+                    formatted_extensions[ext_num] = formatted_ext
+                else:
+                    # Formato antiguo, convertir
+                    formatted_extensions[ext_num] = {
+                        'extension': ext_num,
+                        'password': self._generate_password(),
+                        'assigned': False,
+                        'server_ip': self.sip_server,
+                        'display_name': '',
+                        'provider': 'local',
+                        'assigned_to': None,
+                        'assigned_at': None,
+                        'created_at': datetime.now().isoformat()
+                    }
+            
+            return formatted_extensions
+            
+        except Exception as e:
+            self.logger.error(f"Error obteniendo todas las extensiones: {e}")
+            return {}
+    
+    def get_extension(self, extension_id: str) -> Optional[Dict[str, Any]]:
+        """Obtener detalles de una extensión específica"""
+        try:
+            if extension_id in self.extensions:
+                ext_data = self.extensions[extension_id]
+                if isinstance(ext_data, dict):
+                    return {
+                        'extension': extension_id,
+                        'password': ext_data.get('password', ''),
+                        'assigned': ext_data.get('status') == 'assigned' or ext_data.get('assigned', False),
+                        'server_ip': ext_data.get('server_ip', self.sip_server),
+                        'display_name': ext_data.get('display_name', ext_data.get('agent_name', '')),
+                        'provider': ext_data.get('provider', 'local'),
+                        'assigned_to': ext_data.get('assigned_to'),
+                        'assigned_at': ext_data.get('assigned_at'),
+                        'created_at': ext_data.get('created_at', datetime.now().isoformat())
+                    }
             return None
-        
-        extension = ext_info['extension']
-        file_extensions = {
-            'zoiper': 'conf',
-            'portsip': 'xml',
-            'generic': 'txt'
-        }
-        
-        file_ext = file_extensions.get(config_type, 'txt')
-        config_filename = f"{config_type}_config_{extension}.{file_ext}"
-        config_path = self.config_dir / config_filename
-        
-        # Si no existe, generarlo
-        if not config_path.exists():
-            return self.generate_softphone_config(agent_id, config_type)
-        
-        return str(config_path)
+            
+        except Exception as e:
+            self.logger.error(f"Error obteniendo extensión {extension_id}: {e}")
+            return None
+
+    def update_extension(self, extension_id: str, **kwargs) -> Optional[Dict[str, Any]]:
+        """Actualizar una extensión"""
+        try:
+            if extension_id not in self.extensions:
+                return None
+            
+            # Campos actualizables
+            updatable_fields = ['display_name', 'server_ip', 'password', 'provider']
+            
+            for field, value in kwargs.items():
+                if field in updatable_fields:
+                    self.extensions[extension_id][field] = value
+            
+            # Actualizar timestamp
+            self.extensions[extension_id]['updated_at'] = datetime.now().isoformat()
+            
+            self._save_extensions()
+            
+            self.logger.info(f"Extensión {extension_id} actualizada")
+            return self.get_extension(extension_id)
+            
+        except Exception as e:
+            self.logger.error(f"Error actualizando extensión {extension_id}: {e}")
+            return None
+
+    def regenerate_password(self, extension_id: str) -> Optional[Dict[str, str]]:
+        """Regenerar contraseña de una extensión"""
+        try:
+            if extension_id not in self.extensions:
+                return None
+            
+            new_password = self._generate_password()
+            self.extensions[extension_id]['password'] = new_password
+            self.extensions[extension_id]['password_updated_at'] = datetime.now().isoformat()
+            
+            self._save_extensions()
+            
+            self.logger.info(f"Contraseña regenerada para extensión {extension_id}")
+            return {'password': new_password}
+            
+        except Exception as e:
+            self.logger.error(f"Error regenerando contraseña de extensión {extension_id}: {e}")
+            return None
+
+    def release_extension(self, extension_id: str) -> bool:
+        """Liberar una extensión específica por ID"""
+        try:
+            if extension_id not in self.extensions:
+                return False
+            
+            ext_data = self.extensions[extension_id]
+            if not (ext_data.get('status') == 'assigned' or ext_data.get('assigned', False)):
+                return False  # Ya está disponible
+            
+            # Liberar extensión
+            ext_data.update({
+                'status': 'available',
+                'assigned': False,
+                'assigned_to': None,
+                'assigned_at': None,
+                'agent_name': None,
+                'display_name': '',
+                'released_at': datetime.now().isoformat()
+            })
+            
+            self._save_extensions()
+            
+            self.logger.info(f"Extensión {extension_id} liberada")
+            return True
+            
+        except Exception as e:
+            self.logger.error(f"Error liberando extensión {extension_id}: {e}")
+            return False
+
+    def execute_bulk_action(self, action: str, range_start: int, range_end: int) -> Dict[str, Any]:
+        """Ejecutar acciones masivas en un rango de extensiones"""
+        try:
+            affected_extensions = []
+            errors = []
+            
+            for ext_num in range(range_start, range_end + 1):
+                ext_id = str(ext_num)
+                
+                try:
+                    if action == 'regenerate_passwords':
+                        if ext_id in self.extensions:
+                            result = self.regenerate_password(ext_id)
+                            if result:
+                                affected_extensions.append(ext_id)
+                            else:
+                                errors.append(f"Error regenerando contraseña de {ext_id}")
+                    
+                    elif action == 'release_all':
+                        if ext_id in self.extensions:
+                            if self.release_extension(ext_id):
+                                affected_extensions.append(ext_id)
+                            else:
+                                errors.append(f"Error liberando extensión {ext_id}")
+                    
+                    elif action == 'reset_display_names':
+                        if ext_id in self.extensions:
+                            result = self.update_extension(ext_id, display_name='')
+                            if result:
+                                affected_extensions.append(ext_id)
+                            else:
+                                errors.append(f"Error reseteando nombre de {ext_id}")
+                    
+                except Exception as e:
+                    errors.append(f"Error procesando {ext_id}: {str(e)}")
+            
+            return {
+                'action': action,
+                'range': f"{range_start}-{range_end}",
+                'affected_extensions': affected_extensions,
+                'success_count': len(affected_extensions),
+                'error_count': len(errors),
+                'errors': errors,
+                'timestamp': datetime.now().isoformat()
+            }
+            
+        except Exception as e:
+            self.logger.error(f"Error ejecutando acción masiva {action}: {e}")
+            return {
+                'action': action,
+                'range': f"{range_start}-{range_end}",
+                'affected_extensions': [],
+                'success_count': 0,
+                'error_count': 1,
+                'errors': [str(e)],
+                'timestamp': datetime.now().isoformat()
+            }
+
+    def get_extensions_by_range(self, start: int, end: int) -> Dict[str, Dict[str, Any]]:
+        """Obtener extensiones en un rango específico"""
+        try:
+            range_extensions = {}
+            for ext_num in range(start, end + 1):
+                ext_id = str(ext_num)
+                if ext_id in self.extensions:
+                    range_extensions[ext_id] = self.get_extension(ext_id)
+            
+            return range_extensions
+            
+        except Exception as e:
+            self.logger.error(f"Error obteniendo extensiones en rango {start}-{end}: {e}")
+            return {}
+
+    def generate_softphone_config(self, extension_id: str, config_type: str = 'generic') -> str:
+        """Generar configuración para softphone"""
+        try:
+            if extension_id not in self.extensions:
+                return "Extensión no encontrada"
+            
+            ext_data = self.extensions[extension_id]
+            extension = extension_id
+            password = ext_data.get('password', '')
+            server_ip = ext_data.get('server_ip', self.sip_server)
+            display_name = ext_data.get('display_name', f'Extension {extension}')
+            
+            if config_type == 'zoiper':
+                return f"""Configuración Zoiper
+====================
+Nombre de cuenta: {display_name}
+Username: {extension}
+Password: {password}
+Domain: {server_ip}
+Proxy: {server_ip}
+Port: 5060
+Transport: UDP
+
+Instrucciones:
+1. Abrir Zoiper
+2. Ir a Settings > Accounts
+3. Agregar nueva cuenta SIP
+4. Usar los datos de arriba
+5. Guardar configuración
+"""
+            
+            elif config_type == 'portsip':
+                return f"""Configuración PortSIP
+=====================
+Account Name: {display_name}
+User Name: {extension}
+Password: {password}
+SIP Server: {server_ip}
+Port: 5060
+Transport: UDP
+
+Instrucciones:
+1. Abrir PortSIP Softphone
+2. Ir a Account > Add Account
+3. Usar los datos de arriba
+4. Click OK para guardar
+"""
+            
+            else:  # generic
+                return f"""Configuración SIP Genérica
+==========================
+Account: {extension}
+Password: {password}
+Server: {server_ip}
+Port: 5060
+Transport: UDP
+Display Name: {display_name}
+Codec: ulaw, alaw, gsm
+
+Esta configuración es compatible con la mayoría de softphones SIP.
+"""
+            
+        except Exception as e:
+            self.logger.error(f"Error generando configuración de softphone: {e}")
+            return f"Error generando configuración: {str(e)}"
 
 # Instancia global del gestor de extensiones
 extension_manager = ExtensionManager()
-
-# Crear pool inicial de extensiones si no existen
-if len(extension_manager.extensions) == 0:
-    extension_manager.create_extension_pool(500)

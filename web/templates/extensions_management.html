@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Extensiones - VoIP Auto Dialer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .extension-card {
+            transition: all 0.3s ease;
+            border-left: 4px solid #dee2e6;
+        }
+        .extension-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .extension-card.assigned {
+            border-left-color: #28a745;
+        }
+        .extension-card.available {
+            border-left-color: #17a2b8;
+        }
+        .password-field {
+            font-family: 'Courier New', monospace;
+            background-color: #f8f9fa;
+            border: 1px dashed #dee2e6;
+            padding: 0.5rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+        .qr-code {
+            max-width: 150px;
+            height: auto;
+        }
+        .extension-stats {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .stat-item {
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            display: block;
+        }
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        .filter-section {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .bulk-actions {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            display: none;
+        }
+        .extension-number {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #495057;
+        }
+        .copy-btn {
+            cursor: pointer;
+            color: #6c757d;
+            transition: color 0.2s;
+        }
+        .copy-btn:hover {
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <i class="fas fa-phone-alt me-2"></i>VoIP Auto Dialer
+            </a>
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link" href="/"><i class="fas fa-tachometer-alt me-1"></i>Dashboard</a>
+                <a class="nav-link" href="/agents"><i class="fas fa-users me-1"></i>Agentes</a>
+                <a class="nav-link" href="/providers"><i class="fas fa-server me-1"></i>Proveedores</a>
+                <a class="nav-link active" href="/extensions"><i class="fas fa-phone me-1"></i>Extensiones</a>
+                <a class="nav-link" href="/campaigns"><i class="fas fa-bullhorn me-1"></i>Campañas</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <!-- Header -->
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+                <h2><i class="fas fa-phone text-primary me-2"></i>Gestión de Extensiones</h2>
+                <p class="text-muted">Administra extensiones, contraseñas y configuraciones de softphones</p>
+            </div>
+            <div class="btn-group">
+                <button class="btn btn-outline-primary" onclick="syncExtensions()">
+                    <i class="fas fa-sync me-2"></i>Sincronizar
+                </button>
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bulkActionsModal">
+                    <i class="fas fa-cogs me-2"></i>Acciones Masivas
+                </button>
+            </div>
+        </div>
+
+        <!-- Extension Statistics -->
+        <div class="extension-stats">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="stat-item">
+                        <span class="stat-number" id="totalExtensions">0</span>
+                        <span class="stat-label">Total Extensiones</span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-item">
+                        <span class="stat-number" id="assignedExtensions">0</span>
+                        <span class="stat-label">Asignadas</span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-item">
+                        <span class="stat-number" id="availableExtensions">0</span>
+                        <span class="stat-label">Disponibles</span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-item">
+                        <span class="stat-number" id="utilizationRate">0%</span>
+                        <span class="stat-label">Utilización</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filters -->
+        <div class="filter-section">
+            <div class="row align-items-end">
+                <div class="col-md-3">
+                    <label class="form-label">Buscar Extensión</label>
+                    <input type="text" class="form-control" id="searchExtension" placeholder="Número o nombre...">
+                </div>
+                <div class="col-md-2">
+                    <label class="form-label">Estado</label>
+                    <select class="form-select" id="filterStatus">
+                        <option value="">Todos</option>
+                        <option value="assigned">Asignadas</option>
+                        <option value="available">Disponibles</option>
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <label class="form-label">Rango</label>
+                    <select class="form-select" id="filterRange">
+                        <option value="">Todos</option>
+                        <option value="1000-1099">1000-1099</option>
+                        <option value="1100-1199">1100-1199</option>
+                        <option value="1200-1299">1200-1299</option>
+                        <option value="1300-1399">1300-1399</option>
+                        <option value="1400-1499">1400-1499</option>
+                        <option value="1500-1599">1500-1599</option>
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <label class="form-label">Mostrar</label>
+                    <select class="form-select" id="itemsPerPage">
+                        <option value="20">20 por página</option>
+                        <option value="50">50 por página</option>
+                        <option value="100">100 por página</option>
+                        <option value="all">Todas</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <button class="btn btn-outline-secondary w-100" onclick="clearFilters()">
+                        <i class="fas fa-times me-2"></i>Limpiar Filtros
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bulk Actions Bar -->
+        <div class="bulk-actions" id="bulkActionsBar">
+            <div class="d-flex justify-content-between align-items-center">
+                <span><strong id="selectedCount">0</strong> extensiones seleccionadas</span>
+                <div class="btn-group">
+                    <button class="btn btn-sm btn-warning" onclick="bulkRegeneratePasswords()">
+                        <i class="fas fa-key me-1"></i>Regenerar Contraseñas
+                    </button>
+                    <button class="btn btn-sm btn-info" onclick="bulkReleaseExtensions()">
+                        <i class="fas fa-unlock me-1"></i>Liberar Asignaciones
+                    </button>
+                    <button class="btn btn-sm btn-secondary" onclick="clearSelection()">
+                        <i class="fas fa-times me-1"></i>Cancelar
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Extensions List -->
+        <div class="row" id="extensionsList">
+            <!-- Las extensiones se cargarán aquí dinámicamente -->
+        </div>
+
+        <!-- Pagination -->
+        <nav aria-label="Paginación de extensiones">
+            <ul class="pagination justify-content-center" id="pagination">
+                <!-- Pagination will be generated here -->
+            </ul>
+        </nav>
+
+        <!-- Loading State -->
+        <div id="loadingState" class="text-center py-5" style="display: none;">
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Cargando...</span>
+            </div>
+            <p class="mt-3 text-muted">Cargando extensiones...</p>
+        </div>
+    </div>
+
+    <!-- Extension Details Modal -->
+    <div class="modal fade" id="extensionModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <i class="fas fa-phone me-2"></i>
+                        <span id="extensionModalTitle">Detalles de Extensión</span>
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="extensionForm">
+                        <input type="hidden" id="extensionId">
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Número de Extensión</label>
+                                    <input type="text" class="form-control extension-number" id="extensionNumber" readonly>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Estado</label>
+                                    <span class="form-control-plaintext">
+                                        <span class="badge" id="extensionStatus">Disponible</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Nombre/Descripción</label>
+                                    <input type="text" class="form-control" id="extensionDisplayName" placeholder="Nombre descriptivo">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Servidor IP</label>
+                                    <input type="text" class="form-control" id="extensionServerIp" value="127.0.0.1">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Contraseña SIP</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control password-field" id="extensionPassword" readonly>
+                                <button class="btn btn-outline-secondary copy-btn" type="button" onclick="copyPassword()">
+                                    <i class="fas fa-copy"></i>
+                                </button>
+                                <button class="btn btn-outline-warning" type="button" onclick="regeneratePassword()">
+                                    <i class="fas fa-sync"></i> Regenerar
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="row" id="assignmentInfo" style="display: none;">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Asignada a</label>
+                                    <input type="text" class="form-control" id="assignedTo" readonly>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Fecha de Asignación</label>
+                                    <input type="text" class="form-control" id="assignedAt" readonly>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Configuración Softphone</label>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <button type="button" class="btn btn-outline-info w-100" onclick="generateConfig('zoiper')">
+                                        <i class="fas fa-download me-2"></i>Zoiper
+                                    </button>
+                                </div>
+                                <div class="col-md-4">
+                                    <button type="button" class="btn btn-outline-info w-100" onclick="generateConfig('portsip')">
+                                        <i class="fas fa-download me-2"></i>PortSIP
+                                    </button>
+                                </div>
+                                <div class="col-md-4">
+                                    <button type="button" class="btn btn-outline-info w-100" onclick="generateConfig('generic')">
+                                        <i class="fas fa-download me-2"></i>Genérico
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="text-center" id="qrCodeSection" style="display: none;">
+                            <label class="form-label">Código QR para Configuración</label>
+                            <div id="qrCodeContainer"></div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-warning" id="releaseExtensionBtn" style="display: none;" onclick="releaseExtension()">
+                        <i class="fas fa-unlock me-2"></i>Liberar Extensión
+                    </button>
+                    <button type="button" class="btn btn-primary" onclick="saveExtension()">
+                        <i class="fas fa-save me-2"></i>Guardar Cambios
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bulk Actions Modal -->
+    <div class="modal fade" id="bulkActionsModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <i class="fas fa-cogs me-2"></i>Acciones Masivas
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="bulkActionForm">
+                        <div class="mb-3">
+                            <label class="form-label">Acción a Realizar</label>
+                            <select class="form-select" id="bulkAction" required>
+                                <option value="">Seleccionar acción</option>
+                                <option value="regenerate_passwords">Regenerar Contraseñas</option>
+                                <option value="reset_assignments">Liberar Asignaciones</option>
+                                <option value="sync_asterisk">Sincronizar con Asterisk</option>
+                                <option value="export_configs">Exportar Configuraciones</option>
+                            </select>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">Rango de Extensiones</label>
+                            <div class="row">
+                                <div class="col-6">
+                                    <input type="number" class="form-control" id="rangeStart" placeholder="Desde" value="1000" min="1000" max="9999">
+                                </div>
+                                <div class="col-6">
+                                    <input type="number" class="form-control" id="rangeEnd" placeholder="Hasta" value="1100" min="1000" max="9999">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="alert alert-warning">
+                            <i class="fas fa-exclamation-triangle me-2"></i>
+                            <strong>Advertencia:</strong> Esta acción afectará múltiples extensiones. Asegúrate de revisar el rango antes de continuar.
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-warning" onclick="executeBulkAction()">
+                        <i class="fas fa-play me-2"></i>Ejecutar Acción
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+    <script>
+        let extensions = {};
+        let filteredExtensions = {};
+        let currentExtensionId = null;
+        let selectedExtensions = new Set();
+        let currentPage = 1;
+        let itemsPerPage = 20;
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            loadExtensions();
+            setupEventListeners();
+        });
+
+        function setupEventListeners() {
+            // Search and filters
+            document.getElementById('searchExtension').addEventListener('input', applyFilters);
+            document.getElementById('filterStatus').addEventListener('change', applyFilters);
+            document.getElementById('filterRange').addEventListener('change', applyFilters);
+            document.getElementById('itemsPerPage').addEventListener('change', function() {
+                itemsPerPage = this.value === 'all' ? 999999 : parseInt(this.value);
+                currentPage = 1;
+                renderExtensions();
+            });
+        }
+
+        async function loadExtensions() {
+            showLoading(true);
+            try {
+                const response = await fetch('/api/extensions/all');
+                extensions = await response.json();
+                filteredExtensions = extensions;
+                renderExtensions();
+                updateStatistics();
+            } catch (error) {
+                console.error('Error loading extensions:', error);
+                showAlert('Error cargando extensiones', 'danger');
+            } finally {
+                showLoading(false);
+            }
+        }
+
+        function renderExtensions() {
+            const container = document.getElementById('extensionsList');
+            const extensionArray = Object.values(filteredExtensions);
+            
+            // Pagination
+            const totalItems = extensionArray.length;
+            const totalPages = Math.ceil(totalItems / itemsPerPage);
+            const startIndex = (currentPage - 1) * itemsPerPage;
+            const endIndex = startIndex + itemsPerPage;
+            const pageExtensions = extensionArray.slice(startIndex, endIndex);
+            
+            container.innerHTML = pageExtensions.map(extension => `
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card extension-card ${extension.assigned ? 'assigned' : 'available'}" data-extension-id="${extension.extension}">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <div class="d-flex align-items-center">
+                                <input type="checkbox" class="form-check-input me-2" onchange="toggleSelection('${extension.extension}')" ${selectedExtensions.has(extension.extension) ? 'checked' : ''}>
+                                <span class="extension-number">${extension.extension}</span>
+                            </div>
+                            <span class="badge ${extension.assigned ? 'bg-success' : 'bg-info'}">
+                                ${extension.assigned ? 'Asignada' : 'Disponible'}
+                            </span>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-2">
+                                <small class="text-muted">Nombre:</small><br>
+                                <span>${extension.display_name || 'Sin nombre'}</span>
+                            </div>
+                            <div class="mb-2">
+                                <small class="text-muted">Contraseña:</small><br>
+                                <code class="password-field">${extension.password}</code>
+                                <i class="fas fa-copy copy-btn ms-2" onclick="copyToClipboard('${extension.password}')" title="Copiar contraseña"></i>
+                            </div>
+                            <div class="mb-2">
+                                <small class="text-muted">Servidor:</small><br>
+                                <code>${extension.server_ip}</code>
+                            </div>
+                            ${extension.assigned ? `
+                                <div class="mb-2">
+                                    <small class="text-muted">Asignada a:</small><br>
+                                    <span class="text-success">${extension.assigned_to || 'N/A'}</span>
+                                </div>
+                            ` : ''}
+                        </div>
+                        <div class="card-footer">
+                            <div class="btn-group w-100" role="group">
+                                <button class="btn btn-sm btn-outline-primary" onclick="viewExtension('${extension.extension}')">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="btn btn-sm btn-outline-warning" onclick="regenerateExtensionPassword('${extension.extension}')">
+                                    <i class="fas fa-key"></i>
+                                </button>
+                                <button class="btn btn-sm btn-outline-info" onclick="generateConfig('generic', '${extension.extension}')">
+                                    <i class="fas fa-download"></i>
+                                </button>
+                                ${extension.assigned ? `
+                                    <button class="btn btn-sm btn-outline-danger" onclick="releaseExtensionDirect('${extension.extension}')">
+                                        <i class="fas fa-unlock"></i>
+                                    </button>
+                                ` : ''}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+            
+            renderPagination(totalPages);
+        }
+
+        function renderPagination(totalPages) {
+            const pagination = document.getElementById('pagination');
+            
+            if (totalPages <= 1) {
+                pagination.innerHTML = '';
+                return;
+            }
+            
+            let paginationHTML = '';
+            
+            // Previous button
+            paginationHTML += `
+                <li class="page-item ${currentPage === 1 ? 'disabled' : ''}">
+                    <a class="page-link" href="#" onclick="changePage(${currentPage - 1})">Anterior</a>
+                </li>
+            `;
+            
+            // Page numbers
+            for (let i = 1; i <= totalPages; i++) {
+                if (i === 1 || i === totalPages || (i >= currentPage - 2 && i <= currentPage + 2)) {
+                    paginationHTML += `
+                        <li class="page-item ${i === currentPage ? 'active' : ''}">
+                            <a class="page-link" href="#" onclick="changePage(${i})">${i}</a>
+                        </li>
+                    `;
+                } else if (i === currentPage - 3 || i === currentPage + 3) {
+                    paginationHTML += '<li class="page-item disabled"><span class="page-link">...</span></li>';
+                }
+            }
+            
+            // Next button
+            paginationHTML += `
+                <li class="page-item ${currentPage === totalPages ? 'disabled' : ''}">
+                    <a class="page-link" href="#" onclick="changePage(${currentPage + 1})">Siguiente</a>
+                </li>
+            `;
+            
+            pagination.innerHTML = paginationHTML;
+        }
+
+        function changePage(page) {
+            const totalPages = Math.ceil(Object.keys(filteredExtensions).length / itemsPerPage);
+            if (page >= 1 && page <= totalPages) {
+                currentPage = page;
+                renderExtensions();
+            }
+        }
+
+        function applyFilters() {
+            const search = document.getElementById('searchExtension').value.toLowerCase();
+            const status = document.getElementById('filterStatus').value;
+            const range = document.getElementById('filterRange').value;
+            
+            filteredExtensions = {};
+            
+            Object.values(extensions).forEach(extension => {
+                let matches = true;
+                
+                // Search filter
+                if (search && !extension.extension.includes(search) && 
+                    !(extension.display_name && extension.display_name.toLowerCase().includes(search))) {
+                    matches = false;
+                }
+                
+                // Status filter
+                if (status === 'assigned' && !extension.assigned) matches = false;
+                if (status === 'available' && extension.assigned) matches = false;
+                
+                // Range filter
+                if (range) {
+                    const [start, end] = range.split('-').map(Number);
+                    const extNum = parseInt(extension.extension);
+                    if (extNum < start || extNum > end) matches = false;
+                }
+                
+                if (matches) {
+                    filteredExtensions[extension.extension] = extension;
+                }
+            });
+            
+            currentPage = 1;
+            renderExtensions();
+        }
+
+        function clearFilters() {
+            document.getElementById('searchExtension').value = '';
+            document.getElementById('filterStatus').value = '';
+            document.getElementById('filterRange').value = '';
+            filteredExtensions = extensions;
+            currentPage = 1;
+            renderExtensions();
+        }
+
+        function updateStatistics() {
+            const total = Object.keys(extensions).length;
+            const assigned = Object.values(extensions).filter(e => e.assigned).length;
+            const available = total - assigned;
+            const utilization = total > 0 ? Math.round((assigned / total) * 100) : 0;
+            
+            document.getElementById('totalExtensions').textContent = total;
+            document.getElementById('assignedExtensions').textContent = assigned;
+            document.getElementById('availableExtensions').textContent = available;
+            document.getElementById('utilizationRate').textContent = utilization + '%';
+        }
+
+        function toggleSelection(extensionId) {
+            if (selectedExtensions.has(extensionId)) {
+                selectedExtensions.delete(extensionId);
+            } else {
+                selectedExtensions.add(extensionId);
+            }
+            
+            updateBulkActionsBar();
+        }
+
+        function updateBulkActionsBar() {
+            const bulkBar = document.getElementById('bulkActionsBar');
+            const count = selectedExtensions.size;
+            
+            if (count > 0) {
+                bulkBar.style.display = 'block';
+                document.getElementById('selectedCount').textContent = count;
+            } else {
+                bulkBar.style.display = 'none';
+            }
+        }
+
+        function clearSelection() {
+            selectedExtensions.clear();
+            document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+            updateBulkActionsBar();
+        }
+
+        function viewExtension(extensionId) {
+            const extension = extensions[extensionId];
+            if (!extension) return;
+            
+            currentExtensionId = extensionId;
+            
+            // Fill modal
+            document.getElementById('extensionId').value = extensionId;
+            document.getElementById('extensionNumber').value = extension.extension;
+            document.getElementById('extensionDisplayName').value = extension.display_name || '';
+            document.getElementById('extensionServerIp').value = extension.server_ip || '127.0.0.1';
+            document.getElementById('extensionPassword').value = extension.password || '';
+            
+            // Status
+            const statusBadge = document.getElementById('extensionStatus');
+            if (extension.assigned) {
+                statusBadge.textContent = 'Asignada';
+                statusBadge.className = 'badge bg-success';
+                document.getElementById('assignmentInfo').style.display = 'block';
+                document.getElementById('assignedTo').value = extension.assigned_to || '';
+                document.getElementById('assignedAt').value = extension.assigned_at || '';
+                document.getElementById('releaseExtensionBtn').style.display = 'inline-block';
+            } else {
+                statusBadge.textContent = 'Disponible';
+                statusBadge.className = 'badge bg-info';
+                document.getElementById('assignmentInfo').style.display = 'none';
+                document.getElementById('releaseExtensionBtn').style.display = 'none';
+            }
+            
+            // Show modal
+            new bootstrap.Modal(document.getElementById('extensionModal')).show();
+        }
+
+        async function saveExtension() {
+            const extensionId = document.getElementById('extensionId').value;
+            const updateData = {
+                display_name: document.getElementById('extensionDisplayName').value,
+                server_ip: document.getElementById('extensionServerIp').value
+            };
+            
+            try {
+                const response = await fetch(`/api/extensions/${extensionId}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(updateData)
+                });
+                
+                if (response.ok) {
+                    showAlert('Extensión actualizada exitosamente', 'success');
+                    bootstrap.Modal.getInstance(document.getElementById('extensionModal')).hide();
+                    loadExtensions();
+                } else {
+                    const error = await response.json();
+                    showAlert(`Error: ${error.detail}`, 'danger');
+                }
+            } catch (error) {
+                console.error('Error saving extension:', error);
+                showAlert('Error guardando extensión', 'danger');
+            }
+        }
+
+        async function regeneratePassword() {
+            const extensionId = currentExtensionId;
+            if (!extensionId) return;
+            
+            try {
+                const response = await fetch(`/api/extensions/${extensionId}/regenerate-password`, {
+                    method: 'POST'
+                });
+                
+                if (response.ok) {
+                    const result = await response.json();
+                    document.getElementById('extensionPassword').value = result.new_password;
+                    showAlert('Contraseña regenerada exitosamente', 'success');
+                    loadExtensions();
+                } else {
+                    const error = await response.json();
+                    showAlert(`Error: ${error.detail}`, 'danger');
+                }
+            } catch (error) {
+                console.error('Error regenerating password:', error);
+                showAlert('Error regenerando contraseña', 'danger');
+            }
+        }
+
+        async function regenerateExtensionPassword(extensionId) {
+            try {
+                const response = await fetch(`/api/extensions/${extensionId}/regenerate-password`, {
+                    method: 'POST'
+                });
+                
+                if (response.ok) {
+                    showAlert('Contraseña regenerada exitosamente', 'success');
+                    loadExtensions();
+                } else {
+                    const error = await response.json();
+                    showAlert(`Error: ${error.detail}`, 'danger');
+                }
+            } catch (error) {
+                console.error('Error regenerating password:', error);
+                showAlert('Error regenerando contraseña', 'danger');
+            }
+        }
+
+        async function releaseExtension() {
+            const extensionId = currentExtensionId;
+            if (!extensionId) return;
+            
+            if (!confirm('¿Estás seguro de liberar esta extensión?')) return;
+            
+            try {
+                const response = await fetch(`/api/extensions/${extensionId}/release`, {
+                    method: 'POST'
+                });
+                
+                if (response.ok) {
+                    showAlert('Extensión liberada exitosamente', 'success');
+                    bootstrap.Modal.getInstance(document.getElementById('extensionModal')).hide();
+                    loadExtensions();
+                } else {
+                    const error = await response.json();
+                    showAlert(`Error: ${error.detail}`, 'danger');
+                }
+            } catch (error) {
+                console.error('Error releasing extension:', error);
+                showAlert('Error liberando extensión', 'danger');
+            }
+        }
+
+        async function releaseExtensionDirect(extensionId) {
+            if (!confirm('¿Estás seguro de liberar esta extensión?')) return;
+            
+            try {
+                const response = await fetch(`/api/extensions/${extensionId}/release`, {
+                    method: 'POST'
+                });
+                
+                if (response.ok) {
+                    showAlert('Extensión liberada exitosamente', 'success');
+                    loadExtensions();
+                } else {
+                    const error = await response.json();
+                    showAlert(`Error: ${error.detail}`, 'danger');
+                }
+            } catch (error) {
+                console.error('Error releasing extension:', error);
+                showAlert('Error liberando extensión', 'danger');
+            }
+        }
+
+        async function executeBulkAction() {
+            const action = document.getElementById('bulkAction').value;
+            const rangeStart = parseInt(document.getElementById('rangeStart').value);
+            const rangeEnd = parseInt(document.getElementById('rangeEnd').value);
+            
+            if (!action) {
+                showAlert('Selecciona una acción', 'warning');
+                return;
+            }
+            
+            if (rangeStart >= rangeEnd) {
+                showAlert('El rango inicial debe ser menor que el final', 'warning');
+                return;
+            }
+            
+            try {
+                const response = await fetch('/api/extensions/bulk-action', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        action: action,
+                        range_start: rangeStart,
+                        range_end: rangeEnd
+                    })
+                });
+                
+                if (response.ok) {
+                    const result = await response.json();
+                    showAlert(`Acción completada: ${result.total_affected} extensiones afectadas`, 'success');
+                    bootstrap.Modal.getInstance(document.getElementById('bulkActionsModal')).hide();
+                    loadExtensions();
+                } else {
+                    const error = await response.json();
+                    showAlert(`Error: ${error.detail}`, 'danger');
+                }
+            } catch (error) {
+                console.error('Error executing bulk action:', error);
+                showAlert('Error ejecutando acción masiva', 'danger');
+            }
+        }
+
+        async function syncExtensions() {
+            try {
+                const response = await fetch('/api/sync/extensions-softphones', {
+                    method: 'POST'
+                });
+                
+                if (response.ok) {
+                    const result = await response.json();
+                    showAlert('Sincronización completada exitosamente', 'success');
+                    loadExtensions();
+                } else {
+                    const error = await response.json();
+                    showAlert(`Error en sincronización: ${error.detail}`, 'danger');
+                }
+            } catch (error) {
+                console.error('Error syncing extensions:', error);
+                showAlert('Error en sincronización', 'danger');
+            }
+        }
+
+        function generateConfig(type, extensionId = null) {
+            const extension = extensionId ? extensions[extensionId] : extensions[currentExtensionId];
+            if (!extension) return;
+            
+            const config = {
+                extension: extension.extension,
+                password: extension.password,
+                server: extension.server_ip,
+                port: 5060,
+                transport: 'UDP'
+            };
+            
+            let configText = '';
+            
+            switch (type) {
+                case 'zoiper':
+                    configText = `Configuración Zoiper:
+Username: ${config.extension}
+Password: ${config.password}
+Domain: ${config.server}
+Port: ${config.port}
+Transport: ${config.transport}`;
+                    break;
+                case 'portsip':
+                    configText = `Configuración PortSIP:
+User Name: ${config.extension}
+Password: ${config.password}
+SIP Server: ${config.server}
+Port: ${config.port}
+Transport: ${config.transport}`;
+                    break;
+                case 'generic':
+                    configText = `Configuración SIP Genérica:
+Account: ${config.extension}
+Password: ${config.password}
+Server: ${config.server}
+Port: ${config.port}
+Transport: ${config.transport}`;
+                    break;
+            }
+            
+            // Create and download file
+            const blob = new Blob([configText], { type: 'text/plain' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `extension_${config.extension}_${type}.txt`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
+            
+            showAlert(`Configuración ${type} descargada`, 'success');
+        }
+
+        function copyPassword() {
+            const password = document.getElementById('extensionPassword').value;
+            copyToClipboard(password);
+        }
+
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                showAlert('Copiado al portapapeles', 'success');
+            }).catch(() => {
+                showAlert('Error copiando al portapapeles', 'danger');
+            });
+        }
+
+        function showLoading(show) {
+            document.getElementById('loadingState').style.display = show ? 'block' : 'none';
+            document.getElementById('extensionsList').style.display = show ? 'none' : 'block';
+        }
+
+        function showAlert(message, type) {
+            const alertDiv = document.createElement('div');
+            alertDiv.className = `alert alert-${type} alert-dismissible fade show position-fixed`;
+            alertDiv.style.cssText = 'top: 20px; right: 20px; z-index: 9999; min-width: 300px;';
+            alertDiv.innerHTML = `
+                ${message}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            `;
+            
+            document.body.appendChild(alertDiv);
+            
+            setTimeout(() => {
+                if (alertDiv.parentNode) {
+                    alertDiv.parentNode.removeChild(alertDiv);
+                }
+            }, 5000);
+        }
+    </script>
+</body>
+</html>

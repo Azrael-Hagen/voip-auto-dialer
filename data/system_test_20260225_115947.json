@@ -1,0 +1,96 @@
+{
+  "timestamp": "2026-02-25T11:59:37.355420",
+  "tests_run": 13,
+  "tests_passed": 8,
+  "tests_failed": 5,
+  "critical_issues": [
+    "Test fall\u00f3: Verificar servidor web ejecut\u00e1ndose",
+    "Test fall\u00f3: Probar salud de API"
+  ],
+  "warnings": [
+    "Test fall\u00f3: Probar p\u00e1ginas web",
+    "Test fall\u00f3: Probar endpoints API",
+    "Test fall\u00f3: Probar conexi\u00f3n con Asterisk"
+  ],
+  "test_details": [
+    {
+      "name": "Verificar servidor web ejecut\u00e1ndose",
+      "status": "FAILED",
+      "critical": true,
+      "message": "Test fall\u00f3: Verificar servidor web ejecut\u00e1ndose"
+    },
+    {
+      "name": "Probar salud de API",
+      "status": "FAILED",
+      "critical": true,
+      "message": "Test fall\u00f3: Probar salud de API"
+    },
+    {
+      "name": "Probar m\u00f3dulos core",
+      "status": "PASSED",
+      "critical": true,
+      "message": "Test ejecutado exitosamente"
+    },
+    {
+      "name": "Verificar archivos de datos",
+      "status": "PASSED",
+      "critical": true,
+      "message": "Test ejecutado exitosamente"
+    },
+    {
+      "name": "Probar Extension Manager",
+      "status": "PASSED",
+      "critical": false,
+      "message": "Test ejecutado exitosamente"
+    },
+    {
+      "name": "Probar Agent Manager",
+      "status": "PASSED",
+      "critical": false,
+      "message": "Test ejecutado exitosamente"
+    },
+    {
+      "name": "Probar Provider Manager",
+      "status": "PASSED",
+      "critical": false,
+      "message": "Test ejecutado exitosamente"
+    },
+    {
+      "name": "Probar p\u00e1ginas web",
+      "status": "FAILED",
+      "critical": false,
+      "message": "Test fall\u00f3: Probar p\u00e1ginas web"
+    },
+    {
+      "name": "Probar endpoints API",
+      "status": "FAILED",
+      "critical": false,
+      "message": "Test fall\u00f3: Probar endpoints API"
+    },
+    {
+      "name": "Verificar m\u00e9todos nuevos disponibles",
+      "status": "PASSED",
+      "critical": false,
+      "message": "Test ejecutado exitosamente"
+    },
+    {
+      "name": "Verificar templates existen",
+      "status": "PASSED",
+      "critical": false,
+      "message": "Test ejecutado exitosamente"
+    },
+    {
+      "name": "Verificar scripts existen",
+      "status": "PASSED",
+      "critical": false,
+      "message": "Test ejecutado exitosamente"
+    },
+    {
+      "name": "Probar conexi\u00f3n con Asterisk",
+      "status": "FAILED",
+      "critical": false,
+      "message": "Test fall\u00f3: Probar conexi\u00f3n con Asterisk"
+    }
+  ],
+  "system_status": "CR\u00cdTICO"
+}
