@@ -326,4 +326,53 @@ function showNotification(message, type) {
     alert(message);
 }
 </script>
+
+<script>//aquí se agrega la parte de edición de los proveedores
+async function editProvider(providerId) {
+    // Obtener valores del formulario de edición
+    const name = document.getElementById("editName").value;
+    const host = document.getElementById("editHost").value;
+    const port = document.getElementById("editPort").value;
+    const username = document.getElementById("editUsername").value;
+    const password = document.getElementById("editPassword").value;
+    const type = document.getElementById("editType").value;
+    const context = document.getElementById("editContext").value;
+    const active = document.getElementById("editActive").checked;
+
+    const providerData = {
+        name,
+        host,
+        port,
+        username,
+        password,
+        type,
+        context,
+        active
+    };
+
+    try {
+        const response = await fetch(`/api/providers/${providerId}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(providerData)
+        });
+
+        if (!response.ok) {
+            throw new Error("Error al actualizar proveedor");
+        }
+
+        const updatedProvider = await response.json();
+        alert(`Proveedor ${updatedProvider.name} actualizado correctamente`);
+
+        // Refrescar tabla
+        loadProviders();
+    } catch (error) {
+        console.error(error);
+        alert("No se pudo actualizar el proveedor");
+    }
+}
+</script>
+
 {% endblock %}
