@@ -1,0 +1,89 @@
+{
+  "timestamp": "2026-02-25T22:49:49.398722",
+  "tests_run": 13,
+  "tests_passed": 13,
+  "tests_failed": 0,
+  "critical_issues": [],
+  "warnings": [],
+  "test_details": [
+    {
+      "name": "Verificar servidor web ejecut\u00e1ndose",
+      "status": "PASSED",
+      "critical": true,
+      "message": "Test ejecutado exitosamente"
+    },
+    {
+      "name": "Probar salud de API",
+      "status": "PASSED",
+      "critical": true,
+      "message": "Test ejecutado exitosamente"
+    },
+    {
+      "name": "Probar m\u00f3dulos core",
+      "status": "PASSED",
+      "critical": true,
+      "message": "Test ejecutado exitosamente"
+    },
+    {
+      "name": "Verificar archivos de datos",
+      "status": "PASSED",
+      "critical": true,
+      "message": "Test ejecutado exitosamente"
+    },
+    {
+      "name": "Probar Extension Manager",
+      "status": "PASSED",
+      "critical": false,
+      "message": "Test ejecutado exitosamente"
+    },
+    {
+      "name": "Probar Agent Manager",
+      "status": "PASSED",
+      "critical": false,
+      "message": "Test ejecutado exitosamente"
+    },
+    {
+      "name": "Probar Provider Manager",
+      "status": "PASSED",
+      "critical": false,
+      "message": "Test ejecutado exitosamente"
+    },
+    {
+      "name": "Probar p\u00e1ginas web",
+      "status": "PASSED",
+      "critical": false,
+      "message": "Test ejecutado exitosamente"
+    },
+    {
+      "name": "Probar endpoints API",
+      "status": "PASSED",
+      "critical": false,
+      "message": "Test ejecutado exitosamente"
+    },
+    {
+      "name": "Verificar m\u00e9todos nuevos disponibles",
+      "status": "PASSED",
+      "critical": false,
+      "message": "Test ejecutado exitosamente"
+    },
+    {
+      "name": "Verificar templates existen",
+      "status": "PASSED",
+      "critical": false,
+      "message": "Test ejecutado exitosamente"
+    },
+    {
+      "name": "Verificar scripts existen",
+      "status": "PASSED",
+      "critical": false,
+      "message": "Test ejecutado exitosamente"
+    },
+    {
+      "name": "Probar conexi\u00f3n con Asterisk",
+      "status": "PASSED",
+      "critical": false,
+      "message": "Test ejecutado exitosamente"
+    }
+  ],
+  "system_status": "LISTO_PARA_MIGRACI\u00d3N"
+}

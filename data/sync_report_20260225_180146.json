@@ -1,0 +1,34 @@
+{
+  "timestamp": "2026-02-25T18:01:26.917039",
+  "extensions_processed": 519,
+  "softphones_detected": 0,
+  "matches_found": 0,
+  "issues_detected": [
+    "\u26a0\ufe0f Extensi\u00f3n 1501 asignada pero sin softphone detectado",
+    "\u26a0\ufe0f Extensi\u00f3n 1502 asignada pero sin softphone detectado",
+    "\u26a0\ufe0f Extensi\u00f3n 1503 asignada pero sin softphone detectado",
+    "\u26a0\ufe0f Extensi\u00f3n 1504 asignada pero sin softphone detectado",
+    "\u26a0\ufe0f Extensi\u00f3n 1505 asignada pero sin softphone detectado",
+    "\u26a0\ufe0f Extensi\u00f3n 1506 asignada pero sin softphone detectado",
+    "\u26a0\ufe0f Extensi\u00f3n 1507 asignada pero sin softphone detectado",
+    "\u26a0\ufe0f Extensi\u00f3n 1508 asignada pero sin softphone detectado",
+    "\u26a0\ufe0f Extensi\u00f3n 1509 asignada pero sin softphone detectado",
+    "\u26a0\ufe0f Extensi\u00f3n 1510 asignada pero sin softphone detectado",
+    "\u26a0\ufe0f Extensi\u00f3n 1511 asignada pero sin softphone detectado",
+    "\u26a0\ufe0f Extensi\u00f3n 1512 asignada pero sin softphone detectado",
+    "\u26a0\ufe0f Extensi\u00f3n 1513 asignada pero sin softphone detectado",
+    "\u26a0\ufe0f Extensi\u00f3n 1514 asignada pero sin softphone detectado",
+    "\u26a0\ufe0f Extensi\u00f3n 1515 asignada pero sin softphone detectado",
+    "\u26a0\ufe0f Extensi\u00f3n 1516 asignada pero sin softphone detectado",
+    "\u26a0\ufe0f Extensi\u00f3n 1517 asignada pero sin softphone detectado",
+    "\u26a0\ufe0f Extensi\u00f3n 1518 asignada pero sin softphone detectado"
+  ],
+  "actions_taken": [],
+  "summary": {
+    "total_extensions": 519,
+    "total_softphones": 0,
+    "matched_pairs": 0,
+    "issues_count": 18,
+    "actions_count": 0
+  }
+}

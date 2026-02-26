@@ -1,0 +1,37 @@
+================================================================================
+📊 REPORTE DE SINCRONIZACIÓN EXTENSIONES-SOFTPHONES
+================================================================================
+🕐 Fecha y hora: 2026-02-25T18:01:26.917039
+
+📈 ESTADÍSTICAS GENERALES:
+  • Extensiones procesadas: 519
+  • Softphones detectados: 0
+  • Coincidencias encontradas: 0
+  • Problemas detectados: 18
+  • Acciones realizadas: 0
+
+⚠️ PROBLEMAS DETECTADOS:
+  • ⚠️ Extensión 1501 asignada pero sin softphone detectado
+  • ⚠️ Extensión 1502 asignada pero sin softphone detectado
+  • ⚠️ Extensión 1503 asignada pero sin softphone detectado
+  • ⚠️ Extensión 1504 asignada pero sin softphone detectado
+  • ⚠️ Extensión 1505 asignada pero sin softphone detectado
+  • ⚠️ Extensión 1506 asignada pero sin softphone detectado
+  • ⚠️ Extensión 1507 asignada pero sin softphone detectado
+  • ⚠️ Extensión 1508 asignada pero sin softphone detectado
+  • ⚠️ Extensión 1509 asignada pero sin softphone detectado
+  • ⚠️ Extensión 1510 asignada pero sin softphone detectado
+  • ⚠️ Extensión 1511 asignada pero sin softphone detectado
+  • ⚠️ Extensión 1512 asignada pero sin softphone detectado
+  • ⚠️ Extensión 1513 asignada pero sin softphone detectado
+  • ⚠️ Extensión 1514 asignada pero sin softphone detectado
+  • ⚠️ Extensión 1515 asignada pero sin softphone detectado
+  • ⚠️ Extensión 1516 asignada pero sin softphone detectado
+  • ⚠️ Extensión 1517 asignada pero sin softphone detectado
+  • ⚠️ Extensión 1518 asignada pero sin softphone detectado
+
+📋 RESUMEN:
+  • Tasa de sincronización: 0/519 extensiones
+  • Softphones huérfanos: 0
+
+================================================================================
