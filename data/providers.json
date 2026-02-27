@@ -12,7 +12,7 @@
     "active": true,
     "status": "connected",
     "created_at": "2026-02-24T16:00:05.987096",
-    "last_test": "2026-02-25T15:43:03.735585",
+    "last_test": "2026-02-26T22:56:02.505247",
     "test_results": [
       {
         "timestamp": "2026-02-25T15:26:52.664142",
@@ -30,6 +30,16 @@
         "message": "Conexión exitosa",
         "details": {
           "response_time": "181ms",
+          "server_response": "200 OK",
+          "codec_negotiated": "ulaw,alaw,gsm"
+        }
+      },
+      {
+        "timestamp": "2026-02-26T22:56:02.505303",
+        "success": true,
+        "message": "Conexión exitosa",
+        "details": {
+          "response_time": "185ms",
           "server_response": "200 OK",
           "codec_negotiated": "ulaw,alaw,gsm"
         }

@@ -1144,57 +1144,6 @@ logger.info("🚀 Servidor VoIP Auto Dialer con integración completa iniciado")
 # SERVIDOR
 # ============================================================================
 
-
-# ==================== RUTAS DE DESARROLLO ====================
-@app.get("/dev", response_class=HTMLResponse)
-async def dev_dashboard(request: Request):
-    """Dashboard de desarrollo"""
-    return templates.TemplateResponse("dev_dashboard.html", {
-        "request": request,
-        "title": "Dashboard de Desarrollo"
-    })
-
-@app.get("/dev/agents", response_class=HTMLResponse)
-async def dev_agents(request: Request):
-    """Gestión avanzada de agentes"""
-    agents = agent_manager.get_all_agents()
-    return templates.TemplateResponse("dev_agents.html", {
-        "request": request,
-        "title": "Desarrollo - Agentes",
-        "agents": agents
-    })
-
-@app.get("/favicon.ico")
-async def favicon():
-    """Servir favicon"""
-    return FileResponse("web/static/images/favicon.svg", media_type="image/svg+xml")
-
-# ==================== API ADICIONALES ====================
-@app.get("/api/system/status")
-async def system_status():
-    """Estado del sistema completo"""
-    return {
-        "status": "online",
-        "timestamp": datetime.now().isoformat(),
-        "components": {
-            "web_server": "running",
-            "asterisk": "checking",
-            "database": "connected",
-            "auto_dialer": "ready"
-        }
-    }
-
-@app.get("/api/campaigns")
-async def get_campaigns():
-    """Obtener campañas activas"""
-    return {
-        "campaigns": [],
-        "active_count": 0,
-        "total_calls": 0,
-        "success_rate": 0.0
-    }
-
-
 if __name__ == "__main__":
     logger.info("Iniciando servidor web VoIP Auto Dialer v2.0")
     uvicorn.run(
