@@ -149,6 +149,61 @@
         </div>
     </div>
 
+
+    <!-- AUTO DIALER SECTION - AGREGADO PARA FUNCIONALIDAD DE MARCADO AUTOMÁTICO -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card shadow">
+                <div class="card-header py-3 d-flex justify-content-between align-items-center">
+                    <h6 class="m-0 font-weight-bold text-primary">
+                        <i class="fas fa-robot me-2"></i>Auto Dialer - Marcado Automático
+                    </h6>
+                    <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-success btn-sm" id="startAutoDialer">
+                            <i class="fas fa-play me-1"></i>Iniciar
+                        </button>
+                        <button type="button" class="btn btn-danger btn-sm" id="stopAutoDialer">
+                            <i class="fas fa-stop me-1"></i>Detener
+                        </button>
+                        <button type="button" class="btn btn-info btn-sm" id="testCall">
+                            <i class="fas fa-phone me-1"></i>Llamada de Prueba
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="text-center">
+                                <div class="text-xs font-weight-bold text-uppercase mb-1">Estado</div>
+                                <div class="h6 mb-0" id="autoDialerStatus">
+                                    <span class="text-secondary">Detenido</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="text-center">
+                                <div class="text-xs font-weight-bold text-uppercase mb-1">Llamadas Activas</div>
+                                <div class="h6 mb-0" id="activeCalls">0</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="text-center">
+                                <div class="text-xs font-weight-bold text-uppercase mb-1">Campañas Activas</div>
+                                <div class="h6 mb-0" id="activeCampaigns">0</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="text-center">
+                                <div class="text-xs font-weight-bold text-uppercase mb-1">Llamadas/Min</div>
+                                <div class="h6 mb-0" id="callsPerMinute">0</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
     <!-- Sistema de Auto-Registro -->
     <div class="row">
         <div class="col-12">
@@ -372,6 +427,155 @@ async function editProvider(providerId) {
         alert("No se pudo actualizar el proveedor");
     }
 }
+
+
+
+// ============================================================================
+// AUTO DIALER FUNCTIONS - AGREGADO PARA FUNCIONALIDAD DE MARCADO AUTOMÁTICO
+// ============================================================================
+
+// Cargar estado del auto dialer
+async function loadAutoDialerStatus() {
+    try {
+        const response = await fetch('/api/dialer/status');
+        if (response.ok) {
+            const data = await response.json();
+            if (data.success && data.data) {
+                updateAutoDialerUI(data.data);
+            }
+        }
+    } catch (error) {
+        console.error('Error cargando estado del auto dialer:', error);
+    }
+}
+
+function updateAutoDialerUI(dialerData) {
+    if (dialerData && dialerData.engine_stats) {
+        const stats = dialerData.engine_stats;
+        
+        // Actualizar estado
+        const statusElement = document.getElementById('autoDialerStatus');
+        if (statusElement) {
+            statusElement.innerHTML = stats.is_running ? 
+                '<span class="text-success">Activo</span>' : 
+                '<span class="text-secondary">Detenido</span>';
+        }
+        
+        // Actualizar métricas
+        const activeCallsElement = document.getElementById('activeCalls');
+        if (activeCallsElement) {
+            activeCallsElement.textContent = stats.active_calls || 0;
+        }
+        
+        const activeCampaignsElement = document.getElementById('activeCampaigns');
+        if (activeCampaignsElement) {
+            activeCampaignsElement.textContent = dialerData.total_active_campaigns || 0;
+        }
+        
+        const callsPerMinuteElement = document.getElementById('callsPerMinute');
+        if (callsPerMinuteElement) {
+            callsPerMinuteElement.textContent = stats.calls_per_minute || 0;
+        }
+    }
+}
+
+// Event listeners para botones del auto dialer
+document.addEventListener('DOMContentLoaded', function() {
+    // Tu código existente se mantiene...
+    
+    // Agregar funcionalidad del auto dialer
+    loadAutoDialerStatus();
+    
+    // Botón Iniciar Auto Dialer
+    const startButton = document.getElementById('startAutoDialer');
+    if (startButton) {
+        startButton.addEventListener('click', async () => {
+            const campaignId = prompt('ID de la campaña a iniciar (ejemplo: test-campaign):');
+            if (campaignId) {
+                try {
+                    const response = await fetch(`/api/dialer/campaigns/${campaignId}/start`, {
+                        method: 'POST',
+                        headers: {'Content-Type': 'application/json'},
+                        body: JSON.stringify({
+                            calls_per_minute: 10,
+                            max_concurrent_calls: 3,
+                            mode: 'power'
+                        })
+                    });
+                    
+                    const result = await response.json();
+                    if (result.success) {
+                        showNotification('Auto dialer iniciado exitosamente', 'success');
+                        loadAutoDialerStatus();
+                    } else {
+                        showNotification(result.message || 'Error iniciando auto dialer', 'error');
+                    }
+                } catch (error) {
+                    showNotification('Error de conexión', 'error');
+                }
+            }
+        });
+    }
+    
+    // Botón Detener Auto Dialer
+    const stopButton = document.getElementById('stopAutoDialer');
+    if (stopButton) {
+        stopButton.addEventListener('click', async () => {
+            const campaignId = prompt('ID de la campaña a detener:');
+            if (campaignId) {
+                try {
+                    const response = await fetch(`/api/dialer/campaigns/${campaignId}/stop`, {
+                        method: 'POST'
+                    });
+                    
+                    const result = await response.json();
+                    if (result.success) {
+                        showNotification('Auto dialer detenido exitosamente', 'success');
+                        loadAutoDialerStatus();
+                    } else {
+                        showNotification(result.message || 'Error deteniendo auto dialer', 'error');
+                    }
+                } catch (error) {
+                    showNotification('Error de conexión', 'error');
+                }
+            }
+        });
+    }
+    
+    // Botón Llamada de Prueba
+    const testButton = document.getElementById('testCall');
+    if (testButton) {
+        testButton.addEventListener('click', async () => {
+            const phoneNumber = prompt('Número de teléfono para llamada de prueba (ejemplo: +1234567890):');
+            if (phoneNumber) {
+                try {
+                    const response = await fetch('/api/dialer/test-call', {
+                        method: 'POST',
+                        headers: {'Content-Type': 'application/json'},
+                        body: JSON.stringify({phone_number: phoneNumber})
+                    });
+                    
+                    const result = await response.json();
+                    if (result.success) {
+                        showNotification('Llamada de prueba iniciada', 'success');
+                    } else {
+                        showNotification(result.message || 'Error en llamada de prueba', 'error');
+                    }
+                } catch (error) {
+                    showNotification('Error de conexión', 'error');
+                }
+            }
+        });
+    }
+    
+    // Auto-refresh cada 30 segundos (agregar a tu setInterval existente)
+    setInterval(() => {
+        loadAgents();
+        loadAutoDialerStatus(); // Agregar esta línea al setInterval existente
+    }, 30000);
+});
+
+
 </script>
 
 {% endblock %}

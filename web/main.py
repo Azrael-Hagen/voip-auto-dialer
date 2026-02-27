@@ -940,18 +940,8 @@ async def export_extension_configs(export_data: dict):
         logger.error(f"Error exportando configuraciones: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
-# ============================================================================
-# SERVIDOR
-# ============================================================================
 
-if __name__ == "__main__":
-    logger.info("Iniciando servidor web VoIP Auto Dialer v2.0")
-    uvicorn.run(
-        app,
-        host="0.0.0.0",
-        port=8000,
-        log_level="info"
-    )
+
 # ============================================================================
 # EXTENSIONS MANAGEMENT ENDPOINTS
 # ============================================================================
@@ -1048,3 +1038,121 @@ async def execute_bulk_action(action_data: dict):
         logger.error(f"Error ejecutando acción masiva: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
+# ============================================================================
+# AUTO DIALER INTEGRATION - AGREGADO PARA FUNCIONALIDAD DE MARCADO AUTOMÁTICO
+# ============================================================================
+
+# Importar componentes del auto dialer
+try:
+    from core.dialer_integration import dialer_integration
+    from core.call_detector import CallDetector
+    from core.agent_transfer_system import AgentTransferSystem
+    from core.auto_dialer_engine import AutoDialerEngine
+    
+    auto_dialer_available = True
+    logger.info("✅ Componentes del auto dialer cargados exitosamente")
+    
+except ImportError as e:
+    auto_dialer_available = False
+    logger.warning(f"⚠️ Auto dialer no disponible: {e}")
+
+# Endpoints del Auto Dialer
+if auto_dialer_available:
+    
+    @app.get("/api/dialer/status")
+    async def get_dialer_status():
+        """Estado del sistema de marcado automático"""
+        try:
+            status = dialer_integration.get_dialer_status()
+            return {"success": True, "data": status}
+        except Exception as e:
+            logger.error(f"Error obteniendo estado del dialer: {e}")
+            raise HTTPException(status_code=500, detail=str(e))
+    
+    @app.post("/api/dialer/campaigns/{campaign_id}/start")
+    async def start_campaign_dialing(campaign_id: str, config: dict = None):
+        """Iniciar marcado automático para una campaña"""
+        try:
+            if not config:
+                config = {
+                    "calls_per_minute": 10,
+                    "max_concurrent_calls": 3,
+                    "mode": "power"
+                }
+            result = await dialer_integration.start_campaign_dialing(campaign_id, config)
+            return result
+        except Exception as e:
+            logger.error(f"Error iniciando campaña: {e}")
+            raise HTTPException(status_code=500, detail=str(e))
+    
+    @app.post("/api/dialer/campaigns/{campaign_id}/stop")
+    async def stop_campaign_dialing(campaign_id: str):
+        """Detener marcado automático para una campaña"""
+        try:
+            result = await dialer_integration.stop_campaign_dialing(campaign_id)
+            return result
+        except Exception as e:
+            logger.error(f"Error deteniendo campaña: {e}")
+            raise HTTPException(status_code=500, detail=str(e))
+    
+    @app.post("/api/dialer/test-call")
+    async def make_test_call(call_data: dict):
+        """Realizar llamada de prueba"""
+        try:
+            phone_number = call_data.get("phone_number")
+            if not phone_number:
+                raise HTTPException(status_code=400, detail="phone_number es requerido")
+            result = await dialer_integration.make_test_call(phone_number)
+            return result
+        except Exception as e:
+            logger.error(f"Error en llamada de prueba: {e}")
+            raise HTTPException(status_code=500, detail=str(e))
+    
+    @app.get("/api/dialer/campaigns")
+    async def get_available_campaigns():
+        """Obtener campañas disponibles para marcado"""
+        try:
+            result = dialer_integration.get_available_campaigns()
+            return result
+        except Exception as e:
+            logger.error(f"Error obteniendo campañas: {e}")
+            raise HTTPException(status_code=500, detail=str(e))
+
+else:
+    # Endpoints dummy si el auto dialer no está disponible
+    @app.get("/api/dialer/status")
+    async def dialer_not_available():
+        return {"success": False, "message": "Auto dialer no disponible"}
+    
+    @app.post("/api/dialer/campaigns/{campaign_id}/start")
+    async def dialer_not_available_start(campaign_id: str):
+        return {"success": False, "message": "Auto dialer no disponible"}
+    
+    @app.post("/api/dialer/campaigns/{campaign_id}/stop")
+    async def dialer_not_available_stop(campaign_id: str):
+        return {"success": False, "message": "Auto dialer no disponible"}
+    
+    @app.post("/api/dialer/test-call")
+    async def dialer_not_available_test():
+        return {"success": False, "message": "Auto dialer no disponible"}
+    
+    @app.get("/api/dialer/campaigns")
+    async def dialer_not_available_campaigns():
+        return {"success": False, "message": "Auto dialer no disponible"}
+
+logger.info("🚀 Servidor VoIP Auto Dialer con integración completa iniciado")
+
+
+
+# ============================================================================
+# SERVIDOR
+# ============================================================================
+
+if __name__ == "__main__":
+    logger.info("Iniciando servidor web VoIP Auto Dialer v2.0")
+    uvicorn.run(
+        app,
+        host="0.0.0.0",
+        port=8000,
+        log_level="info"
+    )
