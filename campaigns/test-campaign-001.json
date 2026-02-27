@@ -1,0 +1,72 @@
+{
+  "id": "test-campaign-001",
+  "name": "Campa\u00f1a de Prueba",
+  "description": "Campa\u00f1a de prueba para validar el sistema",
+  "status": "draft",
+  "caller_id": "+1234567800",
+  "max_concurrent_calls": 3,
+  "calls_per_minute": 10,
+  "calling_hours_start": "09:00",
+  "calling_hours_end": "17:00",
+  "calling_days": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "timezone": "UTC",
+  "total_leads": 3,
+  "calls_made": 0,
+  "calls_answered": 0,
+  "created_at": "2026-02-26T12:22:23.820578",
+  "started_at": null,
+  "completed_at": null,
+  "leads": [
+    {
+      "id": "lead-001",
+      "phone_number": "+1234567801",
+      "first_name": "Cliente",
+      "last_name": "Uno",
+      "email": "cliente1@test.com",
+      "company": "Empresa Test 1",
+      "attempts": 0,
+      "max_attempts": 3,
+      "result": "pending",
+      "last_call_time": null,
+      "next_call_time": null,
+      "total_talk_time": 0.0,
+      "custom_data": {}
+    },
+    {
+      "id": "lead-002",
+      "phone_number": "+1234567802",
+      "first_name": "Cliente",
+      "last_name": "Dos",
+      "email": "cliente2@test.com",
+      "company": "Empresa Test 2",
+      "attempts": 0,
+      "max_attempts": 3,
+      "result": "pending",
+      "last_call_time": null,
+      "next_call_time": null,
+      "total_talk_time": 0.0,
+      "custom_data": {}
+    },
+    {
+      "id": "lead-003",
+      "phone_number": "+1234567803",
+      "first_name": "Cliente",
+      "last_name": "Tres",
+      "email": "cliente3@test.com",
+      "company": "Empresa Test 3",
+      "attempts": 0,
+      "max_attempts": 3,
+      "result": "pending",
+      "last_call_time": null,
+      "next_call_time": null,
+      "total_talk_time": 0.0,
+      "custom_data": {}
+    }
+  ]
+}

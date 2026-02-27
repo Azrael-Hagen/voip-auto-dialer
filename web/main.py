@@ -26,6 +26,7 @@ from core.agent_manager_clean import agent_manager
 from core.asterisk_monitor import asterisk_monitor
 from core.provider_manager import provider_manager
 from core.softphone_auto_register import softphone_auto_register
+from start_web_server_integration import integrate_dialer_with_existing_app
 
 # Configuración de la aplicación
 app = FastAPI(
@@ -33,6 +34,8 @@ app = FastAPI(
     description="Sistema de llamadas automatizadas con gestión completa de agentes, extensiones y proveedores",
     version="2.0.0"
 )
+
+integrate_dialer_with_existing_app(app)
 
 # Logger
 logger = get_logger("web_server")

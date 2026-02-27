@@ -2,28 +2,40 @@
   "1000": {
     "extension": "1000",
     "password": "MofJsCH2",
-    "assigned": false,
+    "assigned": true,
     "server_ip": "127.0.0.1",
-    "display_name": "Agente Prueba 1496",
-    "provider": "local"
+    "display_name": "agent_d11f4808",
+    "provider": "local",
+    "status": "assigned",
+    "assigned_to": "1000",
+    "assigned_at": "2026-02-26T12:22:23.802146",
+    "agent_name": "agent_d11f4808"
   },
   "1001": {
     "extension": "1001",
     "password": "M*JQH#7f8nvT",
-    "assigned": false,
+    "assigned": true,
     "server_ip": "127.0.0.1",
-    "display_name": "Mar\u00eda Garc\u00eda",
+    "display_name": "agent_d4cfa333",
     "provider": "local",
     "password_updated_at": "2026-02-25T15:57:25.995668",
-    "updated_at": "2026-02-25T15:57:34.376092"
+    "updated_at": "2026-02-25T15:57:34.376092",
+    "status": "assigned",
+    "assigned_to": "1001",
+    "assigned_at": "2026-02-26T12:22:23.808520",
+    "agent_name": "agent_d4cfa333"
   },
   "1002": {
     "extension": "1002",
     "password": "uWVbfhVwD*Fw",
-    "assigned": false,
+    "assigned": true,
     "server_ip": "127.0.0.1",
-    "display_name": "Carlos L\u00f3pez",
-    "provider": "local"
+    "display_name": "agent_b1e5470c",
+    "provider": "local",
+    "status": "assigned",
+    "assigned_to": "1002",
+    "assigned_at": "2026-02-26T12:22:23.814777",
+    "agent_name": "agent_b1e5470c"
   },
   "1003": {
     "extension": "1003",

@@ -1,45 +1,32 @@
 {
-  "providers": [
-    {
-      "name": "mock_primary",
-      "type": "mock",
-      "enabled": true,
-      "config": {
-        "cost_per_minute": 0.02,
-        "success_rate": 0.85,
-        "avg_duration": 120
-      }
-    },
-    {
-      "name": "asterisk_local",
-      "type": "freepbx",
-      "enabled": true,
-      "config": {
-        "ami_host": "localhost",
-        "ami_port": 5038,
-        "ami_username": "voip_dialer",
-        "ami_password": "VoipDialer2024!",
-        "context": "from-internal",
-        "channel_prefix": "PJSIP",
-        "timeout": 30000
-      }
-    },
-    {
-      "name": "freepbx_vm",
-      "type": "freepbx",
-      "enabled": false,
-      "config": {
-        "ami_host": "192.168.1.100",
-        "ami_port": 5038,
-        "ami_username": "admin",
-        "ami_password": "secret",
-        "context": "from-internal",
-        "channel_prefix": "PJSIP",
-        "timeout": 30000
-      }
-    }
-  ],
-  "load_balance_strategy": "round_robin",
-  "health_check_interval": 60,
-  "max_concurrent_calls": 50
+  "local-asterisk": {
+    "id": "local-asterisk",
+    "name": "Asterisk Local",
+    "type": "asterisk",
+    "host": "127.0.0.1",
+    "port": 5060,
+    "username": "",
+    "password": "",
+    "transport": "UDP",
+    "context": "from-trunk",
+    "codec": "ulaw,alaw,gsm",
+    "description": "Servidor Asterisk local",
+    "active": true,
+    "created_at": "2026-02-26T12:22:23.820907"
+  },
+  "test-provider": {
+    "id": "test-provider",
+    "name": "Proveedor de Prueba",
+    "type": "sip",
+    "host": "sip.test.com",
+    "port": 5060,
+    "username": "testuser",
+    "password": "testpass",
+    "transport": "UDP",
+    "context": "from-trunk",
+    "codec": "ulaw,alaw",
+    "description": "Proveedor SIP de prueba",
+    "active": false,
+    "created_at": "2026-02-26T12:22:23.820916"
+  }
 }
