@@ -1,17 +1,17 @@
 {
-  "last_sync": "2026-02-25T18:01:26.917039",
+  "last_sync": "2026-02-27T18:15:34.312459",
   "synced_extensions": {
     "1000": {
       "extension_data": {
         "extension": "1000",
         "password": "MofJsCH2",
-        "assigned": false,
+        "assigned": true,
         "server_ip": "127.0.0.1",
-        "display_name": "Agente Prueba 1496",
+        "display_name": "agent_d11f4808",
         "provider": "local",
-        "assigned_to": null,
-        "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.917305"
+        "assigned_to": "1000",
+        "assigned_at": "2026-02-26T12:22:23.802146",
+        "created_at": "2026-02-27T18:15:34.312959"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -20,13 +20,13 @@
       "extension_data": {
         "extension": "1001",
         "password": "M*JQH#7f8nvT",
-        "assigned": false,
+        "assigned": true,
         "server_ip": "127.0.0.1",
-        "display_name": "Mar\u00eda Garc\u00eda",
+        "display_name": "agent_d4cfa333",
         "provider": "local",
-        "assigned_to": null,
-        "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.917324"
+        "assigned_to": "1001",
+        "assigned_at": "2026-02-26T12:22:23.808520",
+        "created_at": "2026-02-27T18:15:34.312979"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -35,13 +35,13 @@
       "extension_data": {
         "extension": "1002",
         "password": "uWVbfhVwD*Fw",
-        "assigned": false,
+        "assigned": true,
         "server_ip": "127.0.0.1",
-        "display_name": "Carlos L\u00f3pez",
+        "display_name": "agent_b1e5470c",
         "provider": "local",
-        "assigned_to": null,
-        "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.917339"
+        "assigned_to": "1002",
+        "assigned_at": "2026-02-26T12:22:23.814777",
+        "created_at": "2026-02-27T18:15:34.312995"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -56,7 +56,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.917358"
+        "created_at": "2026-02-27T18:15:34.313009"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -71,7 +71,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.917374"
+        "created_at": "2026-02-27T18:15:34.313024"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -86,7 +86,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.917393"
+        "created_at": "2026-02-27T18:15:34.313037"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -101,7 +101,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.917408"
+        "created_at": "2026-02-27T18:15:34.313051"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -116,7 +116,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.917421"
+        "created_at": "2026-02-27T18:15:34.313065"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -131,7 +131,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.917435"
+        "created_at": "2026-02-27T18:15:34.313079"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -146,7 +146,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.917448"
+        "created_at": "2026-02-27T18:15:34.313092"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -161,7 +161,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.917461"
+        "created_at": "2026-02-27T18:15:34.313106"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -176,7 +176,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.917475"
+        "created_at": "2026-02-27T18:15:34.313141"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -191,7 +191,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.917488"
+        "created_at": "2026-02-27T18:15:34.313155"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -206,7 +206,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.917500"
+        "created_at": "2026-02-27T18:15:34.313169"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -221,7 +221,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.917512"
+        "created_at": "2026-02-27T18:15:34.313183"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -236,7 +236,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.917525"
+        "created_at": "2026-02-27T18:15:34.313195"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -251,7 +251,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.917552"
+        "created_at": "2026-02-27T18:15:34.313209"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -266,7 +266,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.917566"
+        "created_at": "2026-02-27T18:15:34.313222"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -281,7 +281,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.917578"
+        "created_at": "2026-02-27T18:15:34.313235"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -296,7 +296,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.917591"
+        "created_at": "2026-02-27T18:15:34.313265"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -311,7 +311,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.917603"
+        "created_at": "2026-02-27T18:15:34.313279"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -326,7 +326,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.917616"
+        "created_at": "2026-02-27T18:15:34.313292"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -341,7 +341,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.917629"
+        "created_at": "2026-02-27T18:15:34.313306"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -356,7 +356,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.917641"
+        "created_at": "2026-02-27T18:15:34.313319"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -371,7 +371,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.917654"
+        "created_at": "2026-02-27T18:15:34.313332"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -386,7 +386,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.917666"
+        "created_at": "2026-02-27T18:15:34.313348"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -401,7 +401,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.917678"
+        "created_at": "2026-02-27T18:15:34.313361"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -416,7 +416,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.917690"
+        "created_at": "2026-02-27T18:15:34.313373"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -431,7 +431,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.917703"
+        "created_at": "2026-02-27T18:15:34.313387"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -446,7 +446,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.917719"
+        "created_at": "2026-02-27T18:15:34.313403"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -461,7 +461,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.917732"
+        "created_at": "2026-02-27T18:15:34.313416"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -476,7 +476,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.917744"
+        "created_at": "2026-02-27T18:15:34.313429"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -491,7 +491,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.917756"
+        "created_at": "2026-02-27T18:15:34.313442"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -506,7 +506,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.917768"
+        "created_at": "2026-02-27T18:15:34.313454"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -521,7 +521,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.917781"
+        "created_at": "2026-02-27T18:15:34.313467"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -536,7 +536,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.917792"
+        "created_at": "2026-02-27T18:15:34.313479"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -551,7 +551,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.917806"
+        "created_at": "2026-02-27T18:15:34.313492"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -566,7 +566,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.917819"
+        "created_at": "2026-02-27T18:15:34.313505"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -581,7 +581,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.917831"
+        "created_at": "2026-02-27T18:15:34.313521"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -596,7 +596,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.917843"
+        "created_at": "2026-02-27T18:15:34.313534"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -611,7 +611,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.917856"
+        "created_at": "2026-02-27T18:15:34.313547"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -626,7 +626,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.917869"
+        "created_at": "2026-02-27T18:15:34.313560"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -641,7 +641,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.917884"
+        "created_at": "2026-02-27T18:15:34.313573"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -656,7 +656,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.917897"
+        "created_at": "2026-02-27T18:15:34.313586"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -671,7 +671,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.917909"
+        "created_at": "2026-02-27T18:15:34.313599"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -686,7 +686,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.917921"
+        "created_at": "2026-02-27T18:15:34.313612"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -701,7 +701,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.917934"
+        "created_at": "2026-02-27T18:15:34.313625"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -716,7 +716,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.917946"
+        "created_at": "2026-02-27T18:15:34.313638"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -731,7 +731,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.917966"
+        "created_at": "2026-02-27T18:15:34.313653"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -746,7 +746,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.917979"
+        "created_at": "2026-02-27T18:15:34.313665"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -761,7 +761,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.917991"
+        "created_at": "2026-02-27T18:15:34.313678"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -776,7 +776,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.918004"
+        "created_at": "2026-02-27T18:15:34.313693"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -791,7 +791,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.918016"
+        "created_at": "2026-02-27T18:15:34.313706"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -806,7 +806,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.918028"
+        "created_at": "2026-02-27T18:15:34.313719"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -821,7 +821,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.918040"
+        "created_at": "2026-02-27T18:15:34.313731"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -836,7 +836,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.918058"
+        "created_at": "2026-02-27T18:15:34.313745"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -851,7 +851,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.918073"
+        "created_at": "2026-02-27T18:15:34.313757"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -866,7 +866,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.918086"
+        "created_at": "2026-02-27T18:15:34.313770"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -881,7 +881,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.918099"
+        "created_at": "2026-02-27T18:15:34.313784"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -896,7 +896,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.918112"
+        "created_at": "2026-02-27T18:15:34.313797"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -911,7 +911,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.918124"
+        "created_at": "2026-02-27T18:15:34.313810"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -926,7 +926,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.918137"
+        "created_at": "2026-02-27T18:15:34.313823"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -941,7 +941,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.918150"
+        "created_at": "2026-02-27T18:15:34.313835"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -956,7 +956,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.918162"
+        "created_at": "2026-02-27T18:15:34.313848"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -971,7 +971,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.918175"
+        "created_at": "2026-02-27T18:15:34.313861"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -986,7 +986,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.918187"
+        "created_at": "2026-02-27T18:15:34.313876"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -1001,7 +1001,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.918200"
+        "created_at": "2026-02-27T18:15:34.313889"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -1016,7 +1016,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.918212"
+        "created_at": "2026-02-27T18:15:34.313902"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -1031,7 +1031,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.918224"
+        "created_at": "2026-02-27T18:15:34.313914"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -1046,7 +1046,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.918240"
+        "created_at": "2026-02-27T18:15:34.313927"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -1061,7 +1061,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.918252"
+        "created_at": "2026-02-27T18:15:34.313939"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -1076,7 +1076,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.918265"
+        "created_at": "2026-02-27T18:15:34.313952"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -1091,7 +1091,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.918277"
+        "created_at": "2026-02-27T18:15:34.313965"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -1106,7 +1106,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.918290"
+        "created_at": "2026-02-27T18:15:34.313977"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -1121,7 +1121,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.918302"
+        "created_at": "2026-02-27T18:15:34.313989"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -1136,7 +1136,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.918314"
+        "created_at": "2026-02-27T18:15:34.314002"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -1151,7 +1151,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.918327"
+        "created_at": "2026-02-27T18:15:34.314014"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -1166,7 +1166,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.918340"
+        "created_at": "2026-02-27T18:15:34.314027"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -1181,7 +1181,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.918353"
+        "created_at": "2026-02-27T18:15:34.314044"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -1196,7 +1196,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.918365"
+        "created_at": "2026-02-27T18:15:34.314057"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -1211,7 +1211,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.918377"
+        "created_at": "2026-02-27T18:15:34.314070"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -1226,7 +1226,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.918390"
+        "created_at": "2026-02-27T18:15:34.314082"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -1241,7 +1241,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.918405"
+        "created_at": "2026-02-27T18:15:34.314096"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -1256,7 +1256,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.918417"
+        "created_at": "2026-02-27T18:15:34.314108"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -1271,7 +1271,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.918429"
+        "created_at": "2026-02-27T18:15:34.314121"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -1286,7 +1286,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.918442"
+        "created_at": "2026-02-27T18:15:34.314134"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -1301,7 +1301,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.918457"
+        "created_at": "2026-02-27T18:15:34.314149"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -1316,7 +1316,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.918469"
+        "created_at": "2026-02-27T18:15:34.314162"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -1331,7 +1331,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.918481"
+        "created_at": "2026-02-27T18:15:34.314175"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -1346,7 +1346,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.918493"
+        "created_at": "2026-02-27T18:15:34.314187"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -1361,7 +1361,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.918505"
+        "created_at": "2026-02-27T18:15:34.314199"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -1376,7 +1376,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.918518"
+        "created_at": "2026-02-27T18:15:34.314215"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -1391,7 +1391,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.918530"
+        "created_at": "2026-02-27T18:15:34.314227"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -1406,7 +1406,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.918542"
+        "created_at": "2026-02-27T18:15:34.314247"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -1421,7 +1421,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.918554"
+        "created_at": "2026-02-27T18:15:34.314260"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -1436,7 +1436,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.918569"
+        "created_at": "2026-02-27T18:15:34.314273"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -1451,7 +1451,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.918581"
+        "created_at": "2026-02-27T18:15:34.314285"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -1466,7 +1466,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.918594"
+        "created_at": "2026-02-27T18:15:34.314298"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -1481,7 +1481,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.918606"
+        "created_at": "2026-02-27T18:15:34.314311"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -1496,7 +1496,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.918619"
+        "created_at": "2026-02-27T18:15:34.314326"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -1511,7 +1511,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.918634"
+        "created_at": "2026-02-27T18:15:34.314339"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -1526,7 +1526,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.918647"
+        "created_at": "2026-02-27T18:15:34.314350"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -1541,7 +1541,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.918659"
+        "created_at": "2026-02-27T18:15:34.314363"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -1556,7 +1556,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.918671"
+        "created_at": "2026-02-27T18:15:34.314376"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -1571,7 +1571,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.918683"
+        "created_at": "2026-02-27T18:15:34.314392"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -1586,7 +1586,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.918696"
+        "created_at": "2026-02-27T18:15:34.314405"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -1601,7 +1601,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.918710"
+        "created_at": "2026-02-27T18:15:34.314417"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -1616,7 +1616,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.918723"
+        "created_at": "2026-02-27T18:15:34.314429"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -1631,7 +1631,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.918735"
+        "created_at": "2026-02-27T18:15:34.314442"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -1646,7 +1646,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.918749"
+        "created_at": "2026-02-27T18:15:34.314454"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -1661,7 +1661,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.918762"
+        "created_at": "2026-02-27T18:15:34.314466"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -1676,7 +1676,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.918774"
+        "created_at": "2026-02-27T18:15:34.314479"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -1691,7 +1691,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.918869"
+        "created_at": "2026-02-27T18:15:34.314491"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -1706,7 +1706,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.918884"
+        "created_at": "2026-02-27T18:15:34.314503"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -1721,7 +1721,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.918898"
+        "created_at": "2026-02-27T18:15:34.314515"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -1736,7 +1736,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.918910"
+        "created_at": "2026-02-27T18:15:34.314530"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -1751,7 +1751,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.918922"
+        "created_at": "2026-02-27T18:15:34.314543"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -1766,7 +1766,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.918935"
+        "created_at": "2026-02-27T18:15:34.314556"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -1781,7 +1781,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.918954"
+        "created_at": "2026-02-27T18:15:34.314570"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -1796,7 +1796,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.918968"
+        "created_at": "2026-02-27T18:15:34.314583"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -1811,7 +1811,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.918981"
+        "created_at": "2026-02-27T18:15:34.314596"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -1826,7 +1826,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.918994"
+        "created_at": "2026-02-27T18:15:34.314608"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -1841,7 +1841,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.919010"
+        "created_at": "2026-02-27T18:15:34.314620"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -1856,7 +1856,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.919023"
+        "created_at": "2026-02-27T18:15:34.314632"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -1871,7 +1871,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.919036"
+        "created_at": "2026-02-27T18:15:34.314644"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -1886,7 +1886,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.919048"
+        "created_at": "2026-02-27T18:15:34.314656"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -1901,7 +1901,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.919060"
+        "created_at": "2026-02-27T18:15:34.314668"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -1916,7 +1916,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.919072"
+        "created_at": "2026-02-27T18:15:34.314681"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -1931,7 +1931,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.919085"
+        "created_at": "2026-02-27T18:15:34.314694"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -1946,7 +1946,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.919097"
+        "created_at": "2026-02-27T18:15:34.314706"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -1961,7 +1961,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.919110"
+        "created_at": "2026-02-27T18:15:34.314719"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -1976,7 +1976,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.919122"
+        "created_at": "2026-02-27T18:15:34.314737"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -1991,7 +1991,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.919135"
+        "created_at": "2026-02-27T18:15:34.314750"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -2006,7 +2006,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.919147"
+        "created_at": "2026-02-27T18:15:34.314762"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -2021,7 +2021,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.919159"
+        "created_at": "2026-02-27T18:15:34.314774"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -2036,7 +2036,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.919175"
+        "created_at": "2026-02-27T18:15:34.314786"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -2051,7 +2051,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.919188"
+        "created_at": "2026-02-27T18:15:34.314799"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -2066,7 +2066,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.919200"
+        "created_at": "2026-02-27T18:15:34.314811"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -2081,7 +2081,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.919213"
+        "created_at": "2026-02-27T18:15:34.314824"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -2096,7 +2096,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.919226"
+        "created_at": "2026-02-27T18:15:34.314836"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -2111,7 +2111,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.919238"
+        "created_at": "2026-02-27T18:15:34.314848"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -2126,7 +2126,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.919250"
+        "created_at": "2026-02-27T18:15:34.314861"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -2141,7 +2141,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.919264"
+        "created_at": "2026-02-27T18:15:34.314873"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -2156,7 +2156,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.919277"
+        "created_at": "2026-02-27T18:15:34.314887"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -2171,7 +2171,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.919289"
+        "created_at": "2026-02-27T18:15:34.314901"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -2186,7 +2186,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.919301"
+        "created_at": "2026-02-27T18:15:34.314913"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -2201,7 +2201,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.919313"
+        "created_at": "2026-02-27T18:15:34.314926"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -2216,7 +2216,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.919325"
+        "created_at": "2026-02-27T18:15:34.314938"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -2231,7 +2231,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.919340"
+        "created_at": "2026-02-27T18:15:34.314950"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -2246,7 +2246,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.919354"
+        "created_at": "2026-02-27T18:15:34.314963"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -2261,7 +2261,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.919366"
+        "created_at": "2026-02-27T18:15:34.314976"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -2276,7 +2276,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.919378"
+        "created_at": "2026-02-27T18:15:34.314992"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -2291,7 +2291,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.919390"
+        "created_at": "2026-02-27T18:15:34.315005"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -2306,7 +2306,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.919403"
+        "created_at": "2026-02-27T18:15:34.315017"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -2321,7 +2321,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.919416"
+        "created_at": "2026-02-27T18:15:34.315030"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -2336,7 +2336,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.919428"
+        "created_at": "2026-02-27T18:15:34.315043"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -2351,7 +2351,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.919441"
+        "created_at": "2026-02-27T18:15:34.315056"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -2366,7 +2366,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.919455"
+        "created_at": "2026-02-27T18:15:34.315074"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -2381,7 +2381,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.919468"
+        "created_at": "2026-02-27T18:15:34.315086"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -2396,7 +2396,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.919481"
+        "created_at": "2026-02-27T18:15:34.315099"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -2411,7 +2411,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.919494"
+        "created_at": "2026-02-27T18:15:34.315110"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -2426,7 +2426,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.919506"
+        "created_at": "2026-02-27T18:15:34.315122"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -2441,7 +2441,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.919521"
+        "created_at": "2026-02-27T18:15:34.315134"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -2456,7 +2456,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.919536"
+        "created_at": "2026-02-27T18:15:34.315157"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -2471,7 +2471,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.919549"
+        "created_at": "2026-02-27T18:15:34.315169"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -2486,7 +2486,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.919561"
+        "created_at": "2026-02-27T18:15:34.315182"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -2501,7 +2501,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.919574"
+        "created_at": "2026-02-27T18:15:34.315193"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -2516,7 +2516,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.919586"
+        "created_at": "2026-02-27T18:15:34.315206"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -2531,7 +2531,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.919599"
+        "created_at": "2026-02-27T18:15:34.315218"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -2546,7 +2546,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.919611"
+        "created_at": "2026-02-27T18:15:34.315231"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -2561,7 +2561,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.919625"
+        "created_at": "2026-02-27T18:15:34.315249"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -2576,7 +2576,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.919640"
+        "created_at": "2026-02-27T18:15:34.315267"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -2591,7 +2591,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.919653"
+        "created_at": "2026-02-27T18:15:34.315280"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -2606,7 +2606,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.919665"
+        "created_at": "2026-02-27T18:15:34.315292"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -2621,7 +2621,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.919678"
+        "created_at": "2026-02-27T18:15:34.315305"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -2636,7 +2636,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.919692"
+        "created_at": "2026-02-27T18:15:34.315318"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -2651,7 +2651,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.919705"
+        "created_at": "2026-02-27T18:15:34.315330"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -2666,7 +2666,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.919717"
+        "created_at": "2026-02-27T18:15:34.315343"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -2681,7 +2681,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.919730"
+        "created_at": "2026-02-27T18:15:34.315355"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -2696,7 +2696,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.919742"
+        "created_at": "2026-02-27T18:15:34.315367"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -2711,7 +2711,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.919755"
+        "created_at": "2026-02-27T18:15:34.315379"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -2726,7 +2726,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.919767"
+        "created_at": "2026-02-27T18:15:34.315391"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -2741,7 +2741,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.919780"
+        "created_at": "2026-02-27T18:15:34.315404"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -2756,7 +2756,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.919792"
+        "created_at": "2026-02-27T18:15:34.315416"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -2771,7 +2771,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.919805"
+        "created_at": "2026-02-27T18:15:34.315431"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -2786,7 +2786,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.919818"
+        "created_at": "2026-02-27T18:15:34.315444"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -2801,7 +2801,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.919830"
+        "created_at": "2026-02-27T18:15:34.315457"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -2816,7 +2816,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.919842"
+        "created_at": "2026-02-27T18:15:34.315469"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -2831,7 +2831,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.919859"
+        "created_at": "2026-02-27T18:15:34.315482"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -2846,7 +2846,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.919871"
+        "created_at": "2026-02-27T18:15:34.315494"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -2861,7 +2861,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.919883"
+        "created_at": "2026-02-27T18:15:34.315506"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -2876,7 +2876,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.919895"
+        "created_at": "2026-02-27T18:15:34.315518"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -2891,7 +2891,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.919908"
+        "created_at": "2026-02-27T18:15:34.315530"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -2906,7 +2906,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.919920"
+        "created_at": "2026-02-27T18:15:34.315542"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -2921,7 +2921,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.919933"
+        "created_at": "2026-02-27T18:15:34.315554"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -2936,7 +2936,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.919945"
+        "created_at": "2026-02-27T18:15:34.315567"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -2951,7 +2951,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.919977"
+        "created_at": "2026-02-27T18:15:34.315580"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -2966,7 +2966,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.919989"
+        "created_at": "2026-02-27T18:15:34.315594"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -2981,7 +2981,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.920002"
+        "created_at": "2026-02-27T18:15:34.315607"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -2996,7 +2996,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.920015"
+        "created_at": "2026-02-27T18:15:34.315619"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -3011,7 +3011,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.920028"
+        "created_at": "2026-02-27T18:15:34.315632"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -3026,7 +3026,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.920045"
+        "created_at": "2026-02-27T18:15:34.315648"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -3041,7 +3041,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.920057"
+        "created_at": "2026-02-27T18:15:34.315660"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -3056,7 +3056,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.920069"
+        "created_at": "2026-02-27T18:15:34.315672"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -3071,7 +3071,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.920082"
+        "created_at": "2026-02-27T18:15:34.315684"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -3086,7 +3086,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.920094"
+        "created_at": "2026-02-27T18:15:34.315697"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -3101,7 +3101,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.920106"
+        "created_at": "2026-02-27T18:15:34.315710"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -3116,7 +3116,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.920119"
+        "created_at": "2026-02-27T18:15:34.315722"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -3131,7 +3131,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.920131"
+        "created_at": "2026-02-27T18:15:34.315735"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -3146,7 +3146,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.920147"
+        "created_at": "2026-02-27T18:15:34.315748"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -3161,7 +3161,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.920160"
+        "created_at": "2026-02-27T18:15:34.315762"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -3176,7 +3176,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.920172"
+        "created_at": "2026-02-27T18:15:34.315775"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -3191,7 +3191,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.920185"
+        "created_at": "2026-02-27T18:15:34.315787"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -3206,7 +3206,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.920197"
+        "created_at": "2026-02-27T18:15:34.315800"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -3221,7 +3221,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.920210"
+        "created_at": "2026-02-27T18:15:34.315812"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -3236,7 +3236,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.920225"
+        "created_at": "2026-02-27T18:15:34.315825"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -3251,7 +3251,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.920237"
+        "created_at": "2026-02-27T18:15:34.315837"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -3266,7 +3266,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.920250"
+        "created_at": "2026-02-27T18:15:34.315849"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -3281,7 +3281,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.920262"
+        "created_at": "2026-02-27T18:15:34.315861"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -3296,7 +3296,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.920274"
+        "created_at": "2026-02-27T18:15:34.315874"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -3311,7 +3311,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.920287"
+        "created_at": "2026-02-27T18:15:34.315888"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -3326,7 +3326,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.920300"
+        "created_at": "2026-02-27T18:15:34.315900"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -3341,7 +3341,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.920313"
+        "created_at": "2026-02-27T18:15:34.315912"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -3356,7 +3356,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.920326"
+        "created_at": "2026-02-27T18:15:34.315924"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -3371,7 +3371,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.920337"
+        "created_at": "2026-02-27T18:15:34.315938"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -3386,7 +3386,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.920350"
+        "created_at": "2026-02-27T18:15:34.315951"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -3401,7 +3401,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.920363"
+        "created_at": "2026-02-27T18:15:34.315963"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -3416,7 +3416,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.920378"
+        "created_at": "2026-02-27T18:15:34.315976"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -3431,7 +3431,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.920394"
+        "created_at": "2026-02-27T18:15:34.315989"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -3446,7 +3446,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.920407"
+        "created_at": "2026-02-27T18:15:34.316000"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -3461,7 +3461,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.920419"
+        "created_at": "2026-02-27T18:15:34.316014"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -3476,7 +3476,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.920431"
+        "created_at": "2026-02-27T18:15:34.316027"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -3491,7 +3491,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.920444"
+        "created_at": "2026-02-27T18:15:34.316040"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -3506,7 +3506,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.920456"
+        "created_at": "2026-02-27T18:15:34.316052"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -3521,7 +3521,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.920469"
+        "created_at": "2026-02-27T18:15:34.316064"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -3536,7 +3536,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.920481"
+        "created_at": "2026-02-27T18:15:34.316077"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -3551,7 +3551,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.920493"
+        "created_at": "2026-02-27T18:15:34.316089"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -3566,7 +3566,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.920505"
+        "created_at": "2026-02-27T18:15:34.316105"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -3581,7 +3581,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.920518"
+        "created_at": "2026-02-27T18:15:34.316118"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -3596,7 +3596,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.920530"
+        "created_at": "2026-02-27T18:15:34.316131"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -3611,7 +3611,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.920542"
+        "created_at": "2026-02-27T18:15:34.316143"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -3626,7 +3626,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.920557"
+        "created_at": "2026-02-27T18:15:34.316155"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -3641,7 +3641,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.920569"
+        "created_at": "2026-02-27T18:15:34.316168"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -3656,7 +3656,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.920581"
+        "created_at": "2026-02-27T18:15:34.316180"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -3671,7 +3671,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.920593"
+        "created_at": "2026-02-27T18:15:34.316192"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -3686,7 +3686,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.920605"
+        "created_at": "2026-02-27T18:15:34.316205"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -3701,7 +3701,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.920617"
+        "created_at": "2026-02-27T18:15:34.316217"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -3716,7 +3716,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.920630"
+        "created_at": "2026-02-27T18:15:34.316230"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -3731,7 +3731,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.920642"
+        "created_at": "2026-02-27T18:15:34.316249"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -3746,7 +3746,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.920654"
+        "created_at": "2026-02-27T18:15:34.316262"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -3761,7 +3761,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.920666"
+        "created_at": "2026-02-27T18:15:34.316277"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -3776,7 +3776,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.920679"
+        "created_at": "2026-02-27T18:15:34.316290"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -3791,7 +3791,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.920691"
+        "created_at": "2026-02-27T18:15:34.316305"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -3806,7 +3806,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.920703"
+        "created_at": "2026-02-27T18:15:34.316317"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -3821,7 +3821,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.920718"
+        "created_at": "2026-02-27T18:15:34.316330"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -3836,7 +3836,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.920730"
+        "created_at": "2026-02-27T18:15:34.316342"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -3851,7 +3851,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.920743"
+        "created_at": "2026-02-27T18:15:34.316355"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -3866,7 +3866,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.920755"
+        "created_at": "2026-02-27T18:15:34.316368"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -3881,7 +3881,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.920768"
+        "created_at": "2026-02-27T18:15:34.316380"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -3896,7 +3896,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.920782"
+        "created_at": "2026-02-27T18:15:34.316393"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -3911,7 +3911,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.920795"
+        "created_at": "2026-02-27T18:15:34.316405"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -3926,7 +3926,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.920807"
+        "created_at": "2026-02-27T18:15:34.316418"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -3941,7 +3941,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.920819"
+        "created_at": "2026-02-27T18:15:34.316431"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -3956,7 +3956,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.920831"
+        "created_at": "2026-02-27T18:15:34.316447"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -3971,7 +3971,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.920844"
+        "created_at": "2026-02-27T18:15:34.316460"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -3986,7 +3986,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.920856"
+        "created_at": "2026-02-27T18:15:34.316473"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -4001,7 +4001,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.920869"
+        "created_at": "2026-02-27T18:15:34.316485"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -4016,7 +4016,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.920884"
+        "created_at": "2026-02-27T18:15:34.316498"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -4031,7 +4031,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.920899"
+        "created_at": "2026-02-27T18:15:34.316510"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -4046,7 +4046,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.920912"
+        "created_at": "2026-02-27T18:15:34.316522"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -4061,7 +4061,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.920925"
+        "created_at": "2026-02-27T18:15:34.316535"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -4076,7 +4076,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.920937"
+        "created_at": "2026-02-27T18:15:34.316548"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -4091,7 +4091,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.920953"
+        "created_at": "2026-02-27T18:15:34.316560"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -4106,7 +4106,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.920966"
+        "created_at": "2026-02-27T18:15:34.316572"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -4121,7 +4121,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.920979"
+        "created_at": "2026-02-27T18:15:34.316585"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -4136,7 +4136,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.920991"
+        "created_at": "2026-02-27T18:15:34.316597"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -4151,7 +4151,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.921003"
+        "created_at": "2026-02-27T18:15:34.316610"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -4166,7 +4166,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.921015"
+        "created_at": "2026-02-27T18:15:34.316625"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -4181,7 +4181,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.921027"
+        "created_at": "2026-02-27T18:15:34.316638"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -4196,7 +4196,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.921039"
+        "created_at": "2026-02-27T18:15:34.316650"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -4211,7 +4211,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.921052"
+        "created_at": "2026-02-27T18:15:34.316663"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -4226,7 +4226,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.921067"
+        "created_at": "2026-02-27T18:15:34.316675"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -4241,7 +4241,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.921079"
+        "created_at": "2026-02-27T18:15:34.316687"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -4256,7 +4256,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.921091"
+        "created_at": "2026-02-27T18:15:34.316700"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -4271,7 +4271,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.921104"
+        "created_at": "2026-02-27T18:15:34.316714"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -4286,7 +4286,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.921117"
+        "created_at": "2026-02-27T18:15:34.316727"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -4301,7 +4301,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.921130"
+        "created_at": "2026-02-27T18:15:34.316740"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -4316,7 +4316,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.921142"
+        "created_at": "2026-02-27T18:15:34.316751"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -4331,7 +4331,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.921154"
+        "created_at": "2026-02-27T18:15:34.316764"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -4346,7 +4346,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.921166"
+        "created_at": "2026-02-27T18:15:34.316776"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -4361,7 +4361,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.921178"
+        "created_at": "2026-02-27T18:15:34.316791"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -4376,7 +4376,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.921193"
+        "created_at": "2026-02-27T18:15:34.316803"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -4391,7 +4391,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.921206"
+        "created_at": "2026-02-27T18:15:34.316816"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -4406,7 +4406,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.921218"
+        "created_at": "2026-02-27T18:15:34.316828"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -4421,7 +4421,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.921233"
+        "created_at": "2026-02-27T18:15:34.316841"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -4436,7 +4436,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.921246"
+        "created_at": "2026-02-27T18:15:34.316853"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -4451,7 +4451,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.921258"
+        "created_at": "2026-02-27T18:15:34.316865"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -4466,7 +4466,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.921270"
+        "created_at": "2026-02-27T18:15:34.316877"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -4481,7 +4481,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.921282"
+        "created_at": "2026-02-27T18:15:34.316890"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -4496,7 +4496,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.921294"
+        "created_at": "2026-02-27T18:15:34.316902"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -4511,7 +4511,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.921307"
+        "created_at": "2026-02-27T18:15:34.316914"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -4526,7 +4526,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.921319"
+        "created_at": "2026-02-27T18:15:34.316927"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -4541,7 +4541,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.921331"
+        "created_at": "2026-02-27T18:15:34.316940"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -4556,7 +4556,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.921344"
+        "created_at": "2026-02-27T18:15:34.316957"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -4571,7 +4571,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.921355"
+        "created_at": "2026-02-27T18:15:34.316969"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -4586,7 +4586,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.921368"
+        "created_at": "2026-02-27T18:15:34.316982"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -4601,7 +4601,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.921381"
+        "created_at": "2026-02-27T18:15:34.316993"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -4616,7 +4616,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.921396"
+        "created_at": "2026-02-27T18:15:34.317006"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -4631,7 +4631,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.921408"
+        "created_at": "2026-02-27T18:15:34.317019"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -4646,7 +4646,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.921422"
+        "created_at": "2026-02-27T18:15:34.317031"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -4661,7 +4661,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.921437"
+        "created_at": "2026-02-27T18:15:34.317044"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -4676,7 +4676,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.921449"
+        "created_at": "2026-02-27T18:15:34.317056"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -4691,7 +4691,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.921463"
+        "created_at": "2026-02-27T18:15:34.317068"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -4706,7 +4706,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.921476"
+        "created_at": "2026-02-27T18:15:34.317080"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -4721,7 +4721,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.921488"
+        "created_at": "2026-02-27T18:15:34.317093"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -4736,7 +4736,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.921501"
+        "created_at": "2026-02-27T18:15:34.317105"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -4751,7 +4751,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.921514"
+        "created_at": "2026-02-27T18:15:34.317121"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -4766,7 +4766,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.921526"
+        "created_at": "2026-02-27T18:15:34.317133"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -4781,7 +4781,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.921538"
+        "created_at": "2026-02-27T18:15:34.317146"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -4796,7 +4796,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.921551"
+        "created_at": "2026-02-27T18:15:34.317158"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -4811,7 +4811,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.921563"
+        "created_at": "2026-02-27T18:15:34.317171"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -4826,7 +4826,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.921580"
+        "created_at": "2026-02-27T18:15:34.317184"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -4841,7 +4841,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.921593"
+        "created_at": "2026-02-27T18:15:34.317196"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -4856,7 +4856,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.921605"
+        "created_at": "2026-02-27T18:15:34.317209"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -4871,7 +4871,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.921617"
+        "created_at": "2026-02-27T18:15:34.317221"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -4886,7 +4886,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.921630"
+        "created_at": "2026-02-27T18:15:34.317233"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -4901,7 +4901,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.921642"
+        "created_at": "2026-02-27T18:15:34.317249"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -4916,7 +4916,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.921655"
+        "created_at": "2026-02-27T18:15:34.317262"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -4931,7 +4931,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.921667"
+        "created_at": "2026-02-27T18:15:34.317274"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -4946,7 +4946,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.921680"
+        "created_at": "2026-02-27T18:15:34.317287"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -4961,7 +4961,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.921692"
+        "created_at": "2026-02-27T18:15:34.317301"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -4976,7 +4976,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.921704"
+        "created_at": "2026-02-27T18:15:34.317314"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -4991,7 +4991,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.921716"
+        "created_at": "2026-02-27T18:15:34.317326"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -5006,7 +5006,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.921729"
+        "created_at": "2026-02-27T18:15:34.317339"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -5021,7 +5021,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.921743"
+        "created_at": "2026-02-27T18:15:34.317352"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -5036,7 +5036,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.921756"
+        "created_at": "2026-02-27T18:15:34.317364"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -5051,7 +5051,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.921770"
+        "created_at": "2026-02-27T18:15:34.317376"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -5066,7 +5066,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.921783"
+        "created_at": "2026-02-27T18:15:34.317388"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -5081,7 +5081,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.921795"
+        "created_at": "2026-02-27T18:15:34.317402"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -5096,7 +5096,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.921807"
+        "created_at": "2026-02-27T18:15:34.317414"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -5111,7 +5111,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.921820"
+        "created_at": "2026-02-27T18:15:34.317427"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -5126,7 +5126,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.921832"
+        "created_at": "2026-02-27T18:15:34.317439"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -5141,7 +5141,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.921850"
+        "created_at": "2026-02-27T18:15:34.317457"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -5156,7 +5156,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.921862"
+        "created_at": "2026-02-27T18:15:34.317472"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -5171,7 +5171,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.921874"
+        "created_at": "2026-02-27T18:15:34.317486"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -5186,7 +5186,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.921886"
+        "created_at": "2026-02-27T18:15:34.317498"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -5201,7 +5201,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.921898"
+        "created_at": "2026-02-27T18:15:34.317510"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -5216,7 +5216,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.921912"
+        "created_at": "2026-02-27T18:15:34.317522"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -5231,7 +5231,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.921925"
+        "created_at": "2026-02-27T18:15:34.317537"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -5246,7 +5246,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.921937"
+        "created_at": "2026-02-27T18:15:34.317549"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -5261,7 +5261,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.921953"
+        "created_at": "2026-02-27T18:15:34.317561"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -5276,7 +5276,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.921966"
+        "created_at": "2026-02-27T18:15:34.317573"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -5291,7 +5291,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.921978"
+        "created_at": "2026-02-27T18:15:34.317585"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -5306,7 +5306,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.921990"
+        "created_at": "2026-02-27T18:15:34.317597"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -5321,7 +5321,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.922003"
+        "created_at": "2026-02-27T18:15:34.317609"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -5336,7 +5336,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.922018"
+        "created_at": "2026-02-27T18:15:34.317624"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -5351,7 +5351,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.922031"
+        "created_at": "2026-02-27T18:15:34.317639"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -5366,7 +5366,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.922043"
+        "created_at": "2026-02-27T18:15:34.317652"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -5381,7 +5381,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.922056"
+        "created_at": "2026-02-27T18:15:34.317664"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -5396,7 +5396,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.922068"
+        "created_at": "2026-02-27T18:15:34.317677"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -5411,7 +5411,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.922082"
+        "created_at": "2026-02-27T18:15:34.317690"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -5426,7 +5426,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.922097"
+        "created_at": "2026-02-27T18:15:34.317702"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -5441,7 +5441,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.922109"
+        "created_at": "2026-02-27T18:15:34.317715"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -5456,7 +5456,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.922121"
+        "created_at": "2026-02-27T18:15:34.317728"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -5471,7 +5471,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.922133"
+        "created_at": "2026-02-27T18:15:34.317742"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -5486,7 +5486,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.922145"
+        "created_at": "2026-02-27T18:15:34.317755"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -5501,7 +5501,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.922158"
+        "created_at": "2026-02-27T18:15:34.317768"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -5516,7 +5516,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.922170"
+        "created_at": "2026-02-27T18:15:34.317781"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -5531,7 +5531,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.922183"
+        "created_at": "2026-02-27T18:15:34.317794"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -5546,7 +5546,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.922195"
+        "created_at": "2026-02-27T18:15:34.317811"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -5561,7 +5561,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.922207"
+        "created_at": "2026-02-27T18:15:34.317824"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -5576,7 +5576,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.922221"
+        "created_at": "2026-02-27T18:15:34.317836"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -5591,7 +5591,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.922233"
+        "created_at": "2026-02-27T18:15:34.317849"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -5606,7 +5606,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.922245"
+        "created_at": "2026-02-27T18:15:34.317863"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -5621,7 +5621,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.922260"
+        "created_at": "2026-02-27T18:15:34.317875"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -5636,7 +5636,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.922272"
+        "created_at": "2026-02-27T18:15:34.317887"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -5651,7 +5651,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.922285"
+        "created_at": "2026-02-27T18:15:34.317900"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -5666,7 +5666,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.922297"
+        "created_at": "2026-02-27T18:15:34.317912"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -5681,7 +5681,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.922310"
+        "created_at": "2026-02-27T18:15:34.317924"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -5696,7 +5696,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.922322"
+        "created_at": "2026-02-27T18:15:34.317936"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -5711,7 +5711,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.922334"
+        "created_at": "2026-02-27T18:15:34.317949"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -5726,7 +5726,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.922347"
+        "created_at": "2026-02-27T18:15:34.317961"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -5741,7 +5741,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.922359"
+        "created_at": "2026-02-27T18:15:34.317974"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -5756,7 +5756,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.922371"
+        "created_at": "2026-02-27T18:15:34.317989"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -5771,7 +5771,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.922384"
+        "created_at": "2026-02-27T18:15:34.318001"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -5786,7 +5786,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.922396"
+        "created_at": "2026-02-27T18:15:34.318014"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -5801,7 +5801,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.922409"
+        "created_at": "2026-02-27T18:15:34.318025"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -5816,7 +5816,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.922424"
+        "created_at": "2026-02-27T18:15:34.318037"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -5831,7 +5831,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.922436"
+        "created_at": "2026-02-27T18:15:34.318371"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -5846,7 +5846,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.922448"
+        "created_at": "2026-02-27T18:15:34.318396"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -5861,7 +5861,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.922461"
+        "created_at": "2026-02-27T18:15:34.318417"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -5876,7 +5876,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.922473"
+        "created_at": "2026-02-27T18:15:34.318429"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -5891,7 +5891,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.922486"
+        "created_at": "2026-02-27T18:15:34.318450"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -5906,7 +5906,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.922498"
+        "created_at": "2026-02-27T18:15:34.318470"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -5921,7 +5921,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.922511"
+        "created_at": "2026-02-27T18:15:34.318491"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -5936,7 +5936,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.922523"
+        "created_at": "2026-02-27T18:15:34.318512"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -5951,7 +5951,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.922535"
+        "created_at": "2026-02-27T18:15:34.318528"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -5966,7 +5966,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.922547"
+        "created_at": "2026-02-27T18:15:34.318549"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -5981,7 +5981,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.922561"
+        "created_at": "2026-02-27T18:15:34.318569"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -5996,7 +5996,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.922573"
+        "created_at": "2026-02-27T18:15:34.318589"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -6011,7 +6011,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.922588"
+        "created_at": "2026-02-27T18:15:34.318609"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -6026,7 +6026,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.922601"
+        "created_at": "2026-02-27T18:15:34.318622"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -6041,7 +6041,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.922614"
+        "created_at": "2026-02-27T18:15:34.318643"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -6056,7 +6056,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.922626"
+        "created_at": "2026-02-27T18:15:34.318664"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -6071,7 +6071,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.922638"
+        "created_at": "2026-02-27T18:15:34.318685"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -6086,7 +6086,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.922651"
+        "created_at": "2026-02-27T18:15:34.318709"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -6101,7 +6101,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.922663"
+        "created_at": "2026-02-27T18:15:34.318722"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -6116,7 +6116,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.922676"
+        "created_at": "2026-02-27T18:15:34.318751"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -6131,7 +6131,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.922688"
+        "created_at": "2026-02-27T18:15:34.318764"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -6146,7 +6146,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.922701"
+        "created_at": "2026-02-27T18:15:34.318787"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -6161,7 +6161,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.922713"
+        "created_at": "2026-02-27T18:15:34.318808"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -6176,7 +6176,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.922726"
+        "created_at": "2026-02-27T18:15:34.318820"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -6191,7 +6191,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.922739"
+        "created_at": "2026-02-27T18:15:34.318851"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -6206,7 +6206,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.922756"
+        "created_at": "2026-02-27T18:15:34.318864"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -6221,7 +6221,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.922769"
+        "created_at": "2026-02-27T18:15:34.318893"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -6236,7 +6236,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.922781"
+        "created_at": "2026-02-27T18:15:34.318905"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -6251,7 +6251,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.922793"
+        "created_at": "2026-02-27T18:15:34.318926"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -6266,7 +6266,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.922805"
+        "created_at": "2026-02-27T18:15:34.318947"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -6281,7 +6281,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.922820"
+        "created_at": "2026-02-27T18:15:34.318959"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -6296,7 +6296,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.922833"
+        "created_at": "2026-02-27T18:15:34.318988"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -6311,7 +6311,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.922845"
+        "created_at": "2026-02-27T18:15:34.319000"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -6326,7 +6326,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.922857"
+        "created_at": "2026-02-27T18:15:34.319021"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -6341,7 +6341,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.922869"
+        "created_at": "2026-02-27T18:15:34.319043"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -6356,7 +6356,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.922881"
+        "created_at": "2026-02-27T18:15:34.319056"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -6371,7 +6371,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.922893"
+        "created_at": "2026-02-27T18:15:34.319084"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -6386,7 +6386,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.922906"
+        "created_at": "2026-02-27T18:15:34.319097"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -6401,7 +6401,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.922918"
+        "created_at": "2026-02-27T18:15:34.319109"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -6416,7 +6416,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.922933"
+        "created_at": "2026-02-27T18:15:34.319138"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -6431,7 +6431,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.922945"
+        "created_at": "2026-02-27T18:15:34.319150"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -6446,7 +6446,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.922962"
+        "created_at": "2026-02-27T18:15:34.319170"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -6461,7 +6461,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.922974"
+        "created_at": "2026-02-27T18:15:34.319197"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -6476,7 +6476,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.922987"
+        "created_at": "2026-02-27T18:15:34.319217"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -6491,7 +6491,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.922999"
+        "created_at": "2026-02-27T18:15:34.319238"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -6506,7 +6506,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.923011"
+        "created_at": "2026-02-27T18:15:34.319264"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -6521,7 +6521,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.923024"
+        "created_at": "2026-02-27T18:15:34.319285"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -6536,7 +6536,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.923037"
+        "created_at": "2026-02-27T18:15:34.319298"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -6551,7 +6551,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.923049"
+        "created_at": "2026-02-27T18:15:34.319328"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -6566,7 +6566,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.923060"
+        "created_at": "2026-02-27T18:15:34.319340"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -6581,7 +6581,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.923073"
+        "created_at": "2026-02-27T18:15:34.319362"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -6596,7 +6596,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.923085"
+        "created_at": "2026-02-27T18:15:34.319382"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -6611,7 +6611,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.923100"
+        "created_at": "2026-02-27T18:15:34.319395"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -6626,7 +6626,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.923112"
+        "created_at": "2026-02-27T18:15:34.319423"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -6641,7 +6641,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.923124"
+        "created_at": "2026-02-27T18:15:34.319435"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -6656,7 +6656,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.923137"
+        "created_at": "2026-02-27T18:15:34.319456"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -6671,7 +6671,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.923149"
+        "created_at": "2026-02-27T18:15:34.319476"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -6686,7 +6686,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.923161"
+        "created_at": "2026-02-27T18:15:34.319489"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -6701,7 +6701,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.923174"
+        "created_at": "2026-02-27T18:15:34.319510"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -6716,7 +6716,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.923187"
+        "created_at": "2026-02-27T18:15:34.319531"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -6731,7 +6731,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.923199"
+        "created_at": "2026-02-27T18:15:34.319551"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -6746,7 +6746,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.923211"
+        "created_at": "2026-02-27T18:15:34.319574"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -6761,7 +6761,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.923223"
+        "created_at": "2026-02-27T18:15:34.319586"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -6776,7 +6776,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.923236"
+        "created_at": "2026-02-27T18:15:34.319615"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -6791,7 +6791,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.923248"
+        "created_at": "2026-02-27T18:15:34.319627"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -6806,7 +6806,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.923262"
+        "created_at": "2026-02-27T18:15:34.319648"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -6821,7 +6821,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.923274"
+        "created_at": "2026-02-27T18:15:34.319669"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -6836,7 +6836,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.923287"
+        "created_at": "2026-02-27T18:15:34.319681"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -6851,7 +6851,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.923300"
+        "created_at": "2026-02-27T18:15:34.319712"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -6866,7 +6866,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.923312"
+        "created_at": "2026-02-27T18:15:34.319725"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -6881,7 +6881,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.923324"
+        "created_at": "2026-02-27T18:15:34.319745"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -6896,7 +6896,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.923336"
+        "created_at": "2026-02-27T18:15:34.319766"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -6911,7 +6911,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.923349"
+        "created_at": "2026-02-27T18:15:34.319778"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -6926,7 +6926,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.923361"
+        "created_at": "2026-02-27T18:15:34.319799"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -6941,7 +6941,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.923373"
+        "created_at": "2026-02-27T18:15:34.319823"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -6956,7 +6956,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.923389"
+        "created_at": "2026-02-27T18:15:34.319843"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -6971,7 +6971,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.923402"
+        "created_at": "2026-02-27T18:15:34.319864"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -6986,7 +6986,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.923414"
+        "created_at": "2026-02-27T18:15:34.319876"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -7001,7 +7001,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.923429"
+        "created_at": "2026-02-27T18:15:34.319929"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -7016,7 +7016,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.923441"
+        "created_at": "2026-02-27T18:15:34.319944"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -7031,7 +7031,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.923453"
+        "created_at": "2026-02-27T18:15:34.319957"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -7046,7 +7046,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.923465"
+        "created_at": "2026-02-27T18:15:34.319971"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -7061,7 +7061,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.923477"
+        "created_at": "2026-02-27T18:15:34.319986"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -7076,7 +7076,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.923490"
+        "created_at": "2026-02-27T18:15:34.319999"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -7091,7 +7091,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.923503"
+        "created_at": "2026-02-27T18:15:34.320011"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -7106,7 +7106,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.923515"
+        "created_at": "2026-02-27T18:15:34.320024"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -7121,7 +7121,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.923527"
+        "created_at": "2026-02-27T18:15:34.320037"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -7136,7 +7136,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.923539"
+        "created_at": "2026-02-27T18:15:34.320055"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -7151,7 +7151,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.923551"
+        "created_at": "2026-02-27T18:15:34.320068"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -7166,7 +7166,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.923563"
+        "created_at": "2026-02-27T18:15:34.320080"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -7181,7 +7181,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.923576"
+        "created_at": "2026-02-27T18:15:34.320093"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -7196,7 +7196,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.923588"
+        "created_at": "2026-02-27T18:15:34.320105"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -7211,7 +7211,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.923603"
+        "created_at": "2026-02-27T18:15:34.320118"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -7226,7 +7226,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.923616"
+        "created_at": "2026-02-27T18:15:34.320130"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -7241,7 +7241,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.923630"
+        "created_at": "2026-02-27T18:15:34.320142"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -7256,7 +7256,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.923644"
+        "created_at": "2026-02-27T18:15:34.320154"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -7271,7 +7271,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.923656"
+        "created_at": "2026-02-27T18:15:34.320167"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -7286,7 +7286,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.923669"
+        "created_at": "2026-02-27T18:15:34.320180"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -7301,7 +7301,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.923682"
+        "created_at": "2026-02-27T18:15:34.320192"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -7316,7 +7316,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.923695"
+        "created_at": "2026-02-27T18:15:34.320204"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -7331,7 +7331,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.923708"
+        "created_at": "2026-02-27T18:15:34.320217"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -7346,7 +7346,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.923723"
+        "created_at": "2026-02-27T18:15:34.320232"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -7361,7 +7361,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.923737"
+        "created_at": "2026-02-27T18:15:34.320255"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -7376,7 +7376,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.923751"
+        "created_at": "2026-02-27T18:15:34.320268"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -7391,7 +7391,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.923766"
+        "created_at": "2026-02-27T18:15:34.320281"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -7406,7 +7406,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.923783"
+        "created_at": "2026-02-27T18:15:34.320294"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -7421,7 +7421,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.923798"
+        "created_at": "2026-02-27T18:15:34.320307"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -7436,7 +7436,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.923811"
+        "created_at": "2026-02-27T18:15:34.320319"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -7451,7 +7451,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.923825"
+        "created_at": "2026-02-27T18:15:34.320332"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -7466,7 +7466,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.923838"
+        "created_at": "2026-02-27T18:15:34.320344"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -7481,7 +7481,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.923852"
+        "created_at": "2026-02-27T18:15:34.320356"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -7496,7 +7496,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.923866"
+        "created_at": "2026-02-27T18:15:34.320369"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -7511,7 +7511,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.923879"
+        "created_at": "2026-02-27T18:15:34.320381"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -7526,7 +7526,7 @@
         "provider": "local",
         "assigned_to": null,
         "assigned_at": null,
-        "created_at": "2026-02-25T18:01:26.923894"
+        "created_at": "2026-02-27T18:15:34.320394"
       },
       "softphone_detected": false,
       "sync_status": "no_softphone"
@@ -7798,7 +7798,37 @@
         "issues_count": 18,
         "actions_count": 0
       }
+    },
+    {
+      "timestamp": "2026-02-27T12:56:58.076797",
+      "summary": {
+        "total_extensions": 519,
+        "total_softphones": 0,
+        "matched_pairs": 0,
+        "issues_count": 21,
+        "actions_count": 0
+      }
+    },
+    {
+      "timestamp": "2026-02-27T17:55:39.227196",
+      "summary": {
+        "total_extensions": 519,
+        "total_softphones": 0,
+        "matched_pairs": 0,
+        "issues_count": 21,
+        "actions_count": 0
+      }
+    },
+    {
+      "timestamp": "2026-02-27T18:15:34.312459",
+      "summary": {
+        "total_extensions": 519,
+        "total_softphones": 0,
+        "matched_pairs": 0,
+        "issues_count": 21,
+        "actions_count": 0
+      }
     }
   ],
-  "last_detection": "2026-02-25T18:01:46.951723"
+  "last_detection": "2026-02-27T18:15:34.387068"
 }

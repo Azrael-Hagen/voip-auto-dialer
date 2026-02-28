@@ -1,4 +1,3 @@
-
 #!/usr/bin/env python3
 """
 Script de limpieza para eliminar archivos conflictivos del proyecto voip-auto-dialer

@@ -58,25 +58,5 @@
       "status": "assigned",
       "assigned_at": "2026-02-26T12:22:23.820057"
     }
-  },
-  "agent_96c57723": {
-    "id": "agent_96c57723",
-    "name": "Ana Martínez",
-    "email": "ana@empresa.com",
-    "phone": "+1234567893",
-    "status": "offline",
-    "created_at": "2026-02-26T12:22:23.800658",
-    "last_activity": null,
-    "extension_info": null
-  },
-  "agent_156b6af6": {
-    "id": "agent_156b6af6",
-    "name": "Luis Rodríguez",
-    "email": "luis@empresa.com",
-    "phone": "+1234567894",
-    "status": "offline",
-    "created_at": "2026-02-26T12:22:23.801089",
-    "last_activity": null,
-    "extension_info": null
   }
 }

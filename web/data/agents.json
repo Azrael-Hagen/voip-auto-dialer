@@ -1,0 +1,12 @@
+{
+  "agent_001": {
+    "id": "agent_001",
+    "name": "Juan Pérez",
+    "email": "juan@example.com",
+    "phone": "+1234567890",
+    "status": "offline",
+    "created_at": "2026-02-27T18:11:47.560975",
+    "last_activity": null,
+    "extension_info": null
+  }
+}

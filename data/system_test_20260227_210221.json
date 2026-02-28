@@ -1,0 +1,11 @@
+{
+  "timestamp": "2026-02-27T21:02:21.813817",
+  "system_status": "needs_attention",
+  "asterisk_version": "Asterisk 20.18.2 built by root @ azrael-IdeaPad-1-15IJL7 on a x86_64 running Linux on 2026-02-11 06:50:10 UTC",
+  "endpoints_count": 4,
+  "aors_count": 4,
+  "provider_status": "rejected",
+  "dialplan_rules": 5,
+  "test_calls_successful": 0,
+  "overall_health": "poor"
+}
