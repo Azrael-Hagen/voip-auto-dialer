@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+
+{% block title %}Campañas - VoIP Auto Dialer{% endblock %}
+
+{% block content %}
+<div class="fade-in">
+    <h1 class="page-title">Campañas de Auto-Marcado</h1>
+    <p class="page-subtitle">Sistema de marcado automático y distribución de llamadas</p>
+    
+    <!-- Métricas de campañas -->
+    <div class="metrics-grid">
+        <div class="metric-card">
+            <div class="metric-header">
+                <div class="metric-title">Estado del Sistema</div>
+                <div class="metric-icon secondary">⏹️</div>
+            </div>
+            <div class="metric-value">Detenido</div>
+            <div class="metric-label">Auto Dialer</div>
+        </div>
+        
+        <div class="metric-card">
+            <div class="metric-header">
+                <div class="metric-title">Llamadas Activas</div>
+                <div class="metric-icon info">📞</div>
+            </div>
+            <div class="metric-value" id="active-calls-count">{{ asterisk_stats.get('active_calls', 0) }}</div>
+            <div class="metric-label">En curso</div>
+        </div>
+        
+        <div class="metric-card">
+            <div class="metric-header">
+                <div class="metric-title">Campañas Activas</div>
+                <div class="metric-icon warning">📋</div>
+            </div>
+            <div class="metric-value">0</div>
+            <div class="metric-label">Ejecutándose</div>
+        </div>
+        
+        <div class="metric-card">
+            <div class="metric-header">
+                <div class="metric-title">Llamadas por Minuto</div>
+                <div class="metric-icon success">📈</div>
+            </div>
+            <div class="metric-value">10</div>
+            <div class="metric-label">CPM Configurado</div>
+        </div>
+    </div>
+    
+    <!-- Panel de control del auto dialer -->
+    <div class="table-container mb-4">
+        <div class="table-header">
+            <h2 class="table-title">Auto Dialer - Marcado Automático</h2>
+            <div class="flex gap-2">
+                <button class="btn btn-success">
+                    ▶️ Iniciar
+                </button>
+                <button class="btn btn-danger">
+                    ⏹️ Detener
+                </button>
+                <button class="btn btn-warning">
+                    ⏸️ Pausar
+                </button>
+            </div>
+        </div>
+        <div style="padding: 1.5rem;">
+            <div class="metrics-grid">
+                <div style="text-align: center;">
+                    <div style="font-size: 2rem; font-weight: bold; color: var(--success-color);">0</div>
+                    <div style="color: var(--text-secondary);">Llamadas Completadas</div>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 2rem; font-weight: bold; color: var(--warning-color);">0</div>
+                    <div style="color: var(--text-secondary);">Llamadas Fallidas</div>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 2rem; font-weight: bold; color: var(--info-color);">0</div>
+                    <div style="color: var(--text-secondary);">En Cola</div>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 2rem; font-weight: bold; color: var(--primary-color);">0%</div>
+                    <div style="color: var(--text-secondary);">Tasa de Éxito</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Lista de campañas -->
+    <div class="table-container">
+        <div class="table-header">
+            <h2 class="table-title">Campañas Configuradas</h2>
+            <button class="btn btn-success">
+                ➕ Nueva Campaña
+            </button>
+        </div>
+        
+        <div style="padding: 2rem; text-align: center;">
+            <div style="font-size: 3rem; margin-bottom: 1rem;">🚀</div>
+            <h3 style="margin-bottom: 1rem;">Sistema de Auto-Marcado Listo</h3>
+            <p class="text-secondary mb-3">
+                El sistema VoIP está completamente configurado con {{ asterisk_stats.get('endpoints', 0) }} endpoints.<br>
+                Listo para implementar campañas de marcado automático.
+            </p>
+            <div class="flex gap-2 justify-center">
+                <button class="btn btn-primary">
+                    📋 Crear Primera Campaña
+                </button>
+                <button class="btn btn-outline">
+                    📖 Ver Documentación
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

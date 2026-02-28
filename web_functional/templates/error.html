@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Error - VoIP Auto Dialer{% endblock %}
+
+{% block content %}
+<div class="fade-in text-center" style="padding: 4rem 0;">
+    <div style="font-size: 4rem; margin-bottom: 2rem;">⚠️</div>
+    <h1 class="page-title">Error del Sistema</h1>
+    <p class="page-subtitle">{{ error }}</p>
+    <div class="mt-4">
+        <a href="/" class="btn btn-primary">🏠 Volver al Dashboard</a>
+        <button class="btn btn-outline" onclick="window.location.reload()">🔄 Recargar Página</button>
+    </div>
+</div>
+{% endblock %}

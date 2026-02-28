@@ -1,0 +1,513 @@
+#!/usr/bin/env python3
+"""
+🚀 SERVIDOR WEB FUNCIONAL CORREGIDO - VOIP AUTO DIALER
+======================================================================
+✅ FastAPI con manejo robusto de errores
+✅ Compatibilidad con datos existentes
+✅ WebSocket para tiempo real
+✅ API REST completa
+======================================================================
+"""
+
+import os
+import sys
+import json
+import asyncio
+import logging
+from datetime import datetime
+from pathlib import Path
+from typing import List, Dict, Optional, Any, Union
+
+# FastAPI y dependencias
+from fastapi import FastAPI, Request, WebSocket, WebSocketDisconnect, HTTPException, Depends
+from fastapi.responses import HTMLResponse, JSONResponse
+from fastapi.staticfiles import StaticFiles
+from fastapi.templating import Jinja2Templates
+from fastapi.middleware.cors import CORSMiddleware
+import uvicorn
+
+# Agregar path del proyecto
+sys.path.append(str(Path(__file__).parent.parent))
+
+# Configuración de logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+# Imports del proyecto con manejo de errores
+try:
+    from core.extension_manager import extension_manager
+    from core.provider_manager import provider_manager
+    from core.logging_config import get_logger
+    logger = get_logger(__name__)
+except ImportError as e:
+    logger.warning(f"Import warning: {e}")
+    # Crear managers mock si no existen
+    class MockManager:
+        def get_all_extensions(self): 
+            try:
+                with open("../data/extensions.json", "r") as f:
+                    data = json.load(f)
+                    return data if isinstance(data, list) else []
+            except:
+                return []
+        
+        def get_extension_by_id(self, ext_id): 
+            extensions = self.get_all_extensions()
+            for ext in extensions:
+                if isinstance(ext, dict) and ext.get('extension') == ext_id:
+                    return ext
+            return None
+        
+        def get_all_providers(self): 
+            try:
+                with open("../data/providers.json", "r") as f:
+                    data = json.load(f)
+                    return data if isinstance(data, list) else []
+            except:
+                return []
+        
+        def get_provider_by_id(self, provider_id): 
+            providers = self.get_all_providers()
+            for provider in providers:
+                if isinstance(provider, dict) and provider.get('id') == provider_id:
+                    return provider
+            return None
+        
+        def get_all_agents(self): 
+            return []
+    
+    extension_manager = MockManager()
+    provider_manager = MockManager()
+
+# Crear aplicación FastAPI
+app = FastAPI(
+    title="VoIP Auto Dialer",
+    description="Sistema VoIP con Auto Marcado - Dashboard Profesional",
+    version="2.0.0"
+)
+
+# Configurar CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# Configurar archivos estáticos y templates
+app.mount("/static", StaticFiles(directory="static"), name="static")
+templates = Jinja2Templates(directory="templates")
+
+# Gestor de conexiones WebSocket
+class ConnectionManager:
+    def __init__(self):
+        self.active_connections: List[WebSocket] = []
+    
+    async def connect(self, websocket: WebSocket):
+        await websocket.accept()
+        self.active_connections.append(websocket)
+        logger.info(f"Nueva conexión WebSocket: {len(self.active_connections)} activas")
+    
+    def disconnect(self, websocket: WebSocket):
+        if websocket in self.active_connections:
+            self.active_connections.remove(websocket)
+        logger.info(f"Conexión WebSocket cerrada: {len(self.active_connections)} activas")
+    
+    async def send_personal_message(self, message: str, websocket: WebSocket):
+        try:
+            await websocket.send_text(message)
+        except Exception as e:
+            logger.error(f"Error enviando mensaje personal: {e}")
+    
+    async def broadcast(self, message: str):
+        disconnected = []
+        for connection in self.active_connections:
+            try:
+                await connection.send_text(message)
+            except Exception as e:
+                logger.error(f"Error en broadcast: {e}")
+                disconnected.append(connection)
+        
+        # Limpiar conexiones muertas
+        for conn in disconnected:
+            self.disconnect(conn)
+
+manager = ConnectionManager()
+
+# Clase para integración Asterisk AMI
+class AsteriskIntegration:
+    def __init__(self):
+        self.connected = False
+        self.stats = {
+            "endpoints": 0,
+            "active_calls": 0,
+            "extensions_online": 0,
+            "provider_status": "unknown"
+        }
+    
+    async def get_asterisk_stats(self):
+        """Obtiene estadísticas de Asterisk"""
+        try:
+            # Ejecutar comandos de Asterisk
+            import subprocess
+            
+            # Obtener endpoints
+            result = subprocess.run(
+                ["sudo", "asterisk", "-rx", "pjsip show endpoints"],
+                capture_output=True, text=True, timeout=5
+            )
+            if result.returncode == 0:
+                lines = result.stdout.split('\n')
+                endpoint_count = len([line for line in lines if 'Endpoint:' in line])
+                self.stats["endpoints"] = endpoint_count
+            
+            # Obtener llamadas activas
+            result = subprocess.run(
+                ["sudo", "asterisk", "-rx", "core show channels"],
+                capture_output=True, text=True, timeout=5
+            )
+            if result.returncode == 0:
+                lines = result.stdout.split('\n')
+                for line in lines:
+                    if "active calls" in line:
+                        try:
+                            self.stats["active_calls"] = int(line.split()[0])
+                        except:
+                            pass
+            
+            # Obtener estado del proveedor
+            result = subprocess.run(
+                ["sudo", "asterisk", "-rx", "pjsip show registrations"],
+                capture_output=True, text=True, timeout=5
+            )
+            if result.returncode == 0:
+                if "Registered" in result.stdout:
+                    self.stats["provider_status"] = "connected"
+                elif "Rejected" in result.stdout:
+                    self.stats["provider_status"] = "rejected"
+                else:
+                    self.stats["provider_status"] = "unknown"
+            
+            self.connected = True
+            
+        except Exception as e:
+            logger.error(f"Error obteniendo stats de Asterisk: {e}")
+            self.connected = False
+        
+        return self.stats
+    
+    async def originate_call(self, from_ext: str, to_ext: str):
+        """Origina una llamada"""
+        try:
+            import subprocess
+            command = f"sudo asterisk -rx 'originate PJSIP/{from_ext} extension {to_ext}@from-internal'"
+            result = subprocess.run(command, shell=True, capture_output=True, text=True, timeout=10)
+            return result.returncode == 0, result.stdout + result.stderr
+        except Exception as e:
+            logger.error(f"Error originando llamada: {e}")
+            return False, str(e)
+
+asterisk = AsteriskIntegration()
+
+# Funciones auxiliares para manejo seguro de datos
+def safe_get(obj: Any, key: str, default: Any = None) -> Any:
+    """Obtiene valor de forma segura"""
+    if isinstance(obj, dict):
+        return obj.get(key, default)
+    elif hasattr(obj, key):
+        return getattr(obj, key, default)
+    else:
+        return default
+
+def safe_len(obj: Any) -> int:
+    """Obtiene longitud de forma segura"""
+    try:
+        return len(obj) if obj else 0
+    except:
+        return 0
+
+def ensure_dict(obj: Any) -> Dict:
+    """Asegura que el objeto sea un diccionario"""
+    if isinstance(obj, dict):
+        return obj
+    elif isinstance(obj, str):
+        try:
+            return json.loads(obj)
+        except:
+            return {}
+    else:
+        return {}
+
+def ensure_list(obj: Any) -> List:
+    """Asegura que el objeto sea una lista"""
+    if isinstance(obj, list):
+        return obj
+    elif obj is None:
+        return []
+    else:
+        return [obj]
+
+# Rutas principales
+@app.get("/", response_class=HTMLResponse)
+async def dashboard(request: Request):
+    """Dashboard principal"""
+    try:
+        # Obtener datos de forma segura
+        extensions_raw = extension_manager.get_all_extensions()
+        providers_raw = provider_manager.get_all_providers()
+        
+        # Asegurar que sean listas
+        extensions = ensure_list(extensions_raw)
+        providers = ensure_list(providers_raw)
+        
+        # Obtener estadísticas de Asterisk
+        asterisk_stats = await asterisk.get_asterisk_stats()
+        
+        # Calcular métricas de forma segura
+        total_extensions = safe_len(extensions)
+        extensions_with_passwords = 0
+        
+        for ext in extensions:
+            ext_dict = ensure_dict(ext)
+            if safe_get(ext_dict, 'password'):
+                extensions_with_passwords += 1
+        
+        active_providers = 0
+        for provider in providers:
+            provider_dict = ensure_dict(provider)
+            if safe_get(provider_dict, 'active', False):
+                active_providers += 1
+        
+        context = {
+            "request": request,
+            "title": "Dashboard Profesional",
+            "total_extensions": total_extensions,
+            "extensions_with_passwords": extensions_with_passwords,
+            "active_providers": active_providers,
+            "asterisk_stats": asterisk_stats,
+            "extensions": extensions[:10],  # Mostrar solo primeras 10
+            "providers": providers,
+            "system_status": "online" if asterisk.connected else "offline"
+        }
+        
+        return templates.TemplateResponse("dashboard.html", context)
+        
+    except Exception as e:
+        logger.error(f"Error en dashboard: {e}")
+        return templates.TemplateResponse("error.html", {
+            "request": request,
+            "error": str(e)
+        })
+
+@app.get("/extensions", response_class=HTMLResponse)
+async def extensions_page(request: Request):
+    """Página de gestión de extensiones"""
+    try:
+        extensions_raw = extension_manager.get_all_extensions()
+        extensions = ensure_list(extensions_raw)
+        asterisk_stats = await asterisk.get_asterisk_stats()
+        
+        context = {
+            "request": request,
+            "title": "Gestión de Extensiones",
+            "extensions": extensions,
+            "total_extensions": safe_len(extensions),
+            "asterisk_stats": asterisk_stats
+        }
+        
+        return templates.TemplateResponse("extensions.html", context)
+        
+    except Exception as e:
+        logger.error(f"Error en extensiones: {e}")
+        return templates.TemplateResponse("error.html", {
+            "request": request,
+            "error": str(e)
+        })
+
+@app.get("/providers", response_class=HTMLResponse)
+async def providers_page(request: Request):
+    """Página de gestión de proveedores"""
+    try:
+        providers_raw = provider_manager.get_all_providers()
+        providers = ensure_list(providers_raw)
+        asterisk_stats = await asterisk.get_asterisk_stats()
+        
+        context = {
+            "request": request,
+            "title": "Gestión de Proveedores VoIP",
+            "providers": providers,
+            "total_providers": safe_len(providers),
+            "asterisk_stats": asterisk_stats
+        }
+        
+        return templates.TemplateResponse("providers.html", context)
+        
+    except Exception as e:
+        logger.error(f"Error en proveedores: {e}")
+        return templates.TemplateResponse("error.html", {
+            "request": request,
+            "error": str(e)
+        })
+
+@app.get("/campaigns", response_class=HTMLResponse)
+async def campaigns_page(request: Request):
+    """Página de campañas de auto-marcado"""
+    try:
+        asterisk_stats = await asterisk.get_asterisk_stats()
+        
+        context = {
+            "request": request,
+            "title": "Campañas de Auto-Marcado",
+            "asterisk_stats": asterisk_stats,
+            "campaigns": []  # TODO: Implementar gestión de campañas
+        }
+        
+        return templates.TemplateResponse("campaigns.html", context)
+        
+    except Exception as e:
+        logger.error(f"Error en campañas: {e}")
+        return templates.TemplateResponse("error.html", {
+            "request": request,
+            "error": str(e)
+        })
+
+# API REST
+@app.get("/api/extensions")
+async def api_get_extensions():
+    """API: Obtener todas las extensiones"""
+    try:
+        extensions_raw = extension_manager.get_all_extensions()
+        extensions = ensure_list(extensions_raw)
+        return {"success": True, "data": extensions, "count": safe_len(extensions)}
+    except Exception as e:
+        logger.error(f"Error API extensiones: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/extensions/{extension_id}")
+async def api_get_extension(extension_id: str):
+    """API: Obtener extensión específica"""
+    try:
+        extension = extension_manager.get_extension_by_id(extension_id)
+        if not extension:
+            raise HTTPException(status_code=404, detail="Extensión no encontrada")
+        return {"success": True, "data": ensure_dict(extension)}
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Error API extensión {extension_id}: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/providers")
+async def api_get_providers():
+    """API: Obtener todos los proveedores"""
+    try:
+        providers_raw = provider_manager.get_all_providers()
+        providers = ensure_list(providers_raw)
+        return {"success": True, "data": providers, "count": safe_len(providers)}
+    except Exception as e:
+        logger.error(f"Error API proveedores: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/asterisk/stats")
+async def api_asterisk_stats():
+    """API: Obtener estadísticas de Asterisk"""
+    try:
+        stats = await asterisk.get_asterisk_stats()
+        return {"success": True, "data": stats, "connected": asterisk.connected}
+    except Exception as e:
+        logger.error(f"Error API stats Asterisk: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.post("/api/calls/originate")
+async def api_originate_call(call_data: dict):
+    """API: Originar llamada"""
+    try:
+        from_ext = call_data.get("from")
+        to_ext = call_data.get("to")
+        
+        if not from_ext or not to_ext:
+            raise HTTPException(status_code=400, detail="Faltan parámetros from/to")
+        
+        success, message = await asterisk.originate_call(from_ext, to_ext)
+        
+        # Broadcast a WebSocket
+        await manager.broadcast(json.dumps({
+            "type": "call_originated",
+            "from": from_ext,
+            "to": to_ext,
+            "success": success,
+            "message": message,
+            "timestamp": datetime.now().isoformat()
+        }))
+        
+        return {"success": success, "message": message}
+        
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Error API originar llamada: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+# WebSocket para tiempo real
+@app.websocket("/ws")
+async def websocket_endpoint(websocket: WebSocket):
+    """WebSocket para actualizaciones en tiempo real"""
+    await manager.connect(websocket)
+    try:
+        while True:
+            # Enviar estadísticas cada 5 segundos
+            stats = await asterisk.get_asterisk_stats()
+            await manager.send_personal_message(
+                json.dumps({
+                    "type": "stats_update",
+                    "data": stats,
+                    "timestamp": datetime.now().isoformat()
+                }),
+                websocket
+            )
+            await asyncio.sleep(5)
+            
+    except WebSocketDisconnect:
+        manager.disconnect(websocket)
+    except Exception as e:
+        logger.error(f"Error WebSocket: {e}")
+        manager.disconnect(websocket)
+
+# Manejador de errores
+@app.exception_handler(404)
+async def not_found_handler(request: Request, exc):
+    return templates.TemplateResponse("404.html", {
+        "request": request,
+        "error": "Página no encontrada"
+    }, status_code=404)
+
+@app.exception_handler(500)
+async def server_error_handler(request: Request, exc):
+    return templates.TemplateResponse("error.html", {
+        "request": request,
+        "error": "Error interno del servidor"
+    }, status_code=500)
+
+# Función principal
+def main():
+    """Función principal"""
+    print("🚀 Iniciando VoIP Auto Dialer - Servidor Web Funcional (Corregido)")
+    print("📊 Dashboard disponible en: http://localhost:8000")
+    print("📋 Gestión de extensiones: http://localhost:8000/extensions")
+    print("🔧 Gestión de proveedores: http://localhost:8000/providers")
+    print("📞 Campañas de marcado: http://localhost:8000/campaigns")
+    print("🌐 API REST: http://localhost:8000/docs")
+    print("⚡ WebSocket: ws://localhost:8000/ws")
+    print("\n⚡ Presiona Ctrl+C para detener el servidor\n")
+    
+    uvicorn.run(
+        "main:app",
+        host="0.0.0.0",
+        port=8000,
+        reload=True,
+        log_level="info"
+    )
+
+if __name__ == "__main__":
+    main()

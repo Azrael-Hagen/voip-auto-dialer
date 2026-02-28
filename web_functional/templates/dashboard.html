@@ -1,0 +1,136 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - VoIP Auto Dialer{% endblock %}
+
+{% block content %}
+<div class="fade-in">
+    <h1 class="page-title">Dashboard Profesional</h1>
+    <p class="page-subtitle">Monitoreo en tiempo real del sistema VoIP</p>
+    
+    <!-- Métricas principales -->
+    <div class="metrics-grid">
+        <div class="metric-card">
+            <div class="metric-header">
+                <div class="metric-title">Estado del Sistema</div>
+                <div class="metric-icon primary">🖥️</div>
+            </div>
+            <div class="metric-value">{{ "Online" if system_status == "online" else "Offline" }}</div>
+            <div class="metric-label">Asterisk {{ asterisk_stats.get('version', 'N/A') }}</div>
+        </div>
+        
+        <div class="metric-card">
+            <div class="metric-header">
+                <div class="metric-title">Total Extensiones</div>
+                <div class="metric-icon success">📞</div>
+            </div>
+            <div class="metric-value" id="endpoints-count">{{ total_extensions }}</div>
+            <div class="metric-label">{{ extensions_with_passwords }} con passwords</div>
+        </div>
+        
+        <div class="metric-card">
+            <div class="metric-header">
+                <div class="metric-title">Llamadas Activas</div>
+                <div class="metric-icon warning">📈</div>
+            </div>
+            <div class="metric-value" id="active-calls-count">{{ asterisk_stats.get('active_calls', 0) }}</div>
+            <div class="metric-label">En tiempo real</div>
+        </div>
+        
+        <div class="metric-card">
+            <div class="metric-header">
+                <div class="metric-title">Proveedores VoIP</div>
+                <div class="metric-icon info">🌐</div>
+            </div>
+            <div class="metric-value">{{ active_providers }}</div>
+            <div class="metric-label">Activos</div>
+        </div>
+    </div>
+    
+    <!-- Panel de control rápido -->
+    <div class="table-container mb-4">
+        <div class="table-header">
+            <h2 class="table-title">Control de Llamadas</h2>
+            <button class="btn btn-primary btn-refresh" onclick="refreshStats()">
+                🔄 Actualizar
+            </button>
+        </div>
+        <div style="padding: 1.5rem;">
+            <form id="call-form" class="flex items-center gap-4">
+                <div class="form-group mb-0">
+                    <label class="form-label">Desde Extensión:</label>
+                    <input type="text" id="from-extension" class="form-input" placeholder="1000" style="width: 120px;">
+                </div>
+                <div class="form-group mb-0">
+                    <label class="form-label">Hacia Extensión:</label>
+                    <input type="text" id="to-extension" class="form-input" placeholder="1001" style="width: 120px;">
+                </div>
+                <button type="submit" class="btn btn-success">📞 Llamar</button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Extensiones recientes -->
+    {% if extensions %}
+    <div class="table-container">
+        <div class="table-header">
+            <h2 class="table-title">Extensiones Recientes</h2>
+            <a href="/extensions" class="btn btn-outline">Ver Todas</a>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Extensión</th>
+                    <th>Password</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for ext in extensions %}
+                <tr>
+                    <td><strong>{{ ext.extension }}</strong></td>
+                    <td><code>{{ ext.password[:4] }}****</code></td>
+                    <td><span class="badge success">Configurada</span></td>
+                    <td>
+                        <button class="btn btn-primary btn-call" data-from="{{ ext.extension }}" data-to="*99">
+                            📞 Test
+                        </button>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endif %}
+    
+    <!-- Estado de proveedores -->
+    {% if providers %}
+    <div class="table-container mt-4">
+        <div class="table-header">
+            <h2 class="table-title">Estado de Proveedores</h2>
+            <a href="/providers" class="btn btn-outline">Gestionar</a>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Proveedor</th>
+                    <th>Host</th>
+                    <th>Estado</th>
+                    <th>Última Conexión</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for provider in providers %}
+                <tr>
+                    <td><strong>{{ provider.name }}</strong></td>
+                    <td>{{ provider.host }}:{{ provider.port }}</td>
+                    <td><span id="provider-status" class="badge warning">{{ asterisk_stats.get('provider_status', 'unknown') }}</span></td>
+                    <td>{{ provider.get('last_connection', 'N/A') }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

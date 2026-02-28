@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}VoIP Auto Dialer{% endblock %}</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/style.css') }}">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', path='/img/favicon.ico') }}">
+    
+    {% block extra_head %}{% endblock %}
+</head>
+<body>
+    <div class="main-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    📞 VoIP Auto Dialer
+                </div>
+                
+                <nav>
+                    <ul class="nav-menu">
+                        <li><a href="/">Dashboard</a></li>
+                        <li><a href="/extensions">Extensiones</a></li>
+                        <li><a href="/providers">Proveedores</a></li>
+                        <li><a href="/campaigns">Campañas</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="system-status">
+                    <div class="status-indicator"></div>
+                    <span>Sistema Online</span>
+                </div>
+            </div>
+        </header>
+        
+        <!-- Contenido principal -->
+        <main class="main-content">
+            <!-- Contenedor de alertas -->
+            <div id="alerts-container"></div>
+            
+            {% block content %}{% endblock %}
+        </main>
+    </div>
+    
+    <!-- JavaScript -->
+    <script src="{{ url_for('static', path='/js/app.js') }}"></script>
+    {% block extra_scripts %}{% endblock %}
+</body>
+</html>

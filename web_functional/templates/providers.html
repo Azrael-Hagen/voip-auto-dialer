@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+
+{% block title %}Proveedores - VoIP Auto Dialer{% endblock %}
+
+{% block content %}
+<div class="fade-in">
+    <h1 class="page-title">Gestión de Proveedores VoIP</h1>
+    <p class="page-subtitle">Administra los proveedores de telefonía externa</p>
+    
+    <!-- Métricas de proveedores -->
+    <div class="metrics-grid">
+        <div class="metric-card">
+            <div class="metric-header">
+                <div class="metric-title">Total Proveedores</div>
+                <div class="metric-icon primary">🌐</div>
+            </div>
+            <div class="metric-value">{{ total_providers }}</div>
+            <div class="metric-label">Configurados</div>
+        </div>
+        
+        <div class="metric-card">
+            <div class="metric-header">
+                <div class="metric-title">Activos</div>
+                <div class="metric-icon success">✅</div>
+            </div>
+            <div class="metric-value">{{ providers|selectattr('active')|list|length }}</div>
+            <div class="metric-label">Habilitados</div>
+        </div>
+        
+        <div class="metric-card">
+            <div class="metric-header">
+                <div class="metric-title">Conectados</div>
+                <div class="metric-icon info">🔗</div>
+            </div>
+            <div class="metric-value">0</div>
+            <div class="metric-label">Registrados</div>
+        </div>
+        
+        <div class="metric-card">
+            <div class="metric-header">
+                <div class="metric-title">En Prueba</div>
+                <div class="metric-icon warning">🧪</div>
+            </div>
+            <div class="metric-value">0</div>
+            <div class="metric-label">Testing</div>
+        </div>
+    </div>
+    
+    <!-- Lista de proveedores -->
+    <div class="table-container">
+        <div class="table-header">
+            <h2 class="table-title">Proveedores Configurados</h2>
+            <div class="flex gap-2">
+                <button class="btn btn-primary btn-refresh" onclick="refreshStats()">
+                    🔄 Actualizar
+                </button>
+                <button class="btn btn-success">
+                    ➕ Nuevo Proveedor
+                </button>
+            </div>
+        </div>
+        
+        {% if providers %}
+        <div style="padding: 1.5rem;">
+            {% for provider in providers %}
+            <div class="metric-card mb-3" style="border-left: 4px solid var(--success-color);">
+                <div class="flex justify-between items-center mb-3">
+                    <h3 style="margin: 0; font-size: 1.25rem; font-weight: 600;">
+                        {{ provider.name }}
+                    </h3>
+                    <div class="flex gap-2">
+                        <span class="badge info">{{ provider.get('type', 'N/A') }}</span>
+                        <span class="badge {{ 'success' if provider.get('active') else 'secondary' }}">
+                            {{ 'Activo' if provider.get('active') else 'Inactivo' }}
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="flex justify-between items-center mb-3">
+                    <div>
+                        <strong>Host:</strong> 
+                        <code style="color: var(--danger-color);">{{ provider.host }}:{{ provider.port }}</code>
+                    </div>
+                    <div>
+                        <strong>Transporte:</strong>
+                        <span class="badge secondary">{{ provider.get('transport', 'UDP') }}</span>
+                    </div>
+                </div>
+                
+                <div class="flex justify-between items-center">
+                    <div>
+                        <strong>Estado:</strong>
+                        <span id="provider-status" class="badge warning">{{ asterisk_stats.get('provider_status', 'unknown') }}</span>
+                    </div>
+                    <div>
+                        <strong>Última Conexión:</strong>
+                        <small class="text-secondary">{{ provider.get('last_connection', 'N/A') }}</small>
+                    </div>
+                </div>
+                
+                <div class="flex gap-2 mt-3">
+                    <button class="btn btn-primary" title="Editar proveedor">
+                        ✏️ Editar
+                    </button>
+                    <button class="btn btn-success" title="Probar conexión">
+                        🧪 Probar
+                    </button>
+                    <button class="btn btn-info" title="Ver detalles">
+                        👁️ Detalles
+                    </button>
+                    <button class="btn btn-danger" title="Eliminar">
+                        🗑️ Eliminar
+                    </button>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div style="padding: 2rem; text-align: center;">
+            <p class="text-secondary">No hay proveedores configurados</p>
+            <button class="btn btn-primary mt-2">Agregar Proveedor</button>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
