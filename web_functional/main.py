@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-🌐 SERVIDOR WEB FINAL SIN ERRORES - VOIP AUTO DIALER
+🌐 SERVIDOR WEB - VOIP AUTO DIALER
 ==================================================
 🎯 Servidor FastAPI 100% funcional y sin errores
 🛡️ Manejo completamente seguro de todos los datos
@@ -205,6 +205,7 @@ async def dashboard(request: Request):
         return templates.TemplateResponse("dashboard.html", {
             "request": request,
             "stats": stats,
+            "asterisk_stats": stats,  # Agregar asterisk_stats para compatibilidad con template
             "agents": safe_agents,
             "recent_calls": []
         })
@@ -220,6 +221,14 @@ async def dashboard(request: Request):
 async def extensions_page(request: Request):
     """Página de gestión de extensiones sin errores"""
     try:
+        # Estadísticas para template
+        asterisk_stats = {
+            "endpoints": len(extensions_data),
+            "extensions_online": safe_count(extensions_data, lambda x: safe_get(x, 'status') == 'online'),
+            "active_calls": 0,
+            "provider_status": "active"
+        }
+        
         # Preparar extensiones completamente seguras
         safe_extensions = []
         for ext in extensions_data:
@@ -238,7 +247,8 @@ async def extensions_page(request: Request):
             "request": request,
             "extensions": safe_extensions,
             "total_extensions": len(safe_extensions),
-            "assigned_extensions": safe_count(safe_extensions, lambda x: x.get('assigned', False))
+            "assigned_extensions": safe_count(safe_extensions, lambda x: x.get('assigned', False)),
+            "asterisk_stats": asterisk_stats  # Agregar asterisk_stats
         })
         
     except Exception as e:
@@ -252,6 +262,14 @@ async def extensions_page(request: Request):
 async def providers_page(request: Request):
     """Página de gestión de proveedores sin errores"""
     try:
+        # Estadísticas para template
+        asterisk_stats = {
+            "endpoints": len(extensions_data),
+            "extensions_online": safe_count(extensions_data, lambda x: safe_get(x, 'status') == 'online'),
+            "active_calls": 0,
+            "provider_status": "active" if safe_count(providers_data, lambda x: safe_get(x, 'status') in ['Activo', 'active']) > 0 else "inactive"
+        }
+        
         # Preparar proveedores completamente seguros
         safe_providers = []
         for prov in providers_data:
@@ -272,7 +290,8 @@ async def providers_page(request: Request):
             "request": request,
             "providers": safe_providers,
             "total_providers": len(safe_providers),
-            "active_providers": safe_count(safe_providers, lambda x: x.get('status') in ['Activo', 'active'])
+            "active_providers": safe_count(safe_providers, lambda x: x.get('status') in ['Activo', 'active']),
+            "asterisk_stats": asterisk_stats  # Agregar asterisk_stats
         })
         
     except Exception as e:
@@ -286,13 +305,22 @@ async def providers_page(request: Request):
 async def campaigns_page(request: Request):
     """Página de gestión de campañas"""
     try:
+        # Estadísticas para template
+        asterisk_stats = {
+            "endpoints": len(extensions_data),
+            "extensions_online": safe_count(extensions_data, lambda x: safe_get(x, 'status') == 'online'),
+            "active_calls": 0,
+            "provider_status": "active"
+        }
+        
         campaigns_data = []
         
         return templates.TemplateResponse("campaigns.html", {
             "request": request,
             "campaigns": campaigns_data,
             "total_campaigns": len(campaigns_data),
-            "active_campaigns": 0
+            "active_campaigns": 0,
+            "asterisk_stats": asterisk_stats  # Agregar asterisk_stats
         })
         
     except Exception as e:
@@ -443,3 +471,4 @@ if __name__ == "__main__":
         reload=True,
         log_level="info"
     )
+

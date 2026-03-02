@@ -1,1 +1,0 @@
-"""Core components for VoIP Auto Dialer"""
