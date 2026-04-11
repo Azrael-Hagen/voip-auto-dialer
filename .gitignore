@@ -12,3 +12,6 @@ asterisk_backup_*/
 
 # Archivos temporales
 *.tmp
+
+# Datos sensibles (credenciales de extensiones y proveedores)
+data/*.json

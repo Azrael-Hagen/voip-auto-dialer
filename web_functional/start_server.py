@@ -4,7 +4,6 @@
 ==================================================
 """
 
-import os
 import sys
 from pathlib import Path
 
@@ -26,7 +25,8 @@ def main():
     
     # Ejecutar el servidor
     try:
-        os.system("python main.py")
+        import subprocess
+        subprocess.run([sys.executable, "main.py"], check=True)
     except KeyboardInterrupt:
         print("\n🛑 Servidor detenido")
     except Exception as e:

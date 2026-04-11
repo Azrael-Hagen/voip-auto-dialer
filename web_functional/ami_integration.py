@@ -9,8 +9,8 @@ import json
 import logging
 import socket
 import threading
-import time
 from datetime import datetime
+from pathlib import Path
 from typing import Dict, List, Optional, Any, Callable
 from dataclasses import dataclass
 import re
@@ -41,19 +41,15 @@ class CallEvent:
 
 class AsteriskCLIClient:
     """Cliente para ejecutar comandos Asterisk CLI"""
-    
-    def __init__(self):
-        self.asterisk_cmd = "sudo asterisk -rx"
-    
+
     async def execute_command(self, command: str) -> str:
         """Ejecutar comando Asterisk CLI"""
         try:
-            full_cmd = f'{self.asterisk_cmd} "{command}"'
             result = subprocess.run(
-                full_cmd, 
-                shell=True, 
-                capture_output=True, 
-                text=True, 
+                ["sudo", "asterisk", "-rx", command],
+                shell=False,
+                capture_output=True,
+                text=True,
                 timeout=10
             )
             
@@ -281,7 +277,7 @@ class SimpleAMIClient:
         if self.socket:
             try:
                 self.socket.close()
-            except:
+            except Exception:
                 pass
         
         if self.thread and self.thread.is_alive():
@@ -289,27 +285,30 @@ class SimpleAMIClient:
 
 class AsteriskAMIIntegration:
     """Integración completa con Asterisk AMI usando múltiples métodos"""
-    
-    def __init__(self, host: str = "localhost", port: int = 5038, 
+
+    def __init__(self, host: str = "localhost", port: int = 5038,
                  username: str = "admin", password: str = "secret"):
         self.host = host
         self.port = port
         self.username = username
         self.password = password
-        
+
         # Clientes
         self.ami_client: Optional[SimpleAMIClient] = None
         self.cli_client = AsteriskCLIClient()
-        
+
         self.connected = False
         self.reconnect_attempts = 0
         self.max_reconnect_attempts = 5
-        
+
+        # Event loop reference – stored when connect() is called from async context
+        self._loop: Optional[asyncio.AbstractEventLoop] = None
+
         # Estado en tiempo real
         self.extensions: Dict[str, ExtensionStatus] = {}
         self.active_calls: Dict[str, CallEvent] = {}
         self.provider_status = "unknown"
-        
+
         # Callbacks para eventos
         self.event_callbacks: Dict[str, List[Callable]] = {
             'extension_status': [],
@@ -317,7 +316,7 @@ class AsteriskAMIIntegration:
             'provider_status': [],
             'metrics_update': []
         }
-        
+
         # Métricas
         self.metrics = {
             "endpoints": 0,
@@ -327,19 +326,22 @@ class AsteriskAMIIntegration:
             "total_extensions": 0,
             "extensions_with_passwords": 0
         }
-        
+
         # Cargar datos del sistema existente
         self._load_system_data()
     
     def _load_system_data(self):
         """Cargar datos del sistema existente"""
+        # Resolve data directory relative to this file's location
+        _base_dir = Path(__file__).parent.parent
+        extensions_file = _base_dir / "data" / "extensions.json"
+        providers_file = _base_dir / "data" / "providers.json"
+
         try:
-            # Cargar extensiones desde el sistema
-            extensions_file = "voip-auto-dialer/data/extensions.json"
-            if os.path.exists(extensions_file):
+            if extensions_file.exists():
                 with open(extensions_file, 'r') as f:
                     extensions_data = json.load(f)
-                    
+
                 for ext_id, ext_data in extensions_data.items():
                     if ext_id.isdigit():
                         self.extensions[ext_id] = ExtensionStatus(
@@ -347,20 +349,18 @@ class AsteriskAMIIntegration:
                             status='offline',
                             password=ext_data.get('password', f'pass{ext_id}')
                         )
-                
+
                 self.metrics["total_extensions"] = len(self.extensions)
                 self.metrics["extensions_with_passwords"] = len(self.extensions)
                 logger.info(f"📞 Cargadas {len(self.extensions)} extensiones del sistema")
-            
-            # Cargar proveedores
-            providers_file = "voip-auto-dialer/data/providers.json"
-            if os.path.exists(providers_file):
+
+            if providers_file.exists():
                 with open(providers_file, 'r') as f:
                     providers_data = json.load(f)
                     if providers_data:
                         self.provider_status = "configured"
                         logger.info("🌐 Proveedor cargado del sistema")
-            
+
         except Exception as e:
             logger.error(f"Error cargando datos del sistema: {e}")
             # Datos por defecto
@@ -370,7 +370,7 @@ class AsteriskAMIIntegration:
                     status='offline',
                     password=f'pass{i}'
                 )
-            
+
             self.metrics.update({
                 "total_extensions": 20,
                 "extensions_with_passwords": 20
@@ -378,6 +378,8 @@ class AsteriskAMIIntegration:
     
     async def connect(self) -> bool:
         """Conectar usando múltiples métodos"""
+        # Capture running event loop so background threads can schedule coroutines safely
+        self._loop = asyncio.get_running_loop()
         logger.info(f"🔌 Conectando a Asterisk: {self.host}:{self.port}")
         
         # Método 1: Intentar AMI
@@ -465,19 +467,23 @@ class AsteriskAMIIntegration:
         logger.info("📊 Datos demo inicializados")
     
     def _on_ami_event(self, event: Dict[str, str]):
-        """Manejar eventos AMI"""
+        """Manejar eventos AMI (llamado desde hilo de escucha)"""
         try:
             event_type = event.get('Event', '')
-            
+            loop = self._loop
+
+            if loop is None or not loop.is_running():
+                return
+
             if event_type == 'ContactStatus':
-                asyncio.create_task(self._on_contact_status(event))
+                asyncio.run_coroutine_threadsafe(self._on_contact_status(event), loop)
             elif event_type == 'Newstate':
-                asyncio.create_task(self._on_newstate(event))
+                asyncio.run_coroutine_threadsafe(self._on_newstate(event), loop)
             elif event_type == 'Hangup':
-                asyncio.create_task(self._on_hangup(event))
+                asyncio.run_coroutine_threadsafe(self._on_hangup(event), loop)
             elif event_type == 'Registry':
-                asyncio.create_task(self._on_registry(event))
-                
+                asyncio.run_coroutine_threadsafe(self._on_registry(event), loop)
+
         except Exception as e:
             logger.error(f"Error procesando evento AMI: {e}")
     
