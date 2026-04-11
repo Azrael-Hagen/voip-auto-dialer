@@ -243,13 +243,18 @@ async def dashboard(request: Request):
 
         active_providers = safe_count(providers_data, lambda x: safe_get(x, 'status') in ['Activo', 'active', 'connected'])
 
+        # extensions_with_passwords: count only extensions that actually have a password set
+        extensions_with_passwords = safe_count(
+            extensions_data, lambda x: bool(safe_get(x, 'password', ''))
+        )
+
         return templates.TemplateResponse("dashboard.html", {
             "request": request,
             "stats": stats,
             "asterisk_stats": stats,
             "system_status": stats["system_status"],
             "total_extensions": stats["total_extensions"],
-            "extensions_with_passwords": stats["total_extensions"],
+            "extensions_with_passwords": extensions_with_passwords,
             "active_providers": active_providers,
             "extensions": safe_extensions_preview,
             "providers": safe_providers_preview,
@@ -280,10 +285,10 @@ async def extensions_page(request: Request):
         safe_extensions = []
         for ext in extensions_data:
             if isinstance(ext, dict):
-                raw_ext = safe_get(ext, 'extension', safe_get(ext, 'number', '1000'))
+                extension_id = safe_get(ext, 'extension', safe_get(ext, 'number', '1000'))
                 safe_ext = {
-                    'extension': raw_ext,
-                    'password': '****',  # Never expose passwords to UI
+                    'extension': extension_id,
+                    'password': '****',  # Never expose passwords to UI; use _mask_password for API responses
                     'assigned': safe_get(ext, 'assigned', False),
                     'agent_name': safe_get(ext, 'agent_name', 'Sin asignar'),
                     'status': safe_get(ext, 'status', 'offline'),

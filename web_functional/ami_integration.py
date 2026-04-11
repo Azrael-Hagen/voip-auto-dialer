@@ -333,9 +333,9 @@ class AsteriskAMIIntegration:
     def _load_system_data(self):
         """Cargar datos del sistema existente"""
         # Resolve data directory relative to this file's location
-        _base_dir = Path(__file__).parent.parent
-        extensions_file = _base_dir / "data" / "extensions.json"
-        providers_file = _base_dir / "data" / "providers.json"
+        base_dir = Path(__file__).parent.parent
+        extensions_file = base_dir / "data" / "extensions.json"
+        providers_file = base_dir / "data" / "providers.json"
 
         try:
             if extensions_file.exists():
