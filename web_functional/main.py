@@ -9,6 +9,7 @@
 
 import sys
 import os
+from contextlib import asynccontextmanager
 from pathlib import Path
 
 # Agregar directorios al path
@@ -18,6 +19,7 @@ sys.path.insert(0, str(root_dir))
 sys.path.insert(0, str(current_dir))
 
 from fastapi import FastAPI, Request, HTTPException, WebSocket, WebSocketDisconnect
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import HTMLResponse, JSONResponse
@@ -31,11 +33,30 @@ import logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """Gestión del ciclo de vida de la aplicación"""
+    logger.info("🚀 Iniciando servidor web final sin errores")
+    yield
+    logger.info("🛑 Servidor web detenido")
+
+
 # Crear aplicación FastAPI
 app = FastAPI(
     title="VoIP Auto Dialer - Sistema Integrado",
     description="Sistema completo de auto-marcado VoIP con Asterisk",
-    version="2.0.0"
+    version="2.0.0",
+    lifespan=lifespan
+)
+
+# CORS – permitir acceso desde el mismo origen
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:8000", "http://127.0.0.1:8000"],
+    allow_credentials=True,
+    allow_methods=["GET", "POST"],
+    allow_headers=["*"],
 )
 
 # Configurar templates y archivos estáticos
@@ -117,14 +138,19 @@ class ConnectionManager:
         self.active_connections.append(websocket)
 
     def disconnect(self, websocket: WebSocket):
-        self.active_connections.remove(websocket)
+        try:
+            self.active_connections.remove(websocket)
+        except ValueError:
+            pass
 
     async def broadcast(self, message: str):
-        for connection in self.active_connections:
+        # Iterate over a snapshot to avoid mutation during iteration
+        for connection in list(self.active_connections):
             try:
                 await connection.send_text(message)
-            except:
-                pass
+            except Exception as e:
+                logger.debug(f"Error broadcasting to client: {e}")
+                self.disconnect(connection)
 
 manager = ConnectionManager()
 
@@ -135,7 +161,7 @@ def safe_get(item, key, default="N/A"):
             return item.get(key, default)
         else:
             return default
-    except:
+    except Exception:
         return default
 
 def safe_count(items, condition=None):
@@ -143,30 +169,21 @@ def safe_count(items, condition=None):
     try:
         if not isinstance(items, list):
             return 0
-        
+
         if condition is None:
             return len(items)
-        
+
         count = 0
         for item in items:
             try:
                 if isinstance(item, dict) and condition(item):
                     count += 1
-            except:
+            except Exception:
                 continue
         return count
-    except:
+    except Exception:
         return 0
 
-@app.on_event("startup")
-async def startup_event():
-    """Inicializar servicios al arrancar"""
-    logger.info("🚀 Iniciando servidor web final sin errores")
-
-@app.on_event("shutdown")
-async def shutdown_event():
-    """Limpiar al cerrar"""
-    logger.info("🛑 Servidor web detenido")
 
 # ==================== RUTAS WEB ====================
 
@@ -202,10 +219,45 @@ async def dashboard(request: Request):
                 }
                 safe_agents.append(safe_agent)
         
+        # Preparar extensiones para dashboard (primeras 10, sin passwords)
+        safe_extensions_preview = []
+        for ext in extensions_data[:10]:
+            if isinstance(ext, dict):
+                safe_extensions_preview.append({
+                    'extension': safe_get(ext, 'number', safe_get(ext, 'extension', '1000')),
+                    'password': '****',
+                    'status': safe_get(ext, 'status', 'offline'),
+                })
+
+        # Preparar proveedores para dashboard (sin passwords)
+        safe_providers_preview = []
+        for prov in providers_data:
+            if isinstance(prov, dict):
+                safe_providers_preview.append({
+                    'name': safe_get(prov, 'name', 'PBX ON THE CLOUD'),
+                    'host': safe_get(prov, 'host', 'N/A'),
+                    'port': safe_get(prov, 'port', '5081'),
+                    'active': safe_get(prov, 'status') in ['Activo', 'active', 'connected'],
+                    'last_connection': safe_get(prov, 'last_connection', 'N/A'),
+                })
+
+        active_providers = safe_count(providers_data, lambda x: safe_get(x, 'status') in ['Activo', 'active', 'connected'])
+
+        # extensions_with_passwords: count only extensions that actually have a password set
+        extensions_with_passwords = safe_count(
+            extensions_data, lambda x: bool(safe_get(x, 'password', ''))
+        )
+
         return templates.TemplateResponse("dashboard.html", {
             "request": request,
             "stats": stats,
-            "asterisk_stats": stats,  # Agregar asterisk_stats para compatibilidad con template
+            "asterisk_stats": stats,
+            "system_status": stats["system_status"],
+            "total_extensions": stats["total_extensions"],
+            "extensions_with_passwords": extensions_with_passwords,
+            "active_providers": active_providers,
+            "extensions": safe_extensions_preview,
+            "providers": safe_providers_preview,
             "agents": safe_agents,
             "recent_calls": []
         })
@@ -229,13 +281,14 @@ async def extensions_page(request: Request):
             "provider_status": "active"
         }
         
-        # Preparar extensiones completamente seguras
+        # Preparar extensiones completamente seguras – passwords enmascarados
         safe_extensions = []
         for ext in extensions_data:
             if isinstance(ext, dict):
+                extension_id = safe_get(ext, 'extension', safe_get(ext, 'number', '1000'))
                 safe_ext = {
-                    'number': safe_get(ext, 'number', '1000'),
-                    'password': safe_get(ext, 'password', '****'),
+                    'extension': extension_id,
+                    'password': '****',  # Never expose passwords to UI; use _mask_password for API responses
                     'assigned': safe_get(ext, 'assigned', False),
                     'agent_name': safe_get(ext, 'agent_name', 'Sin asignar'),
                     'status': safe_get(ext, 'status', 'offline'),
@@ -270,16 +323,19 @@ async def providers_page(request: Request):
             "provider_status": "active" if safe_count(providers_data, lambda x: safe_get(x, 'status') in ['Activo', 'active']) > 0 else "inactive"
         }
         
-        # Preparar proveedores completamente seguros
+        # Preparar proveedores – sin passwords, con campo 'active' booleano para template
         safe_providers = []
         for prov in providers_data:
             if isinstance(prov, dict):
+                is_active = safe_get(prov, 'status') in ['Activo', 'active', 'connected'] or safe_get(prov, 'active', False)
                 safe_prov = {
                     'name': safe_get(prov, 'name', 'PBX ON THE CLOUD'),
-                    'host': safe_get(prov, 'host', 'pbxonthecloud.com:5081'),
+                    'host': safe_get(prov, 'host', 'pbxonthecloud.com'),
                     'port': safe_get(prov, 'port', '5081'),
+                    # username shown for reference; password is never exposed
                     'username': safe_get(prov, 'username', 'usuario'),
                     'status': safe_get(prov, 'status', 'Activo'),
+                    'active': is_active,
                     'type': safe_get(prov, 'type', 'N/A'),
                     'transport': safe_get(prov, 'transport', 'UDP'),
                     'last_connection': safe_get(prov, 'last_connection', '2026-02-28T15:43:03')
@@ -332,34 +388,46 @@ async def campaigns_page(request: Request):
 
 # ==================== API REST ====================
 
+def _mask_password(item: dict) -> dict:
+    """Return a copy of the dict with 'password' field masked."""
+    masked = dict(item)
+    if 'password' in masked:
+        masked['password'] = '****'
+    return masked
+
+
 @app.get("/api/extensions")
 async def api_get_extensions():
-    """API: Obtener todas las extensiones"""
+    """API: Obtener todas las extensiones (passwords enmascarados)"""
     try:
-        return {"success": True, "data": extensions_data, "count": len(extensions_data)}
+        safe = [_mask_password(e) if isinstance(e, dict) else e for e in extensions_data]
+        return {"success": True, "data": safe, "count": len(safe)}
     except Exception as e:
         logger.error(f"Error API extensiones: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
 @app.get("/api/agents")
 async def api_get_agents():
-    """API: Obtener todos los agentes"""
+    """API: Obtener todos los agentes (passwords enmascarados)"""
     try:
-        return {"success": True, "data": agents_data, "count": len(agents_data)}
+        safe = [_mask_password(a) if isinstance(a, dict) else a for a in agents_data]
+        return {"success": True, "data": safe, "count": len(safe)}
     except Exception as e:
         logger.error(f"Error API agentes: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
 @app.get("/api/providers")
 async def api_get_providers():
-    """API: Obtener todos los proveedores"""
+    """API: Obtener todos los proveedores (passwords enmascarados)"""
     try:
-        return {"success": True, "data": providers_data, "count": len(providers_data)}
+        safe = [_mask_password(p) if isinstance(p, dict) else p for p in providers_data]
+        return {"success": True, "data": safe, "count": len(safe)}
     except Exception as e:
         logger.error(f"Error API proveedores: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
 @app.get("/api/system/stats")
+@app.get("/api/asterisk/stats")  # alias used by frontend JS
 async def api_system_stats():
     """API: Estadísticas del sistema"""
     try:
@@ -379,37 +447,45 @@ async def api_system_stats():
             },
             "providers": {
                 "total": len(providers_data),
-                "active": safe_count(providers_data, lambda x: safe_get(x, 'status') in ['Activo', 'active']),
-                "inactive": len(providers_data) - safe_count(providers_data, lambda x: safe_get(x, 'status') in ['Activo', 'active'])
+                "active": safe_count(providers_data, lambda x: safe_get(x, 'status') in ['Activo', 'active', 'connected']),
+                "inactive": len(providers_data) - safe_count(providers_data, lambda x: safe_get(x, 'status') in ['Activo', 'active', 'connected'])
             }
         }
-        
+
         return {"success": True, "data": stats}
-        
+
     except Exception as e:
         logger.error(f"Error API stats: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
 @app.post("/api/call/originate")
+@app.post("/api/calls/originate")  # alias used by frontend JS
 async def api_originate_call(request: Request):
     """API: Originar llamada"""
     try:
         data = await request.json()
-        from_ext = data.get("from_extension")
-        to_ext = data.get("to_extension")
-        
+        # Accept both naming conventions from different callers
+        from_ext = data.get("from_extension") or data.get("from")
+        to_ext = data.get("to_extension") or data.get("to")
+
         if not from_ext or not to_ext:
             raise HTTPException(status_code=400, detail="Extensiones requeridas")
-        
+
+        # Basic input validation – only allow numeric extensions
+        if not str(from_ext).isdigit() or not str(to_ext).isdigit():
+            raise HTTPException(status_code=400, detail="Las extensiones deben ser numéricas")
+
         return {
-            "success": True, 
+            "success": True,
             "data": {
                 "message": f"Llamada simulada de {from_ext} a {to_ext}",
                 "mode": "simulation",
                 "timestamp": datetime.now().isoformat()
             }
         }
-            
+
+    except HTTPException:
+        raise
     except Exception as e:
         logger.error(f"Error originando llamada: {e}")
         raise HTTPException(status_code=500, detail=str(e))
